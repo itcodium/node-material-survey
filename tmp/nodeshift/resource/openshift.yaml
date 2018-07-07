@@ -1,0 +1,90 @@
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: v1
+    kind: DeploymentConfig
+    metadata:
+      name: nodejsopen
+      namespace: chatbot01
+      labels:
+        project: nodejsopen
+        version: 0.0.0
+        provider: nodeshift
+        app: nodejsopen
+      annotations:
+        nodeshift/git-branch: master
+        nodeshift/git-commit: 36a1acfbb853a99aa06e378600bfc2fce5876499
+    spec:
+      replicas: 1
+      revisionHistoryLimit: 2
+      selector:
+        app: nodejsopen
+        project: nodejsopen
+        provider: nodeshift
+      triggers:
+        - type: ConfigChange
+        - type: ImageChange
+          imageChangeParams:
+            automatic: true
+            containerNames:
+              - nodejsopen
+            from:
+              kind: ImageStreamTag
+              name: 'nodejsopen:latest'
+      template:
+        metadata:
+          labels:
+            project: nodejsopen
+            version: 0.0.0
+            provider: nodeshift
+            app: nodejsopen
+          annotations:
+            nodeshift/git-branch: master
+            nodeshift/git-commit: 36a1acfbb853a99aa06e378600bfc2fce5876499
+        spec:
+          containers:
+            - image: nodejsopen
+              name: nodejsopen
+              securityContext:
+                privileged: false
+              ports:
+                - containerPort: 8080
+                  name: http
+                  protocol: TCP
+              env: []
+  - apiVersion: v1
+    kind: Service
+    spec:
+      selector:
+        project: nodejsopen
+        provider: nodeshift
+      ports:
+        - protocol: TCP
+          port: 8080
+          targetPort: 8080
+          name: http
+      type: ClusterIP
+    metadata:
+      name: nodejsopen
+      namespace: chatbot01
+      labels:
+        project: nodejsopen
+        version: 0.0.0
+        provider: nodeshift
+      annotations:
+        nodeshift/git-branch: master
+        nodeshift/git-commit: 36a1acfbb853a99aa06e378600bfc2fce5876499
+  - apiVersion: v1
+    kind: Route
+    spec:
+      to:
+        kind: Service
+        name: nodejsopen
+      port:
+        targetPort: 8080
+    metadata:
+      name: nodejsopen
+      labels:
+        project: nodejsopen
+        version: 0.0.0
+        provider: nodeshift
