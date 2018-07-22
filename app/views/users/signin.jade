@@ -1,0 +1,50 @@
+extends auth
+
+block auth
+  //- agregado por CAOB
+  //- div.container(style="width: 585PX; padding: 40px")
+  div.panel.panel-default
+    div.panel-heading
+      //h6 Pims
+      h4.panel-title Acceso al Sistema - Login
+
+    div.panel-body
+      p
+
+      form.form-horizontal(action="/users/session", method="post")
+        div.form-group
+          label( class='col-sm-2 control-label', for="cedula") Cédula
+          div.col-sm-10
+            input#cedula(class= "form-control", type='text', name="cedula", placeholder='cédula')
+
+        div.form-group
+          label( class='col-sm-2 control-label', for='password') password
+          div.col-sm-10
+            input#password(class= "form-control", type='password', name="password", placeholder='Password')
+
+        div.form-group
+          div.col-sm-offset-2.col-sm-10
+            div.checkbox
+
+               input(type='checkbox')
+               Label Recordar mi sesión en este browser
+
+
+
+        div.form-group
+          div.col-sm-offset-2.col-sm-10
+            button.btn.btn-default(type='submit') Entrar
+            | &nbsp;&nbsp;
+            a.show-signup(href="/restablecer") Restablecer mi contraseña
+
+
+
+
+    div.panel-footer
+        if (message != '')
+          div.alert.alert-warning.alert-dismissable
+            button.close(type='button', data-dismiss='alert', aria-hidden='true') &times;
+            p.error=message
+            p Si es el primer ingreso, primero &nbsp;debe &nbsp;
+              a.alert-link(href= '/precargasignin') registrar su usuario.
+

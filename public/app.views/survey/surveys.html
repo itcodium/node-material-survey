@@ -1,0 +1,171 @@
+
+<style>
+    .selectedPoll{
+        background-color: #ffffef;
+    }
+</style>
+<!-- MENSAJE -->
+<div class="alert-division" ng-show="alerts.length > 0">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+        <span ng-show="alert.type === 'danger'" class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+        </span>
+        <span class="sr-only">Error:</span>
+        <strong ng-show="alert.strong">{{alert.strong}}</strong>
+        {{alert.msg}}
+        <a ng-show = "alert.ltext" href="" ng-click="frontDoor(alert.lfunc)"
+           class="alert-link">{{alert.ltext}}</a>
+    </alert>
+</div>
+<!-- END MENSAJE -->
+
+
+
+<h1>{{survey.name}}</h1>
+<h4>El Estado Ecuatoriano, en el afán de buscar la calidez y calidad de los servicios públicos, se encuentra realizando la siguiente encuesta de percepción sobre los servicios públicos.</h4>
+<input ng-show="!voted" style="width:130px;margin: 15px 0 15px 0;" class="form-control btn-default" ng-click="enviar()"   type="button" value="Enviar encuesta" />
+<div id="DinamicDiv"></div>
+
+<div class="form-group">
+    <label class="ng-binding">Califique la calidad de la información sobre los requisitos para acceder al servicio</label>
+    <table class="table" width="150px" style="width: 600px;">
+        <tr>
+            <td></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Inexistente</td>
+            <td scope="col">
+                <input  type="radio" name="1">
+            </td>
+            <td scope="col">
+                <input type="radio" name="1">
+            </td>
+            <td scope="col">
+                <input type="radio" name="1">
+            </td>
+            <td scope="col">
+                <input  type="radio" name="1">
+            </td>
+            <td scope="col">
+                <input  type="radio" name="1">
+            </td>
+            <td>Muy buena</td>
+        </tr>
+    </table>
+
+</div>
+
+
+
+<div class="form-group">
+    <label class="ng-binding">Indique qué tan frecuente asiste a las siguientes instituciones para solicitar servicios</label>
+    <table class="table" >
+        <tr>
+            <td></td>
+            <td>Muy frecuentemente</td>
+            <td>Frecuentemente</td>
+            <td>Rara vez</td>
+            <td>Nunca</td>
+
+        </tr>
+        <tr>
+            <td>Ministerio de Salud</td>
+            <td scope="col">
+                <input  type="radio" name="2">
+            </td>
+            <td scope="col">
+                <input type="radio" name="2">
+            </td>
+            <td scope="col">
+                <input type="radio" name="2">
+            </td>
+            <td scope="col">
+                <input type="radio" name="2">
+            </td>
+
+
+        </tr>
+        <tr>
+            <td>Ministerio de Educación</td>
+            <td scope="col">
+                <input  type="radio" name="3">
+            </td>
+            <td scope="col">
+                <input type="radio" name="3">
+            </td>
+            <td scope="col">
+                <input type="radio" name="3">
+            </td>
+            <td scope="col">
+                <input  type="radio" name="3">
+            </td>
+
+
+        </tr>
+        <tr>
+            <td>Registro Civil</td>
+            <td scope="col">
+                <input  type="radio" name="4">
+            </td>
+            <td scope="col">
+                <input type="radio" name="4">
+            </td>
+            <td scope="col">
+                <input type="radio" name="4">
+            </td>
+            <td scope="col">
+                <input  type="radio" name="4">
+            </td>
+
+
+        </tr>
+        <tr>
+            <td>SRI - Servicio de Rentas Internas</td>
+            <td scope="col">
+                <input  type="radio" name="5">
+            </td>
+            <td scope="col">
+                <input type="radio" name="5">
+            </td>
+            <td scope="col">
+                <input type="radio" name="5">
+            </td>
+            <td scope="col">
+                <input  type="radio" name="5">
+            </td>
+
+
+        </tr>
+        <tr>
+            <td>Ministerio de Inclusión </td>
+            <td scope="col">
+                <input  type="radio" name="6">
+            </td>
+            <td scope="col">
+                <input type="radio" name="6">
+            </td>
+            <td scope="col">
+                <input type="radio" name="6">
+            </td>
+            <td scope="col">
+                <input  type="radio" name="6">
+            </td>
+
+
+        </tr>
+    </table>
+
+    <!--<select class="form-control input-sm ng-valid ng-dirty ng-valid-parse ng-touched" ng-model="select4" ng-options="i.text for i in survey.questions[4].list"><option value="" class="" selected="selected">(Seleccionar)</option><option value="object:56" label="Demasiado cerca">Demasiado cerca</option><option value="object:57" label="cerca">cerca</option><option value="object:58" label="distante">distante</option></select>-->
+</div>
+
+<input ng-show="!voted" style="width:130px;margin: 15px 0 15px 0;" class="form-control btn-default" ng-click="enviar()"   type="button" value="Enviar encuesta" />
+
+
+
+
+

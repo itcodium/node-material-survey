@@ -1,0 +1,50 @@
+extends ../layouts/default
+
+
+//- CAOB ojo no poner el signo para que no pase de largo
+
+block content
+  div.panel-body
+    //- div.container(style="width: 485PX; padding-top: 30px")
+    div.panel.panel-default(style="width:700px;margin-bottom:50px;")
+      div.panel-heading
+        h4.panel-title
+          |Registre su usuario
+      div.panel-body
+        form.form-horizontal(action="/precargasignin", method="post",style="padding: 15px")
+
+          div.form-group
+            label( class='col-sm-3 control-label', for='cedula') Cédula
+            div.col-sm-9
+              input#cedula(class= "form-control", type='text', name="cedula", placeholder='cédula', value=cedula)
+
+          div.form-group
+            label( class='col-sm-3 control-label', for='password') Código de Verificación
+            div.col-sm-9
+              input#password(class= "form-control", type='password', name="claveSnap", placeholder='Clave recibida por mail')
+
+          br
+          div.form-group
+            div.col-sm-2
+            label( class='col-sm-5 control-label', for='') Nueva contraseña de usuario
+
+          div.form-group
+            label( class='col-sm-3 control-label', for='uPassword1') Contraseña
+            div.col-sm-9
+              input#uPassword1(class= "form-control", type='password', name="uPassword1", placeholder='genere su contraseña ')
+
+          div.form-group
+            label( class='col-sm-3 control-label', for='uPassword2') Repetir Contraseña
+            div.col-sm-9
+              input#uPassword2(class= "form-control", type='password', name="uPassword2", placeholder='repita contraseña ')
+
+          br
+          div.form-group
+            div.col-sm-offset-3.col-sm-10
+              button.btn.btn-default(type='submit') Aceptar
+
+          if (typeof message!== 'undefined')
+            div(class='#{message.class}')
+              div(class='alert alert-#{message.type}')
+                span(class="close", data-dismiss="alert") &times;
+                p= message.data

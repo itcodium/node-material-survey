@@ -1,0 +1,79 @@
+
+
+extends auth
+
+
+//- CAOB ojo no poner el signo para que no pase de largo
+
+style.
+  .user-form {
+  }
+
+block auth
+  //- div.container(style="width: 485PX; padding-top: 30px")
+  div.panel.panel-default
+    div.panel-heading
+      h4.panel-title
+        |Registre su usuario
+    div.panel-body
+      form.form-horizontal(action="/users", method="post",style="padding: 15px;")
+        div.form-group
+          label( class='col-sm-2 control-label', for='name') Nombre
+          div.col-sm-10
+            input#name(class= "form-control", type='text', name="name", placeholder='nombre completo', value=user.name)
+
+        div.form-group
+          label( class='col-sm-2 control-label', for='email') Email
+          div.col-sm-10
+            input#email(class= "form-control", type='email', name="email", placeholder='email registrado en la SNAP', value=user.email)
+
+        //div.form-group
+        //  label( class='col-sm-2 control-label', for='claveSnap') Clave Snap
+        //  div.col-sm-10
+        //    input#claveSnap(class= "form-control", type='text', name="claveSnap", placeholder='Crear clave snap', value=user.claveSnap)
+
+        div.form-group
+          label( class='col-sm-2 control-label', for='username') Usuario
+          div.col-sm-10
+            input#username(class= "form-control", type='text', name="username", placeholder='cree su usuario', value=user.username)
+
+        //- div.form-group
+            label( class='col-sm-2 control-label', for='keyword') Keyword
+            div.col-sm-10
+              input#password(class= "form-control", type='password', name="keyword", placeholder='one-time keyword supplied by your administrator')
+
+        div.form-group
+          label( class='col-sm-2 control-label', for='password') Password
+          div.col-sm-10
+            input#password(class= "form-control", type='password', name="password", placeholder='genere su clave')
+
+        div.form-group
+          label( class='col-sm-2 control-label', for='password1') Password
+          div.col-sm-10
+            input#password(class= "form-control", type='password', name="password2", placeholder='repita su clave')
+
+        div.form-group
+          div.col-sm-offset-2.col-sm-10
+            button.btn.btn-default(type='submit') Darse de Alta
+            | &nbsp;&nbsp;
+            | o &nbsp;&nbsp;
+            a.show-signup(href="/signin") Ingresar con clave
+
+        if (typeof message!== 'undefined')
+          div(class='#{message.class}')
+            div(class='alert alert-#{message.type}')
+              span(class="close", data-dismiss="alert") &times;
+              p= message.data
+
+      //- if (typeof errors !== 'undefined')
+      //-  div.alert.alert-warning.alert-dismissable
+      //-    button.close(type='button', data-dismiss='alert', aria-hidden='true') &times;
+      //-    if (Object.keys(errors).length  < 2)
+      //-      p Please consider that &nbsp;
+      //-        each error in errors
+      //-          = error.type
+      //-    else
+      //-      p Please consider the following issues:
+      //-      ul
+      //-        each error in errors
+      //-          li= error.type

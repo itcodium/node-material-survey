@@ -1,0 +1,45 @@
+<div ng-show="loading" class="container loadingContent"></div>
+
+<div ng-show="!loading && authorized">
+<div  id="Container_Accion"  class="page-header">
+	<h3>Accion</h3>
+</div>
+<!-- MENSAJE -->
+<div class="alert-division" ng-show="alerts.length > 0">
+	<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+	<span ng-show="alert.type === 'danger'" class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+	</span>
+		<span class="sr-only">Error:</span>
+		<strong ng-show="alert.strong">{{alert.strong}}</strong>
+		{{alert.msg}}
+		<a ng-show = "alert.ltext" href="" ng-click="frontDoor(alert.lfunc)"
+		   class="alert-link">{{alert.ltext}}</a>
+	</alert>
+</div>
+<!-- END MENSAJE -->
+<form id="Container_Form"  name="formAccion" class="form-horizontal" role="form">
+	<div class="form-group">
+		<label class="control-label col-sm-2" >Codigo:</label>
+		<div class="col-sm-5">
+			{{accion.code}}
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-sm-2" >Accion</label>
+		<div class="col-sm-5">
+			{{accion.accion}}
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-sm-2" >Descripcion</label>
+		<div class="col-sm-5">
+			{{accion.descripcion}}
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-4">
+			<input id="btnGuardar" type="button"   ng-click="borrarAccion();" class="btn btn-danger" class="form-control"  value="Borrar"/>
+		</div>
+	</div>
+</form>
+</div>

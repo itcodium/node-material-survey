@@ -1,0 +1,58 @@
+<div  id="Container_Perfil"  class="page-header">
+	<h3>{{perfil.descripcion}} </h3>
+</div>
+<!-- MENSAJE -->
+<div class="alert-division" ng-show="alerts.length > 0">
+	<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+        <span ng-show="alert.type === 'danger'" class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+        </span>
+		<span class="sr-only">Error:</span>
+		<strong ng-show="alert.strong">{{alert.strong}}</strong>
+		{{alert.msg}}
+		<a ng-show = "alert.ltext" href="" ng-click="frontDoor(alert.lfunc)"
+		   class="alert-link">{{alert.ltext}}</a>
+	</alert>
+</div>
+<!-- END MENSAJE -->
+<form name="formPerfil" class="form-horizontal" role="form">
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="txtCodigo">Codigo:</label>
+		<div class="col-sm-5">
+			<input type="text" name="codigo" id="txtCodigo" class="form-control" ng-model="perfil.code" required role="codigo">
+			<span class=".control-group.error .control-label" style="color:#880000;" ng-show="formPerfil.codigo.$error.required">Ingresar Codigo.</span>
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="txtPerfil">Perfil</label>
+		<div class="col-sm-5">
+			<input type="text" name="perfil" id="txtPerfil" class="form-control" ng-model="perfil.perfil" required role="perfil">
+			<span class=".control-group.error .control-label" style="color:#880000;" ng-show="formPerfil.perfil.$error.required">Ingresar perfil.</span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-sm-2"  for="txtDescripcion">Descripcion</label>
+		<div class="col-sm-5">
+			<input type="text" name="descripcion" id="txtDescripcion" class="form-control" ng-model="perfil.descripcion" role="Descripcion">
+		</div>
+	</div>
+	<div id="Container_Acciones" class="form-group">
+		<div class="col-sm-offset-2 col-sm-4">
+			<ul  class="list-group">
+				<li class="list-group-item" ng-repeat="a in perfil.acciones">
+					{{a.accion}}
+				</li>
+			</ul>
+		</div>
+		<div class="col-sm-offset-2 col-sm-4"></div>
+	</div>
+
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-4">
+			<input type="button" ng-click="deletePerfil();" class="btn btn-danger" class="form-control"  value="Eliminar"/>
+		</div>
+	</div>
+</form>

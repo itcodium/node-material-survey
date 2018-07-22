@@ -1,0 +1,14 @@
+		http://localhost:1616/#!/surveyCreate
+		
+		http://localhost:1616/#!/survey/
+		http://localhost:1616/#!/survey/5b3971eb2854cfc80393feae
+		http://localhost:1616/#!/surveyEdit/5b3971eb2854cfc80393feae
+		http://localhost:1616/#!/survey/5b3971eb2854cfc80393feae
+		
+		
+        /survey/:surveyId/:ce
+        /surveyView/:surveyId/:ce
+        
+        
+        
+        /surveyAddQuestion/:surveyId

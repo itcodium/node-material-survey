@@ -1,0 +1,72 @@
+extends ../layouts/default
+
+block content
+   script(type="text/javascript").
+      window.user = !{user};
+   div.panel-heading
+      h4.panel-title !{title}
+   div.panel-body
+      div.panel-bandoneon-heading
+         h4.bandoneon-toggle
+            div.row.navbar-left.ng-scope
+               - if ( action == "alta" )
+                    span.glyphicon.gly-st.iso-plus
+                    span.ng-scope.ng-tit &nbsp;Agregar Usuario
+               - else
+                    span.glyphicon.gly-st.iso-pencil
+                    span.ng-scope.ng-tit &nbsp;Editar Usuario
+      form.form-horizontal(action="/saveuser", method="post")
+          div.form-group
+              label( class='col-sm-2 control-label', for='name') Nombre
+              div.col-sm-10
+                  input#action(class= "form-control", type='hidden', name="action", value=action)
+                  input#_id(class= "form-control", type='hidden', name="_id", value=objUser._id)
+                  input#name(class= "form-control", type='text', name="name", placeholder='nombre completo', value=objUser.name)
+          div.form-group
+              label( class='col-sm-2 control-label', for='email') Email
+              div.col-sm-10
+                  input#email(class= "form-control", type='email', name="email", placeholder='email registrado en la SNAP', value=objUser.email)
+          div.form-group
+              label(class='col-sm-2 control-label', for='instituciones') Instituci&oacute;n
+              div.col-sm-10
+                  select#instituciones(class= "form-control", name="instituciones")
+                      option(value="") Seleccione una Instituci&oacute;n
+                      each oInstitucion in institucion
+                          - if ( objUser.instituciones && String(oInstitucion._id) == String(objUser.instituciones[0]) )
+                              option(value=oInstitucion._id, selected) !{oInstitucion.insInstitucion}
+                          - else
+                              option(value=oInstitucion._id) !{oInstitucion.insInstitucion}
+
+          div.form-group
+              label(class='col-sm-2 control-label', for='perfiles') Perfil
+              div.col-sm-10
+                  select#perfiles(class= "form-control", name="perfiles")
+                      option(value="") Seleccione un Perfil
+                      each perfil in perfiles
+                          - if ( objUser.perfiles && String(perfil._id) == String(objUser.perfiles[0]) )
+                              option(value=perfil._id, selected) !{perfil.descripcion}
+                          - else
+                              option(value=perfil._id) !{perfil.descripcion}
+          div.form-group
+              label( class='col-sm-2 control-label', for='username') Usuario
+              div.col-sm-10
+                  input#username(class= "form-control", type='text', name="username", placeholder='cree su usuario', value=objUser.username)
+          div.form-group
+              label( class='col-sm-2 control-label', for='password') clave
+              div.col-sm-10
+                  input#password(class= "form-control", type='password', name="password", placeholder='clave')
+          div.form-group
+              div.col-sm-offset-2.col-sm-10
+                  button.btn.btn-default(type='submit') Grabar
+      if (typeof errors !== 'undefined')
+          div.alert.alert-warning.alert-dismissable
+              button.close(type='button', data-dismiss='alert', aria-hidden='true') &times;
+              if (Object.keys(errors).length < 2)
+                  p Please consider that &nbsp;
+                      each error in errors
+                          = error.type
+              else
+                  p Please consider the following issues:
+                  ul
+                      each error in errors
+                          li= error.type

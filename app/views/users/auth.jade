@@ -1,0 +1,15 @@
+extends ../layouts/default
+
+block content
+  div.container(style="max-width: 485px; padding-top: 30px")
+
+    //
+      if (typeof errors !== 'undefined')
+        div.fade.in.alert.alert-block.alert-warning
+          a.close(data-dismiss="alert", href="javascript:void(0)") x
+          ul
+            each error in errors
+              li= error.type
+
+
+    block auth

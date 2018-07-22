@@ -1,0 +1,73 @@
+<div class="row">
+	<div class="col-md-4"><h2 style="margin: 0;">Tramites</h2></div>
+	<div class="col-md-6"><input type="text" id="container_search" style="display: none;text-align: right" class="form-control" ng-model="query" placeholder="Buscar tramite"></div>
+</div>
+<!-- MENSAJE -->
+<div class="alert-division" ng-show="alerts.length > 0">
+	<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+        <span ng-show="alert.type === 'danger'" class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+        </span>
+		<span class="sr-only">Error:</span>
+		<strong ng-show="alert.strong">{{alert.strong}}</strong>
+		{{alert.msg}}
+		<a ng-show = "alert.ltext" href="" ng-click="frontDoor(alert.lfunc)"
+		   class="alert-link">{{alert.ltext}}</a>
+	</alert>
+</div>
+<!-- END MENSAJE -->
+<br>
+<div class="row" ng-show="ciudadano!=undefined">
+
+	<div class="col-xs-6 col-md-3">
+		<h3 style="margin: 0">{{ciudadano.apellidos}}, {{ciudadano.nombres}}</h3>
+		<br>
+		<div>
+			<h4>Cédulas de ciudadanía</h4>
+			<div style="background-color: black;color: white;padding: 0 3px 3px 3px;">{{ciudadano.cedulaCiudadanoRUC}}</div>
+		</div>
+		<br>
+		<table width="100%">
+			<tr colspan="2">
+				<td><b>Direccion</b></td>
+			</tr>
+			<tr colspan="2">
+				<td>{{ciudadano.direccion}}</td>
+			</tr>
+			<tr colspan="2"><td>&nbsp;</td></tr>
+			<tr>
+				<td><b>Celular</b></td>
+				<td>{{ciudadano.celular}}</td>
+			</tr>
+			<tr>
+				<td><b>Telefono: </b></td>
+				<td>{{ciudadano.telefono}}</td>
+			</tr>
+			<tr>
+				<td><br><b>Email: </b><br>
+					  {{ciudadano.mail}}</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<div class="col-xs-12 col-md-9">
+		<div  class="container" >
+			<div id="Container_Tramites" class="row">
+				<div class="col-xs-9" ng-switch on="tramites.length">
+					<ul ng-switch-default class="list-group">
+						<li class="list-group-item" ng-repeat="tramite in tramites | filter:query">
+							<a target="_blank" href="/#!/ciudadano/{{tramite._id}}">{{tramite.fechaSolicitudServicio | date:'yyyy-MM-dd'}} {{tramite.institucion.insSigla}} - {{tramite.taxonomia.taxTramite}}</a>
+							<span id="{{tramite._id}}"></span>
+							<!--
+                                <a id="{{tramite._id}}" href="/#!/pollListAnswer/{{tramite._id}}" class="label label-info loadingContent" style="padding:8px">&nbsp;</a>
+							-->
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

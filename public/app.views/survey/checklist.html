@@ -1,0 +1,9 @@
+<div  class="form-group">
+    <p>{{orden}}. {{check.question}}</p>
+    <div ng-repeat="checkItem in check.list">
+        <label style="font-weight: normal">
+            <input ng-disabled="disabled" ng-model="checkItem.selected" value="{{checkItem.text}}" type="checkbox" checkbox-group />
+            <span>{{checkItem.text}}</span>
+        </label>
+    </div>
+</div>

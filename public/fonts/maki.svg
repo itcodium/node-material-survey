@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2015 by original authors @ fontello.com</metadata>
+<defs>
+<font id="maki" horiz-adv-x="1000" >
+<font-face font-family="maki" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="commerical-building" unicode="&#xe800;" d="m50 800c-28 0-50-22-50-50 0 0 0-533 0-800 0-25 25-50 50-50 83 0 250 0 250 0l0 150c0 28 26 50 50 50l50 0c24 0 50-22 50-50 0-50 0-100 0-150 0 0 167 0 250 0 25 0 50 25 50 50 0 267 0 800 0 800 0 28-22 50-50 50z m100-150l150 0 0-100-150 0z m300 0l150 0 0-100-150 0z m-300-300l150 0 0-100-150 0z m300 0l150 0 0-100-150 0z" horiz-adv-x="750" />
+</font>
+</defs>
+</svg>

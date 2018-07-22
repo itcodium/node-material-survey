@@ -1,0 +1,116 @@
+
+
+
+
+
+<div class="inner"  ng-controller="HeaderController">
+    <style>
+        header#head{
+            background-image: url("{{global.headers.bgImage}}");
+        }
+    </style>
+    <div class="container-fluid" style="height: 100%;">
+        <h1 id="logo">
+            <a href="http://administracionpublicapv3.gobiernoelectronico.gob.ec/#" tabindex="1">
+                <span class="snapico-logo"><em>Secretaría Nacional de la Administración Pública</em></span>
+            </a>
+        </h1>
+
+        <div class="leyenda-header hidden-xs clearfix"><div class="text-right">{{global.headers.bgImageTitle}}</div></div>
+        <div class="separator"></div>
+        <div id="accesibilidad">
+            <div class="inner">
+                <ul>
+                    <li><a href="http://www.administracionpublica.gob.ec/accesibilidad" tabindex="2" data-toggle="tooltip" title="" data-placement="right" data-original-title="Página Accesibilidad"><span class="fa fa-child"></span><em>Accebilidad</em></a></li>
+                    <li><a href="http://www.administracionpublica.gob.ec/transparencia" tabindex="3" data-toggle="tooltip" title="" data-placement="right" data-original-title="Página Transparencia"><span class="fa fa-eye"></span><em>Transparencia</em></a></li>
+                    <li><a href="http://www.administracionpublica.gob.ec/#" tabindex="4" data-toggle="tooltip" title="" data-placement="right" data-original-title="Página en ingles"><span class="fa fa-flag"></span><em>English</em></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="social">
+            <div class="inner">
+                <ul>
+                    <li><a target="_blank" href="https://twitter.com/AdmPublicaEc" tabindex="5" data-toggle="tooltip" title="" data-placement="left" data-original-title="red social twitter">
+                        <span class="fa fa-twitter"><em>twitter</em></span>
+                    </a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/AdmPublicaEcuador" tabindex="6" data-toggle="tooltip" title="" data-placement="left" data-original-title="red social facebook">
+                        <span class="fa fa-facebook-f"><em>facebook</em></span>
+                    </a></li>
+                    <li><a target="_blank" href="https://www.youtube.com/user/AdmPublicaEcuador" tabindex="7" data-toggle="tooltip" title="" data-placement="left" data-original-title="red social youtube">
+                        <span class="fa fa-youtube"><em>youtube</em></span>
+                    </a></li>
+                    <li><a target="_blank" href="https://www.flickr.com/photos/AdmPublicaEcuador/" tabindex="8" data-toggle="tooltip" title="" data-placement="left" data-original-title="red social flickr">
+                        <span class="fa fa-flickr"><em>flickr</em></span>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        <!--<a href="http://administracionpublicapv3.gobiernoelectronico.gob.ec/#" id="toggle-sidebar-menu" data-toggle="sidebar-menu" tabindex="11"><span class="fa fa-bars"></span> Home</a>-->
+        <div id="titulo-principal"><a href="/#!/"><h2>PIMS / Portal Institucional</h2></a></div>
+        <div id="block-search-form" class="clearfix">
+            <form action="pepe.html" method="get">
+                <div class="form-actions">
+                    <!--<a href="pepe.html/#search" tabindex="9"><span class="fa fa-search"><em>buscar</em></span></a>-->
+                </div>
+                <div class="form-type-textfield" style="display:none">
+                    <label for="form-searchf" id="label-searchf">buscar</label>
+                    <input id="form-searchf" type="text" class="form-searchfsearch-query form-text" title="form-text" name="s" maxlength="128" size="20" placeholder="buscar aquí" tabindex="10">
+                    <input type="submit" class="hidden" value="buscar">
+                </div>
+                <button class="btn" type="submit" style="display: none;"><em>buscar</em></button>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="menutop">
+        <div class="container-fluid menu" >
+            <div class="navbar-collapse collapse" >
+
+                <ul class="nav navbar-nav"><li class="navbar-left"><h4 class="subtitle"> {{global.headers.subTitle}} </h4></li></ul>
+
+                <ul class="nav navbar-nav navbar-menu" ng-show= "global.isSignedIn()">
+
+
+
+                    <li ng-repeat="entry in global.headers.navbarEntries"><a href="/#!/{{entry.link}}">{{entry.title}}</a></li>
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span> {{global.currentUser.username}} <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+                            <li><a href="/#"><span class="glyphicon glyphicon-cog"></span> Preferencias</a></li>
+                            <li><a href="/#"><span class="glyphicon glyphicon-envelope"></span> Mensajes <span class="badge pull-right">42</span> </a></li>
+                            <li class="divider"></li>
+                            <li><a href="/signout"><span class="glyphicon glyphicon-off"></span> Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right"  ng-hide= "global.isSignedIn()" >
+                    <li> <br> <a href="signup">Signup</a> </li>
+                    <li> <br> <a href="signin">Signin</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="headerbot1"><div class="headerbot2"></div></div>
+
+</div>
+
+
+
+
+
+            <!--<ul class="nav navbar-nav navbar-title">-->
+                <!--<li><a class="navbar-brand" href="/#!/">Portal Institucional</a></li>-->
+            <!--</ul>-->
+            <!--<h4 class="navbar-sub-title"> {{global.headers.subTitle}} </h4>-->
+
+
+
+
+
+
