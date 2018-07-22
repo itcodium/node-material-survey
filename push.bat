@@ -1,3 +1,3 @@
 git add .
-git commit -m "Survey 2018-07-22"
+git commit -m "Se borra la carpeta modulos"
 git push
