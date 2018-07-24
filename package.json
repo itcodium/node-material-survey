@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-     "async": "^2.6.1",
+    "async": "^2.6.1",
     "body-parser": "^1.18.3",
     "bower": "latest",
     "compression": "1.5.2",
@@ -23,7 +23,6 @@
     "fs": "0.0.1-security",
     "gzippo": "0.2.0",
     "jade": "1.9.2",
-    "ldapjs": "0.7.1",
     "mean-logger": "0.0.1",
     "method-override": "2.3.3",
     "mime": "1.3.4",
@@ -45,11 +44,7 @@
     "underscore": "^1.9.1",
     "unirest": "0.4.2",
     "utils": "0.2.2",
-    "view-helpers": "0.1.5"
-    "http-errors": "~1.6.2",
-   
+    "view-helpers": "0.1.5",
+    "http-errors": "~1.6.2"
   }
 }
-
-
-
