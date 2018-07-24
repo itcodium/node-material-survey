@@ -79,7 +79,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
 //console.log("encodeURIComponent",encodeURIComponent(":public:Secretaría Naciona de la Administración Pública:PQSSF - Descripcion de las solicitudes x Geografia.prpt"));
 //console.log("encodeURI",encodeURI(":public:Secretaría Naciona de la Administración Pública:PQSSF - Descripcion de las solicitudes x Geografia.prpt"));
 

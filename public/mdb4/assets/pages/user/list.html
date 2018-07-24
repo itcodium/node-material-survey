@@ -1,0 +1,46 @@
+
+<form action="#" method="GET" data-default="150">
+    <div class="input-group">
+        <input type="text" name="Buscar" class="form-control input-search" ng-model="search_user" placeholder="{{AplicationText.search}}">
+        <span class="input-group-btn">
+            <button class="btn btn-success" ng-click="search()" type="button"><i class="fa fa-search">{{AplicationText.search}}</i></button>
+        </span>
+    </div>
+</form>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>{{pageText.nombre}}</th>
+                <th>{{pageText.apellido}}</th>
+                <th>{{pageText.email}}</th>
+                <th><a ng-click="modalEditUser.open('ADD')" class="btn btn-primary" >+</a></th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="user in modalEditUser.items| filter:search_user">
+            <tr>
+                <th scope="row" >{{user.id}}</th>
+                <td>{{user.nombre}}</td>
+                <td>{{user.apellido}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <a ng-click="modalEditUser.open('EDIT',$index)" class="btn btn-primary" >{{AplicationText.edit}}</a>
+                    <a ng-click="modalEditUser.open('DELETE',$index)" class="btn btn-danger" >{{AplicationText.delete}}</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<modal name="modalEditUser" input="modalEditUser"></modal>
+
+                        
+                      
+
+
+  
+  
+
+
+
