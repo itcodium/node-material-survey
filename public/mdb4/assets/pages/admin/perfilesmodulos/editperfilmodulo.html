@@ -1,0 +1,60 @@
+<div class="panel panel-white">
+        <div class="panel-body">
+            <div class="search p bg-light m-b-sm">
+                <form action="#" method="GET" data-default="150">
+                    <div class="input-group">
+                        <input type="text" name="Buscar" class="form-control input-search" placeholder="{{AppControlText.buscar}}" ng-model="search_perfil">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" ng-click="search()" type="button"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+                                  
+
+        <div ng-if="select_item== true" class="panel panel-white">
+               
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>{{page_lang.perfil}}</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="vPerfil in perfiles | filter:search_perfil">
+                                <tr>
+                                    <th scope="row" >{{vPerfil.id_perfil}}</th>
+                                    <td>{{vPerfil.perfil}}</td>
+                                    <td>
+                                        <i ng-click="showforedit($index)" class="fa fa-pencil-square-o"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+        </div>
+        
+            <div ng-if="edit == true">
+                    <div class="panel-heading clearfix">
+                        <h4 class="panel-title">{{perfil.perfil}}</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="Container_Acciones"  class="list-group">
+                            <li class="list-group-item" ng-repeat="modulo in modulos">
+                                <div class="checkbox" >
+                                    <input type="checkbox" name="checkbox" id="{{modulo.modulo}}" ng-click="onchange($index);"  ng-model="modulo.selected" value="false">
+                                    <label for="{{modulo.modulo}}">{{modulo.modulo}}</label>
+                                </div>
+  
+                            </li>
+                        </ul>
+                        <button type="submit" ng-click="aceptar()" class="btn btn-primary">{{AppControlText.aceptar}}</button>
+                    </div>
+            </div>
+     </div>  
+</div>              

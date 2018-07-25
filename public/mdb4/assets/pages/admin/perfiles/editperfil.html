@@ -1,0 +1,75 @@
+<div class="panel panel-white">
+    <div class="panel-body">
+        <div class="search p bg-light m-b-sm">
+             <form action="#" method="GET" data-default="150">
+                    <div class="input-group">
+                        <input type="text" name="Buscar" class="form-control input-search" ng-model="search_perfil" placeholder="{{AppControlText.buscar}}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" ng-click="search()" type="button"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+            <!-- Search Form -->
+        </div>
+        <div ng-if="select_item == true" class="panel panel-white">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>{{page_lang.nombre_perfil}}</th>
+                                                <th>{{page_lang.vigencia_desde}}</th>
+                                                <th>{{page_lang.vigencia_hasta}}</th>
+                                                <th></th>
+                                                                      
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="perfil in perfiles | filter:search_perfil">
+                                            <tr>
+                                                <th scope="row" >{{perfil.id_perfil}}</th>
+                                                <td>{{perfil.perfil}}</td>
+                                                <td>{{perfil.vigencia_desde  | date: "yyyy/MM/dd"}}</td>
+                                                <td>{{perfil.vigencia_hasta | date: "yyyy/MM/dd"}}</td>
+                                                <td>
+                                                    <i ng-click="showforedit($index)" class="fa fa-pencil-square-o"></i>
+                                                    <i ng-click="delete($index)" class="fa fa-eraser"></i>
+                                                </td>
+                                            </tr>
+                                                                   
+                                        </tbody>
+                                    </table>
+                    <!-- Table -->
+                </div>
+            </div>
+        </div>
+         <div ng-if="edit == true">
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('.date-picker').datepicker({
+                            orientation: "top auto",
+                            autoclose: true,
+                            format: 'yyyy/mm/dd'
+                        });
+                    });
+                </script>
+                <form id="UpdateForm">
+                    <div class="form-group">
+                        <label for="perfil">{{page_lang.nombre_perfil}}</label>
+                        <input  class="form-control" id="perfil" ng-model="perfil.perfil">
+                    </div>
+                                        
+                    <div class="form-group">
+                        <label for="vigencia_desde">{{page_lang.vigencia_desde}}</label>
+                        <input  class="form-control date-picker" id="vigencia_desde" ng-model='perfil.vigencia_desde'>
+                    </div>
+                    <div class="form-group">
+                        <label for="vigencia_hasta">{{page_lang.vigencia_hasta}}</label>
+                        <input  class="form-control date-picker" id="vigencia_hasta" ng-model='perfil.vigencia_hasta'>
+                    </div>
+                    <button type="submit" ng-click="update()" class="btn btn-primary">{{AppControlText.submit}}</button>
+                    <button type="submit" ng-click="cancel_update()" class="btn btn-warning">{{AppControlText.cancel}}</button>
+                </form>
+            </div>
+    </div>
+</div>

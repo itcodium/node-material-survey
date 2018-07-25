@@ -1,0 +1,29 @@
+
+<div class="panel panel-white">
+    <div class="panel-body">
+            <script type="text/javascript">
+            $(document).ready(function () {
+                $('.date-picker').datepicker({
+                    orientation: "top auto",
+                    autoclose: true,
+                    format: 'yyyy/mm/dd'
+                });
+            });
+        </script>
+        <form>
+            <div class="form-group">
+                <label for="modulo">{{page_lang.nombre_modulo}}</label>
+                <input  class="form-control" id="modulo" placeholder="" ng-model="modulo.modulo">
+            </div>
+            <div class="form-group">
+                <label for="vigencia_desde">{{page_lang.vigencia_desde}}</label>
+                <input  id="vigencia_desde" class="form-control date-picker" placeholder="" ng-model="modulo.vigencia_desde">
+            </div>
+            <div class="form-group">
+                <label for="vigencia_hasta">{{page_lang.vigencia_hasta}}</label>
+                <input  id="vigencia_hasta" class="form-control date-picker" placeholder="" ng-model="modulo.vigencia_hasta">
+            </div>
+            <button type="submit" ng-click="submit()" class="btn btn-primary">{{AppControlText.submit}}</button>
+        </form>
+    </div>
+</div>

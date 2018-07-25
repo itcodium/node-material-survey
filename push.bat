@@ -1,3 +1,3 @@
 git add .
-git commit -m "Se agrega Bootstrap Material"
+git commit -m "Se agrega angular"
 git push

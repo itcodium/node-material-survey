@@ -1,7 +1,7 @@
 
 var ldap = require('ldapjs');
 //2015-11-04
-
+/*
 var PimLDAP = function () {
     /*
     var ROOT="dc=ergorenova,dc=com,dc=ar";
@@ -118,6 +118,7 @@ exports.userDelete= function (name) {
     p.userDelete(name);
 };
 
+*/
 /*
 
  var ROOT="dc=snap,dc=ec";

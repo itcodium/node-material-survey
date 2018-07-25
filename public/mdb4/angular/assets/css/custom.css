@@ -1,0 +1,22 @@
+/* Write your custom CSS here */
+
+label {
+    font-weight:bold;
+}
+.menu-edit ul{
+    margin:0;
+    padding:0;
+    margin-left:25px;
+    list-style-type: none;
+    list-style: none;
+}
+
+.menu-edit ul li {
+    text-decoration:none;
+    list-style-type: none;
+}
+
+.edit-menu {
+    text-decoration:none;
+    text-decoration: none;
+}

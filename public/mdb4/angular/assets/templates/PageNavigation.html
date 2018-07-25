@@ -1,0 +1,21 @@
+
+<nav class="cd-nav-container" id="cd-nav">					 				
+	<header>												 				
+		<h3>{{value.title}}</h3>							 				
+		<a href="#" class="cd-close-nav">{{value.close}}</a> 				
+	</header>												 				
+	<ul class="cd-nav list-unstyled">						 				
+		<li data-menu="profile" ng-repeat="itemNavigation in value.items">	
+			<a href="javsacript:void(0);">					 				
+			    <span>										 				
+                    <i class="glyphicon glyphicon-user"></i> 				
+                </span>										 				
+                <p>{{itemNavigation}}</p>									
+			</a>											 				
+		</li>												 				
+	</ul>													 				
+</nav>
+
+
+
+  			

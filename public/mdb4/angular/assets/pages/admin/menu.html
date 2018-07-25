@@ -1,0 +1,68 @@
+﻿<div class="checkbox">
+<input type="checkbox" id="checkbox2" ng-model="edit_menu">
+<label for="checkbox1">
+    Editar
+</label>
+</div>
+  
+
+<modal name="delete" value="modalDelete"></modal>
+<modal name="addNode" value="modalAddNode"></modal>
+
+<ul class="menu-edit" style="list-style-type: none">
+    <li ng-repeat="item in menu_edit" ng-include="'tplMenu'">
+    </li>
+</ul>
+
+
+ 
+<script type="text/ng-template" id="tplMenu">
+    <div class="row" ng-show="!item.show"> 
+      <div class="col-sm-2" style="text-align:right;">
+        
+          <span ng-show="edit_menu" >
+                <span><img ng-click="modalDelete.show(item);" src="assets/images/icons/ic_delete_black_18dp/web/ic_delete_black_18dp_1x.png" /></span>
+                <span><img ng-click="modalAddNode.show(item,operation.UPDATE_NODE);" src="assets/images/icons/ic_edit_black_18dp/web/ic_edit_black_18dp_1x.png" /></span> 
+                <span><img ng-click="modalAddNode.show(item,operation.ADD_NODE_SAME_LEVEL);" src="assets/images/icons/ic_add_black_18dp/web/ic_add_black_18dp_1x.png" /></span>   
+                <span><img ng-click="modalAddNode.show(item,operation.ADD_NODE_CHILD);" src="assets/images/icons/ic_subdirectory_arrow_right_black_18dp/web/ic_subdirectory_arrow_right_black_18dp_1x.png" /></span>
+          </span>
+      </div>
+      <div class="col-sm-6">
+            <a data-toggle="collapse" data-target="#{{item.title}}">
+                <span class="{{category.class}}"></span>
+                <p> 
+                    <span ng-if="item.menu.length>0">
+                        <img  src="assets/images/icons/ic_navigate_next_black_18dp/web/ic_navigate_next_black_18dp_1x.png" />
+                    </span> 
+                    <span ng-if="item.menu.length==0">
+                        <img  src="assets/images/icons/empty_18dp.png" />
+                    </span> 
+                    <span>{{item.title}}</span>
+                </p>
+            
+            </a>
+       </div>
+    </div>
+    <ul id="{{item.title}}" class="menu-edit collapse" ng-if="item.menu">
+        <li ng-repeat="item in item.menu" ng-include="'tplMenu'">           
+        </li>
+    </ul>
+</script>
+
+<script type="text/ng-template" id="tplAddItem">
+    <div class="form-group">
+        <label for="formGroupExampleInput">{{value.page_lang.nombre_nodo}}</label>
+        <input type="text" required class="form-control" ng-model="value.model.node"  id="formGroupExampleInput" placeholder="">
+    </div>
+</script>
+<script type="text/ng-template" id="tplDeleteItem">
+    <form>
+      <div class="form-group">
+        <label for="formNode">{{value.page_lang.nombre_nodo}}</label>
+        <input disabled type="text" name="node"  required class="form-control" ng-model="value.model.node"  id="formGroupExampleInput" placeholder="">
+      </div>
+    </form>
+</script>
+
+
+   
