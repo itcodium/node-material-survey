@@ -39,6 +39,8 @@ app.controller("appController", function($scope,$http,$location) {
     $scope.titulo="";
     $scope.footer = "Version 0.0.1"; // &copy;
     $scope.screen = null;
+ 
+
     /*
     $scope.navigation={title:"Navigation",
 						close:"Close",

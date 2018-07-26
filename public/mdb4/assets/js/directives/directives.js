@@ -26,7 +26,11 @@ app.directive("pageNavigation", function () {
     return {
         templateUrl: 'assets/templates/PageNavigation.html',
         replace: true,
-        scope: { value: '=' }
+        scope: { value: '=' },
+        link: function ($scope, element, attrs) {
+               $(".button-collapse").sideNav();
+               console.log("- init -")
+          }
     };
 });
 

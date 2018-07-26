@@ -1,7 +1,7 @@
 
 var ldap = require('ldapjs');
 //2015-11-04
-/*
+ 
 var PimLDAP = function () {
     /*
     var ROOT="dc=ergorenova,dc=com,dc=ar";
@@ -97,7 +97,7 @@ var PimLDAP = function () {
 };
 
 
-
+/*
 
 var p=new PimLDAP();
 
@@ -118,12 +118,10 @@ exports.userDelete= function (name) {
     p.userDelete(name);
 };
 
-*/
-/*
-
+ 
  var ROOT="dc=snap,dc=ec";
  var LDAP_USER='cn=Manager,'+ROOT;
  var LDAP_PASSWORD="snap2015.";
  var ldapUrl='ldap://192.168.70.19:389';
 
-*/
+ */

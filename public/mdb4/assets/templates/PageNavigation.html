@@ -1,40 +1,53 @@
-<header>
-        <nav class="navbar navbar-expand-lg navbar-dark indigo double-nav">
-            <a class="navbar-brand" href="#"><b>{{value}}</b></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
+    <header>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark double-nav fixed-top scrolling-navbar">
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                </ul>
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                </form>
+            <!-- SideNav slide-out button -->
+            <div class="float-left">
+                <a href="#" data-activates="slide-out" class="button-collapse">
+                    <i class="fa fa-bars"></i>
+                </a>
             </div>
+
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn mr-auto">
+                <p>Material Design for Bootstrap</p>
+            </div>
+
+            <!-- Links -->
+            <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <i class="fa fa-envelope grey-text"></i>
+                        <span class="clearfix d-none d-sm-inline-block grey-text">Contact</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <i class="fa fa-gear grey-text"></i>
+                        <span class="clearfix d-none d-sm-inline-block grey-text">Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle grey-text" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user"></i>
+                        <span class="clearfix d-none d-sm-inline-block grey-text">Account</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item grey-text" href="#">Action</a>
+                        <a class="dropdown-item grey-text" href="#">Another action</a>
+                        <a class="dropdown-item grey-text" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+
         </nav>
+        <!--/.Navbar-->
+
+        <!-- Sidebar navigation -->
         <div id="slide-out" class="side-nav fixed">
             <ul class="custom-scrollbar list-unstyled">
+                <!-- Logo -->
                 <li>
                     <div class="logo-wrapper waves-light">
                         <a href="#">
@@ -42,6 +55,8 @@
                         </a>
                     </div>
                 </li>
+                <!--/. Logo -->
+                <!--Social-->
                 <li>
                     <ul class="social">
                         <li>
@@ -66,6 +81,8 @@
                         </li>
                     </ul>
                 </li>
+                <!--/Social-->
+                <!--Search Form-->
                 <li>
                     <form class="search-form" role="search">
                         <div class="md-form my-0 waves-light">
@@ -73,8 +90,10 @@
                         </div>
                     </form>
                 </li>
+                <!--/.Search Form-->
+                <!-- Side navigation links -->
                 <li>
-                    <ul class="collapsible collapsible-accordion">
+                    <ul class="collapsible collapsible-accordion ">
                         <li>
                             <a class="collapsible-header waves-effect arrow-r">
                                 <i class="fa fa-chevron-right"></i> Submit blog
@@ -159,9 +178,13 @@
                         </li>
                     </ul>
                 </li>
+                <!--/. Side navigation links -->
             </ul>
         </div>
+        <!--/. Sidebar navigation -->
+
     </header>
-    
+ 
+
 
   			

@@ -16,33 +16,41 @@
     <link href="assets/libs/mdb/style.css" rel="stylesheet">
 </head>
 
-<body ng-controller="appController" class="fixed-sn">
+<body ng-controller="appController" class="fixed-sn white-skin">
     <page-navigation value="appName"></page-navigation>
-    <main></main>
+    <main>
+            <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn btn-secondary">Secondary</button>
+            <button type="button" class="btn btn-default">Default</button>
+    </main>
     <page-footer></page-footer>
 
+    <script src="assets/libs/angular/angular.min.js"></script>
+    <script src="assets/libs/angular/angular-route.js"></script>
+      <script src="assets/js/app.routes.js"></script>
+    <script src="assets/js/app.lang.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/app.config.js"></script>
     
+    <script src="assets/js/services/services.js"></script>
+
+
     <!-- JQuery -->
     <script type="text/javascript" src="assets/libs/mdb/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="assets/libs/mdb/popper.min.js"></script>
     <script type="text/javascript" src="assets/libs/mdb/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/libs/mdb/mdb.min.js"></script>
 
-
-    <script src="assets/libs/angular/angular.min.js"></script>
-    <script src="assets/libs/angular/angular-route.js"></script>
+    <script src="assets/js/directives/directives.js"></script>
+    
 
     
-    <script src="assets/js/app.routes.js"></script>
-    <script src="assets/js/app.lang.js"></script>
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/app.config.js"></script>
-    <script src="assets/js/directives/directives.js"></script>
-    <script src="assets/js/services/services.js"></script>
+ 
 
 
     <script>
-        $(".button-collapse").sideNav();
+       //  $(".button-collapse").sideNav();
+       // https://mdbootstrap.com/admin-dashboard-lesson-4/
     </script>
 </body>
 
