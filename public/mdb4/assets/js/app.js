@@ -15,11 +15,7 @@ app.factory('AppControlText', function () {
         }
     };;
 });
-
-
-
-
-
+ 
 
 function getTokenParam(){
     return 'uuid=' + localStorage.getItem("uuid");
@@ -32,6 +28,10 @@ app.controller('mainController', function ($scope) {
 
 app.controller("appController", function($scope,$http,$location) {
 
+    if(!window.user){
+        window.location.href="signin"
+    }
+   
 
 
     $scope.appName = "RRHH";
@@ -40,6 +40,15 @@ app.controller("appController", function($scope,$http,$location) {
     $scope.footer = "Version 0.0.1"; // &copy;
     $scope.screen = null;
  
+    
+    
+    
+
+    
+
+    
+        
+
 
     /*
     $scope.navigation={title:"Navigation",

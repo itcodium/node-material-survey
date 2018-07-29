@@ -5,9 +5,10 @@ app.config(function ($routeProvider) {
 
     $routeProvider
         .when('/', {
-            templateUrl: 'assets/pages/home.html',
+            templateUrl: 'mdb4/assets/pages/home.html',
             controller: 'mainController'
         })
+        /*
          .when('', {
              templateUrl: 'assets/pages/home.html',
              controller: 'mainController'
@@ -47,9 +48,10 @@ app.config(function ($routeProvider) {
         .when('/admin/menu', {
             templateUrl: 'assets/pages/admin/menu.html',
             controller: 'menuController'
-        })
+        })*/
         .otherwise({
             redirectTo: '/'
         });
+        
 });
 

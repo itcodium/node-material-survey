@@ -1,6 +1,6 @@
 app.directive("themeSettings", function () {
     return {
-        templateUrl: 'assets/templates/ThemeSettings.html',
+        templateUrl: 'mdb4/assets/templates/ThemeSettings.html',
         replace: true,
         scope: { value: '=' }
     };
@@ -9,14 +9,14 @@ app.directive("themeSettings", function () {
 app.directive("pageTitle", function () {
     return {
         replace: true,
-        templateUrl: 'assets/templates/PageTitle.html',
+        templateUrl: 'mdb4/assets/templates/PageTitle.html',
         scope: { value: '=' }
     };
 });
 
 app.directive("pageFooter", function () {
     return {
-        templateUrl: 'assets/templates/PageFooter.html',
+        templateUrl: 'mdb4/assets/templates/PageFooter.html',
         replace: true,
         scope: { value: '=' }
     };
@@ -24,13 +24,12 @@ app.directive("pageFooter", function () {
 
 app.directive("pageNavigation", function () {
     return {
-        templateUrl: 'assets/templates/PageNavigation.html',
+        templateUrl: 'mdb4/assets/templates/PageNavigation.html',
         replace: true,
         scope: { value: '=' },
         link: function ($scope, element, attrs) {
-               $(".button-collapse").sideNav();
-               console.log("- init -")
           }
+        
     };
 });
 
@@ -38,7 +37,7 @@ app.directive("pageNavigation", function () {
 
 app.directive("menuUser", function () {
     return {
-        templateUrl: 'assets/templates/MenuUser.html',
+        templateUrl: 'mdb4/assets/templates/MenuUser.html',
         replace: true,
         scope: { value: '=' }
     };
@@ -47,7 +46,7 @@ app.directive("menuUser", function () {
 
 app.directive("modal", function () {
     return {
-        templateUrl: 'assets/templates/Modal.html',
+        templateUrl: 'mdb4/assets/templates/Modal.html',
         replace: true,
         scope: { value: '=' }
     };

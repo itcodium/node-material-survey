@@ -1,15 +1,16 @@
 doctype
-html(lang='es', xmlns='http://www.w3.org/1999/xhtml', xmlns:fb='https://www.facebook.com/2008/fbml', itemscope='itemscope', itemtype='http://schema.org/Product')
+html(lang='es',
+	ng-app='itcodium', 
+	xmlns='http://www.w3.org/1999/xhtml', 
+	xmlns:fb='https://www.facebook.com/2008/fbml', 
+	itemscope='itemscope', 
+	itemtype='http://schema.org/Product')
+
   include ../includes/head
-  body
-
-    //-sdasd   header.navbar.navbar-fixed-top.navbar-inverse
-    header#head(data-ng-include="'/app.views/header.html'", data-src='ab.controllers.header')
-
-
-    section.container-fluid.mainn
+  body(ng-controller='appController', class='fixed-sn white-skin')
+    include ../includes/navBar
+     
+    section.container-fluid.main
       block content
-    footer(id='footer-bot', style='height: auto;', data-ng-include= "'/app.views/footer.html'")
-
-
+    page-footer
     include ../includes/foot

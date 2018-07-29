@@ -1,43 +1,19 @@
 head
-  meta(charset='utf-8')
-  meta(http-equiv='X-UA-Compatible')
-  meta(name='viewport')
-
-  //title= appName+' - '+ title
-
   title= appName
 
-  meta(http-equiv='Content-type', content='text/html;charset=UTF-8')
-  meta(name="keywords", content="PIMS, Ecuador, Servicios, ciudadano, tramites")
-  meta(name="description", content="PIMS. Plataforma de Investigación para la Mejora de los Servicios")
-
+  
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(http-equiv='x-ua-compatible', content='ie=edge')  
+  
+  
   link(href='/img/icons/icon64.png', rel='shortcut icon', type='image/x-icon')
-
-  meta(property='fb:app_id')
-
-  meta(property='og:title')
-  meta(property='og:description', content='PIMS. Plataforma de Investigación para el mejoramiento de los Servicios')
-  meta(property='og:type')
-  meta(property='og:url')
-  meta(property='og:image')
-  meta(property='og:site_name')
-
-  meta(property='fb:admins')
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+  
+  link(rel='stylesheet', href='/mdb4/assets/libs/mdb/bootstrap.min.css')
+  link(rel='stylesheet', href='/mdb4/assets/libs/mdb/mdb.min.css')
+  link(rel='stylesheet', href='/mdb4/assets/libs/mdb/style.css')
+  script(type="text/javascript").
+    window.user = !{user};
 
 
-  //- si conn a internet baja este font
-  link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans', type='text/css')
-  link(rel='stylesheet', href='/css/pims.bs.css')
-  link(rel='stylesheet', href='/css/pims.theme.css')
-  link(rel='stylesheet', href='/css/pims.theme2.css')
-  link(rel='stylesheet', href='/css/pims.grid.css')
-  link(rel='stylesheet', href='/lib/upload/style.css')
-  link(rel='stylesheet', href='/lib/jquery.ui/jquery-ui.css')
-  link(rel='stylesheet', href='/lib/bootstrap-timepicker/css/bootstrap-timepicker.min.css')
-  link(rel='stylesheet', href='/css/jquery.fileupload.css')
-  link(rel='stylesheet', href='/css/font-awesome.css', type="text/css" , media="all")
-  link(rel='stylesheet', href='/css/snap.css')
-
-
-  //if lt IE 9
-    script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')

@@ -19,7 +19,7 @@ module.exports = {
     root: rootPath,
     notifier: notifier,
     app: {
-      name: 'Pims - Development Environment',
+      name: 'Survey - Development Environment',
 
     },
     sqldb : {
