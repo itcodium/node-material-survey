@@ -114,20 +114,20 @@ module.exports = function (app, passport, auth) {
  
 
   var vSurvey= require('../app/controllers/survey/survey')
-  app.get('/survey.GetTypes', vSurvey.getAllTypes);
+  app.get('/api/survey.GetTypes', vSurvey.getAllTypes);
 
-  app.get('/survey', vSurvey.all);
-  app.get('/survey/encuestaPorTramite', vSurvey.encuestaPorTramite);
-  app.get('/survey/encuestaPorDefecto', vSurvey.encuestaPorDefecto);
-  app.get('/survey/encuestaPorVotoCiudadano', vSurvey.encuestaPorVotoCiudadano);
+  app.get('/api/survey', vSurvey.all);
+  app.get('/api/survey/encuestaPorTramite', vSurvey.encuestaPorTramite);
+  app.get('/api/survey/encuestaPorDefecto', vSurvey.encuestaPorDefecto);
+  app.get('/api/survey/encuestaPorVotoCiudadano', vSurvey.encuestaPorVotoCiudadano);
 
-  app.get('/survey/:surveyId', vSurvey.show);
+  app.get('/api/survey/:surveyId', vSurvey.show);
   app.param('surveyId', vSurvey.survey);
-  app.post('/survey',  vSurvey.create);
+  app.post('/api/survey',  vSurvey.create);
 
-  app.put('/survey/addQuestionToList/:surveyId', vSurvey.addQuestion);
-  app.put('/survey/vote/:surveyId',  vSurvey.vote);
-  app.put('/survey/:surveyId',  vSurvey.update);
+  app.put('/api/survey/addQuestionToList/:surveyId', vSurvey.addQuestion);
+  app.put('/api/survey/vote/:surveyId',  vSurvey.vote);
+  app.put('/api/survey/:surveyId',  vSurvey.update);
 
 
 

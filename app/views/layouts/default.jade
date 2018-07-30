@@ -9,8 +9,10 @@ html(lang='es',
   include ../includes/head
   body(ng-controller='appController', class='fixed-sn white-skin')
     include ../includes/navBar
-     
-    section.container-fluid.main
-      block content
+    main
+      div(class='main-wrapper')
+        section(class='container-fluid')
+          block content
+
     page-footer
     include ../includes/foot

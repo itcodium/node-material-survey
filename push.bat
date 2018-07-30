@@ -1,3 +1,3 @@
 git add .
-git commit -m "Mb initial app 2018-07-28"
+git commit -m "init survey 2018-07-29"
 git push
