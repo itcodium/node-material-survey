@@ -2,58 +2,54 @@
 <div class="container-fluid">
     <!--Section: Table-->
     <section class="mb-2">
-        <div class="card p-1 mb-5">
-          <h2 class="h2-responsive font-weight-bold text-left my-2 mx-2">
+        <div class="card mb-5">
+          <h3 class="h3-responsive font-weight-bold text-left my-2 mx-2">
             <div class="row">
             <div class="col-10">
                 Survey List
             </div>
             <div class="col-2 text-right" >
                 <i class="fa fa-plus pr-2" data-toggle="tooltip" title="New survey"></i>
-
             </div>
           </div>
+          </h3>
           
-
-          </h2>
-
-          
-          <form>
-              <div class="row ">
-                    <div class="modal-body  col-md-9">
-                        <div class="md-form mx-2">
+          <div class="bs-example "> 
+              <div class="form-row">
+                    <div class="col-sm-10  ">
+                        <div class="md-form form-sm mx-2">
                             <input type="text" 
                                 id="buscar"
                                 name="buscar" 
-                                class="form-control validate"
+                                class="form-control  form-control-sm validate"
                                 ng-model="search_survey">
                             
                             <label  for="buscar">{{AplicationText.search}}
                             </label>
                         </div>
                     </div>
-                    <div class="col-md-3 ">
-                      <div class="md-form  text-right mx-2">
-                        <button class="btn btn-default text-capitalize" type="button">
+                    <div class="col-sm-2">
+                      <div class="md-form  form-sm  text-right mx-2">
+                        <button class="btn btn-grey btn-sm text-capitalize" type="button">
                                 {{AplicationText.search}}</i>
                         </button>
                       </div>
                     </div>
               </div>
-          </form>
+          </div>
  
  <div ng-show="loading" class="container loadingContent"></div>
 
  <div class="card-deck">
   <div class="card mb-4" ng-repeat="item in surveyList | filter:search_survey">
     <div class="card-body">
-      <h4 class="card-title">{{item.name}}</h4>
+      <h5 class="card-title">{{item.name}}</h5>
       <p class="card-text">
         {{item.vigenciaDesde | date:'yyyy/MM/dd'}} - {{item.vigenciaHasta | date:'yyyy/MM/dd'}}<br>
                 {{item.institucion.insSigla}} {{item.taxonomia.taxTramite}}
       </p>
       
-      <a href="/#!/survey/{{item._id}}" class="btn btn-light-blue btn-md">View</a>
+      <a href="/#!/survey/{{item._id}}" class="btn btn-grey btn-sm  btn-md">View</a>
 
       <a href="/#!/surveyEdit/{{item._id}}" ng-show="editar"  class="label  label-info">Modificar</a>
       <a href="/#!/surveyAddQuestion/{{item._id}}" ng-show="editar"  class="label  label-info">Editar Preguntas</a>
