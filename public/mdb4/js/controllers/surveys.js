@@ -36,12 +36,15 @@ var SurveyModule = (function () {
         $scope.modalEditSurvey = new ModalTemplate();
         api.get(surveyGet_callBack);
         $('[data-toggle="tooltip"]').tooltip()
+
+        
+
         
         $scope.modalEditSurvey.setItems($scope.surveys);
-        $scope.modalEditSurvey.title = "Edicion de usuario"
+        $scope.modalEditSurvey.title = "New survey"
         $scope.modalEditSurvey.modal_name = "editSurvey";
         $scope.modalEditSurvey.key_id = "id_usuario";
-        $scope.modalEditSurvey.template = { src: "mdb4/pages/survey/survey.html" };
+        $scope.modalEditSurvey.template = { src: "mdb4/pages/survey/add.html" };
         $scope.modalEditSurvey.pageText = $scope.pageText;
         $scope.modalEditSurvey.AplicationText = AplicationText;
 
@@ -81,6 +84,12 @@ var SurveyModule = (function () {
                 }
             }
         }
+
+/*
+        <div class="row">
+        <button id="btnEnviarEncuesta" class="btn btn-primary" ng-show="!loadingTaxonomia" ng-click="accept()">Aceptar &nbsp; &raquo; &raquo; </button>
+    </div>
+*/
         var surveyPost_callBack = function (res) {
             if (!api.isError(res)) {
                 if (res.data.status != 'OK') {

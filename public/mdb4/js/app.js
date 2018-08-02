@@ -137,27 +137,7 @@ app.controller("appController", function($scope,$http,$location) {
 				}
     */
 
-	$scope.menuPath = [];
-	$scope.openLink = function (index) {
-	    
-        
-	    if (typeof index.link != 'undefined') {
-	        $scope.titulo = index.description;
-	        localStorage.setItem("titulo", index.description);
-
-	        if (index.link != '#') {
-	            console.log("test", index.link);
-	            window.location.href = index.link;
-	        } else {
-	            console.log("#Link ", index.link);
-	            window.location.href = index.link;
-	        }
-	    } else {
-	        localStorage.setItem("titulo", "");
-	        $scope.titulo = "";
-	    }
-        
-    }
+ 
 });
  
 
