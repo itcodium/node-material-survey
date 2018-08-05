@@ -1,0 +1,58 @@
+<div class="form-group">
+    <label for="usuario">{{input.pageText.usuario}}</label>
+    <input class="form-control" minlength="3" maxlength="20" name="usuario" id="usuario" required="required" ng-model="input.model.usuario">
+    
+    <div ng-show="form.$submitted || form.usuario.$touched">
+        <span class="label label-danger" ng-show="form.usuario.$error.required">{{input.AplicationText.required}}</span>
+        <span class="label label-danger"  ng-show="form.usuario.$error.minlength">{{input.pageText.usuario_minlength}}</span>
+    </div>
+</div>
+ <div class="form-group">
+    <label for="password">{{input.pageText.password}}</label>
+    <input name="password" class="form-control" type="password" id="password" required   ng-model="input.model.password">
+    <span class="label label-danger" ng-show="input.error_password">{{input.AplicationText.error_password}}</span>
+    <div ng-show="form.$submitted || form.password.$touched">
+        <span class="label label-danger" ng-show="form.password.$error.required">{{input.AplicationText.required}}</span>
+    </div>
+    <label for="password_verify">{{input.pageText.password_verify}}</label>
+    <input name="password_verify" type="password" class="form-control" id="password_verify" required   ng-model="input.model.password_verify">
+    <div ng-show="form.$submitted || form.password_verify.$touched">
+        <span class="label label-danger" ng-show="form.password_verify.$error.required">{{input.AplicationText.required}}</span>
+    </div>
+</div>
+ <div class="form-group">
+    <label for="nombre">{{input.pageText.nombre}}</label>
+    <input  class="form-control" name="nombre"   id="nombre"  required="required"  ng-model="input.model.nombre">
+    <div ng-show="form.$submitted || form.nombre.$touched">
+        <span class="label label-danger" ng-show="form.nombre.$error.required">{{input.AplicationText.required}}</span>
+    </div>
+</div>
+<div class="form-group">
+    <label for="apellido">{{input.pageText.apellido}}</label>
+    <input name="apellido" class="form-control" id="apellido" required   ng-model="input.model.apellido">
+    <div ng-show="form.$submitted || form.apellido.$touched">
+        <span class="label label-danger" ng-show="form.apellido.$error.required">{{input.AplicationText.required}}</span>
+    </div>
+</div>   
+ <div class="form-group">
+    <label for="email">{{input.pageText.email}}</label>
+    <input class="form-control" type="email" ng-model="input.model.email" name="email" required/>
+    <div ng-show="form.$submitted || form.email.$touched">
+        <span class="label label-danger" ng-show="form.email.$error.required">{{input.AplicationText.required}}</span>
+        <span class="label label-danger" ng-show="form.email.$error.email">{{input.AplicationText.novalid}}</span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="vigencia_desde">{{input.pageText.vigencia_desde}}</label>
+    <input class="form-control" ng-model="input.model.vigencia_desde" name="vigencia_desde" required/>
+    <div ng-show="form.$submitted || form.vigencia_desde.$touched">
+        <span class="label label-danger" ng-show="form.vigencia_desde.$error.required">{{input.AplicationText.required}}</span>
+    </div>
+
+    <label for="vigencia_hasta">{{input.pageText.vigencia_hasta}}</label>
+    <input class="form-control"  ng-model="input.model.vigencia_hasta" name="vigencia_hasta" />
+    <div ng-show="form.$submitted || form.vigencia_hasta.$touched">
+        <span class="label label-danger" ng-show="form.vigencia_hasta.$error.required">{{input.AplicationText.required}}</span>
+    </div>
+</div>

@@ -9,14 +9,27 @@
                 Survey List
             </div>
             <div class="col-2 text-right" >
-                <i  class="fa fa-plus pr-2" style="color: grey;" 
+                <span  class="my-2 mx-2" 
                     data-toggle="tooltip" 
                     title="New survey"
                 ng-click="modalEditSurvey.open('ADD')" 
-                ></i>
+                >+</span>
             </div>
           </div>
           </h2>
+
+<div class="row" ng-show="!loading">
+            <div class="mb-2">
+                    <a id="btnEditar" ng-show="!editar" ng-click="editar=!editar" class="btn btn-default">
+                      <span class="glyphicon glyphicon-pencil"></span> Editar</a>
+
+
+                    <a id="btnCancelarEditar" ng-show="editar" ng-click="editar=!editar" class="btn btn-warning"><span class="glyphicon"></span> Cancelar</a>
+                
+            </div>
+        </div>
+
+
           
           <div class="bs-example "> 
               <div class="form-row">
@@ -44,6 +57,11 @@
  
  <div ng-show="loading" class="container loadingContent"></div>
 
+
+
+
+<!--
+
  <div class="card-deck">
   <div class="card mb-4" ng-repeat="item in surveyList | filter:search_survey">
     <div class="card-body">
@@ -52,30 +70,36 @@
         {{item.vigenciaDesde | date:'yyyy/MM/dd'}} - {{item.vigenciaHasta | date:'yyyy/MM/dd'}}<br>
                 {{item.institucion.insSigla}} {{item.taxonomia.taxTramite}}
       </p>
-      
-      <a href="/#!/survey/{{item._id}}" class="btn btn-outline-grey btn-sm  btn-md">View</a>
 
+      <a href="/#!/survey/{{item._id}}" class="btn btn-outline-grey btn-sm  btn-md">View</a>
       <a href="/#!/surveyEdit/{{item._id}}" ng-show="editar"  class="label  label-info">Modificar</a>
       <a href="/#!/surveyAddQuestion/{{item._id}}" ng-show="editar"  class="label  label-info">Editar Preguntas</a>
       <a href="#" ng-show="editar"  class="label  label-danger">Eliminar</a>
     </div>
   </div>
 </div>
+-->
 
-<!-- 
 
-        <ul  class="list-group">
+<!-- -->
+<br>
+
+        <ul  class="list-group mx-2">
             <li class="list-group-item" ng-repeat="item in surveyList | filter:query">
                 <a href="/#!/survey/{{item._id}}"><b>{{item.name}} </b></a>
+                <br>
                 {{item.vigenciaDesde | date:'yyyy/MM/dd'}} - {{item.vigenciaHasta | date:'yyyy/MM/dd'}}<br>
                 {{item.institucion.insSigla}} {{item.taxonomia.taxTramite}}
 
-                <a href="/#!/surveyEdit/{{item._id}}" ng-show="editar"  class="label  label-info">Modificar</a>
-                <a href="/#!/surveyAddQuestion/{{item._id}}" ng-show="editar"  class="label  label-info">Editar Preguntas</a>
-                <a href="#" ng-show="editar"  class="label  label-danger">Eliminar</a>
+                <a  ng-click="modalEditSurvey.open('EDIT',$index)" 
+                    ng-show="editar"  
+                    class="label  label-info">Editar Preguntas</a>
+
+                <a  ng-click="modalEditSurvey.open('DELETE',$index)" 
+                    ng-show="editar"  class="label  label-danger">Eliminar</a>
             </li>
         </ul>
--->
+
           <modal name="modalEditSurvey" input="modalEditSurvey"></modal>
 
           <!-- Fin form -->
@@ -179,6 +203,10 @@
             </div>
           </div>
           <!-- Fin header -->
+
+          
+      
+
 
         </div>
     </section>

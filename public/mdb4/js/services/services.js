@@ -39,7 +39,8 @@ angular.module('rrhh.services', [])
 angular.module('app.services', [])
 .service('AppServiceCaller', function ($http, $window, $httpParamSerializerJQLike) {
 
-        var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
+        //var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
+        var config = { headers: { 'Content-Type': 'application/json' } };
 
         var response = function (response) {
             return response;
@@ -55,7 +56,8 @@ angular.module('app.services', [])
             return $http.post(url, $httpParamSerializerJQLike(parametros), config).then(response, error);
         };
         this.put = function (url,parametros) {
-            return $http.put(url, $httpParamSerializerJQLike(parametros), config).then(response, error);
+            console.log("END -> url,parametros",parametros)
+            return $http.put(url, parametros, config).then(response, error);
         };
         this.delete = function(url) {
             return $http.delete(url, { params: {} }, {}).then(response, error);

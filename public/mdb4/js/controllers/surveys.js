@@ -1,11 +1,9 @@
 var survery_testing = {
-    "usuario": "test",
-    "nombre": "test",
-    "apellido": "test",
-    "email": "test@test.com",
-    "password": "",
-    "vigencia_desde": "2016-01-01",
-    "vigencia_hasta": '',
+    "name": "test_0002",
+    "isEnabled": true,
+    "isDefault": false,
+    "vigenciaDesde": "2018/01/01",
+    "vigenciaHasta": "2019/12/31",
     "creado_por": "test",
     "id_perfil": 1,
 }
@@ -17,8 +15,8 @@ var SurveyModule = (function () {
         "email": "Email",
         "password": "Password",
         "perfil": "Perfil",
-        "vigencia_desde": "Vigencia desde",
-        "vigencia_hasta": "Vigencia hasta",
+        "vigenciaDesde": "Vigencia desde",
+        "vigenciaHasta": "Vigencia hasta",
         "usuario_minlength": "Ingresar al menos 3 caracteres",
         "password_verify": "Reescribir la contraseña"
     };
@@ -34,40 +32,61 @@ var SurveyModule = (function () {
         SurveyBase.call(this, $scope, AppServiceCaller, AplicationText);
         $scope.title = "Survey List"
         $scope.modalEditSurvey = new ModalTemplate();
+        
+        // $scope.modalEditSurvey.model=survery_testing;
+        
+        $scope.modalEditSurvey.init=function(){
+            // console.log("survery_testing",survery_testing)
+            // this.model=survery_testing;
+        }
         api.get(surveyGet_callBack);
-        $('[data-toggle="tooltip"]').tooltip()
-
         
+        $('[data-toggle="tooltip"]').tooltip();
 
-        
-        $scope.modalEditSurvey.setItems($scope.surveys);
+
+        // $scope.modalEditSurvey.setItems($scope.surveys);
         $scope.modalEditSurvey.title = "New survey"
         $scope.modalEditSurvey.modal_name = "editSurvey";
         $scope.modalEditSurvey.key_id = "id_usuario";
         $scope.modalEditSurvey.template = { src: "mdb4/pages/survey/add.html" };
         $scope.modalEditSurvey.pageText = $scope.pageText;
         $scope.modalEditSurvey.AplicationText = AplicationText;
+        
+        $scope.modalEditSurvey.initCalendar("vigenciaDesde");
+        $scope.modalEditSurvey.initCalendar("vigenciaHasta");
+        
 
         $scope.modalEditSurvey.submit = function (form) {
             this.form = form;
             if (form.$valid) {
-                if (!validate.passwordEquals($scope.modalEditSurvey.model.password, $scope.modalEditSurvey.model.password_verify)) {
+                /*if (!validate.passwordEquals($scope.modalEditSurvey.model.password, $scope.modalEditSurvey.model.password_verify)) {
                     alert("La contraseñas no coinciden.")
                     return;
-                }
-                $scope.modalEditSurvey.model.vigencia_desde = $filter('date')($scope.modalEditSurvey.model.vigencia_desde, 'yyyy/MM/dd');
-                $scope.modalEditSurvey.model.vigencia_hasta = $filter('date')($scope.modalEditSurvey.model.vigencia_hasta, 'yyyy/MM/dd');
+                }*/
+
+                $scope.modalEditSurvey.model.vigenciaDesde = $("#vigenciaDesde").val();
+                $scope.modalEditSurvey.model.vigenciaHasta = $("#vigenciaHasta").val();
+                
+                console.log("Model -> ", $scope.modalEditSurvey.model,$scope.survey)
+
+                
                 if (this.method == "EDIT") {
-                    api.put($scope.modalEditSurvey.model.id_usuario, $scope.modalEditSurvey.model, surveyPut_callBack);
+                    $scope.modalEditSurvey.model.vigenciaDesde= new Date($("#vigenciaDesde").val()).toJSON();
+                    $scope.modalEditSurvey.model.vigenciaHasta= new Date($("#vigenciaHasta").val()).toJSON();
+                    api.put($scope.modalEditSurvey.model._id, $scope.modalEditSurvey.model, surveyPut_callBack);
                 }
+
                 if (this.method == "DELETE") {
-                    api.delete($scope.modalEditSurvey.model.id_usuario, surveyDelete_callBack);
+                    api.delete($scope.modalEditSurvey.model._id, surveyDelete_callBack);
                 }
+                
+
                 if (this.method == "ADD") {
                     $scope.modalEditSurvey.model.id_perfil = 1
                     $scope.modalEditSurvey.model.creado_por="test"
                     api.post($scope.modalEditSurvey.model, surveyPost_callBack);
                 }
+                
             }
         }
         function surveyGet_callBack(res) {
@@ -76,8 +95,8 @@ var SurveyModule = (function () {
         }
         function surveyPut_callBack(res) {
             if (!api.isError(res)) {
-                if (res.data.status != 'OK') {
-                    alert(res.data.message);
+                if (res.statusText != 'OK') {
+                    toastr.error(res.data.message);
                 } else {
                     $scope.modalEditSurvey.hide();
                     api.get(surveyGet_callBack);
@@ -85,14 +104,9 @@ var SurveyModule = (function () {
             }
         }
 
-/*
-        <div class="row">
-        <button id="btnEnviarEncuesta" class="btn btn-primary" ng-show="!loadingTaxonomia" ng-click="accept()">Aceptar &nbsp; &raquo; &raquo; </button>
-    </div>
-*/
         var surveyPost_callBack = function (res) {
             if (!api.isError(res)) {
-                if (res.data.status != 'OK') {
+                if (res.statusText != 'OK') {
                     alert(res.data.message);
                 } else {
                     $scope.modalEditSurvey.items.push($scope.modalEditSurvey.model)
@@ -103,11 +117,13 @@ var SurveyModule = (function () {
         }
         var surveyDelete_callBack = function (res) {
             if (!api.isError(res)) {
-                if (res.data.status != 'OK') {
-                    alert(res.data.message);
+                if (res.statusText != 'OK') {
+                    toastr.error(res.data.message);
                 } else {
                     $scope.modalEditSurvey.hide();
-                    api.get(surveyGet_callBack);
+
+                    toastr.success(res.data.message);
+                    // api.get(surveyGet_callBack);
                 }
             }
         }

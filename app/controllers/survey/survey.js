@@ -40,8 +40,6 @@ Label 3    Value       Value      Value
 
 * */
 exports.test= function(req, res){
-    console.log("req.query",req.query)
-    // http://localhost:1616/survey?type=TEST
     SurveyType.findOne(req.query,function(err, item) {
         console.log("req.query",item)
         if (!item) {
@@ -55,24 +53,10 @@ exports.test= function(req, res){
 
 }
 
-
-exports.getAllTypes= function(req, res){
-
-    SurveyType.find(function(err, items) {
-        console.log("req.query","getAllTypes",items);
-            res.jsonp(items);
-    });
-}
-
-
-exports.survey = function(req, res, next, id){
-    console.log("* POPULATE *",id)
-    var query = Survey.findById(id);
-    query.populate("taxonomia").populate("institucion").exec(function (err, item){
-        if (err) { return next(err); }
-        if (!item) { return next(new Error("can't find survey")); }
-        req.survey = item;
-        return next();
+exports.create = function (req, res) {
+    Survey.create(req.body, function (err, item) {
+      if (err) return handleError(err);
+      res.jsonp(item)
     });
 }
 
@@ -81,9 +65,7 @@ exports.show = function(req, res){
     res.jsonp(req.survey);
 }
 
-
 exports.all = function(req, res){
-    console.clear();
     Survey.find(function(err, items) {
         if (err) {
             res.render('error', {status: 500});
@@ -93,51 +75,44 @@ exports.all = function(req, res){
     }).populate("taxonomia").populate("institucion");
 }
 
+exports.survey = function(req, res, next, id){
+    var query = Survey.findById(id);
+    query.populate("taxonomia").populate("institucion").exec(function (err, item){
+        if (err) { return next(err); }
+        if (!item) { return next(new Error("can't find survey")); }
+        req.survey = item;
+        return next();
+    });
+}
 
 exports.update = function(req, res){
+    var survey = req.survey
+    survey = _.extend(survey, req.body)
+    survey.save(function(err) {
+        res.jsonp(survey)
+    })
+}
 
-    var id = req.body._id,
-        body = req.body;
-/*
-    console.log("> UPDATE polllist <",id,req);
-    if(!UserAuthorization.isAuthorized(req,"","","ENCUESTA_GENERAR")){
-        return res.status(401).jsonp({error:"No esta autorizado a realizar esta operacion."});
-    }
-    */
-
-    console.log("> 2 <");
-    Survey.findByIdAndUpdate(id, body, function(err, item) {
+exports.delete = function(req, res){
+    req.survey.remove(function(err){
         if (err) {
-            res.status(500).jsonp({error:err.message});
+            res.status(500).jsonp({"message":err.message});
+        } else {
+            res.status(200).jsonp({"message":"Deleted record."});
         }
-        res.jsonp(item);
-
-    });
-
+    })
 }
 
-
-exports.create = function (req, res) {
-    console.log("new Survey req.body",req.body);
-    /*
-    var survey = new Survey(req.body)
-    survey.save()
-    res.jsonp(survey)
-    */
-
-    Survey.create(req.body, function (err, item) {
-      if (err) return handleError(err);
-      res.jsonp(item)
+exports.getAllTypes= function(req, res){
+    SurveyType.find(function(err, items) {
+        console.log("req.query","getAllTypes",items);
+            res.jsonp(items);
     });
-
 }
-
-
 
 exports.vote= function(req, res) {
     console.log("> addQuestion req.body <", req.body);
     var index=-1;
-
 
     Survey.findById(req.params.surveyId,function(err, items) {
         console.log("> items <", items);

@@ -1,0 +1,27 @@
+
+<ul class="dropdown-menu dropdown-md dropdown-list theme-settings" role="menu">   			 		
+	<li class="li-group">													    			 		
+        <ul class="list-unstyled">															 		
+            <li class="no-link" role="presentation" ng-repeat="setHeader in value.header">   		
+                {{setHeader.title}}		 											 		
+                <div class="{{setHeader.divClass}}">										 		
+                    oooo<input type="checkbox" class="{{setHeader.checkClass}}" ng-checked="{{setHeader.checked}}">	
+                </div>																		 		
+            </li>																			 	
+        </ul>												  								 		
+    </li>												  									 		
+    <li class="li-group">													    			 		
+        <ul class="list-unstyled">											    			 		
+            <li class="no-link" role="presentation" ng-repeat="setContent in value.content"> 		
+            {{setContent.title}}															 	 	
+                <div class="{{setContent.divClass}}">												
+                {{setContent.checked}}				 												
+                    <input type="checkbox" class="{{setContent.checkClass}}" ng-checked="{{setHeader.checked}}"> 
+                </div>																		 		
+            </li>									 										 		
+        </ul>												  								 		
+    </li>												  									 		
+    <li class="no-link"><button class="btn btn-default reset-options">{{value.reset}}</button> 		
+    </li> 																					 		
+</ul> 
+						

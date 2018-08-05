@@ -1,0 +1,64 @@
+                
+                    <div class="panel-body panel-white">
+                            <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('.date-picker').datepicker({
+                                    orientation: "top auto",
+                                    autoclose: true,
+                                    format: 'yyyy/mm/dd'
+                                });
+                            });
+                        </script>
+                        <form>
+                            <div class="form-group">
+                                <label for="usuario">{{page_lang.usuario}}</label>
+                                <input  class="form-control" id="usuario"   ng-model="usuario.usuario">
+                            </div>
+                            
+                            <div class="row form-group">
+                                    <div class="col-sm-6">
+                                        <label for="Password">{{page_lang.password}}</label>
+                                        <input type="password" class="form-control" id="Password"  ng-model="usuario.password">
+                                    </div>
+                            </div>
+                            <div class="row form-group">
+                                    <div class="col-sm-6">
+                                        <label for="Password">{{page_lang.re_password}}</label>
+                                        <input type="password" class="form-control" id="re_password"  ng-model="usuario.re_password">
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre">{{page_lang.nombre}}</label>
+                                <input  class="form-control" id="nombre"  ng-model="usuario.nombre">
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-sm-6">
+                                    <label for="apellido">{{page_lang.apellido}}</label>
+                                    <input  class="form-control" id="apellido"   ng-model="usuario.apellido">
+                                </div>
+                                <div class="col-sm-6">
+                                        <label for="email"> {{page_lang.email}}</label>
+                                <input type="email" class="form-control" id="email"  ng-model="usuario.email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Perfil">{{page_lang.perfil}}</label>
+                                           
+                                <select id="perfil" ng-model="usuario.id_perfil" ng-options="i.id_perfil as i.perfil for i in items" class="form-control">
+                                    <option value="" selected>{{AppControlText.seleccionar}}</option>
+                                </select>
+                            </div>
+                              <div class="row form-group">
+                                <div class="col-sm-6">
+                                   <label for="vigencia_desde">{{page_lang.vigencia_desde}}</label>
+                                    <input  class="form-control date-picker" id="vigencia_desde"  ng-model="usuario.vigencia_desde">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="vigencia_hasta">{{page_lang.vigencia_hasta}}</label>
+                                    <input  class="form-control date-picker" id="vigencia_hasta" ng-model="usuario.vigencia_hasta">
+                                </div>
+                              </div>
+                              <button type="submit" ng-click="submit()" class="btn btn-primary">{{AppControlText.submit}}</button>    
+                        </form>
+                    </div>
+               

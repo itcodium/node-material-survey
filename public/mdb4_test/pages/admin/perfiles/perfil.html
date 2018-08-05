@@ -1,0 +1,30 @@
+
+                            <div class="panel panel-white">
+                                <div class="panel-body">
+                                     <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            $('.date-picker').datepicker({
+                                                orientation: "top auto",
+                                                autoclose: true,
+                                                format: 'yyyy/mm/dd'
+                                            });
+                                        });
+                                    </script>
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="perfil">{{page_lang.nombre_perfil}}</label>
+                                            <input  class="form-control" id="perfil" ng-model="perfil.perfil">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="vigencia_desde">{{page_lang.vigencia_desde}}</label>
+                                            <input  class="form-control date-picker" id="vigencia_desde" ng-model="perfil.vigencia_desde">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="vigencia_hasta">{{page_lang.vigencia_hasta}}</label>
+                                            <input  class="form-control date-picker" id="vigencia_hasta" ng-model="perfil.vigencia_hasta">
+                                        </div>
+                                        <button type="submit" ng-click="submit()" class="btn btn-primary">{{AppControlText.submit}}</button>
+                                    </form>
+                                </div>
+                            </div>

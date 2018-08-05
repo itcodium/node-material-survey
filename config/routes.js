@@ -128,6 +128,7 @@ module.exports = function (app, passport, auth) {
   app.put('/api/survey/addQuestionToList/:surveyId', vSurvey.addQuestion);
   app.put('/api/survey/vote/:surveyId',  vSurvey.vote);
   app.put('/api/survey/:surveyId',  vSurvey.update);
+  app.delete('/api/survey/:surveyId',  vSurvey.delete);
 
 
 

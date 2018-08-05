@@ -17,7 +17,8 @@ var ApiCaller = function (api) {
     }
     this.isError = function (res) {
         var result = false;
-        if (res.data.status.toUpperCase() == "ERROR") {
+        console.log("res.data.status",res)
+        if (res.statusText.toUpperCase() == "ERROR") {
             alert("Ocurrio un error al procesar el formulario: "+ res.data.message)
             result = true;
         }
@@ -40,7 +41,8 @@ var ApiCaller = function (api) {
             .then(callback, this.error)
     }
     this.put = function (id,data,callback) {
-        this.caller.put(APP_API.getUrl(api, id), data)
+        console.log("PUT -> ", APP_API.getUrl(api, data._id),data)
+        this.caller.put(APP_API.getUrl(api, data._id), data)
             .then(callback, this.error)
     }
     this.delete = function (id, callback) {

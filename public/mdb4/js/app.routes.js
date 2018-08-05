@@ -46,10 +46,10 @@ var APP_API= {
         */
         if (typeof param!='undefined'){
             console.log("++++++++++ ", API_URL + this[api.toUpperCase()] + "/" + param + "?" )
-            return API_URL + this[api.toUpperCase()] + "/" + param + "?" ;
+            return API_URL + this[api.toUpperCase()] + "/" + param ;
         } else {
             console.log("++++++++++ ",API_URL + this[api.toUpperCase()]  )
-            return API_URL + this[api.toUpperCase()] + "?" 
+            return API_URL + this[api.toUpperCase()] 
         }
     }
 };

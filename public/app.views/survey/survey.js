@@ -577,6 +577,7 @@ app.controller('surveyEditCtrl', ['$scope','$routeParams','$resource','$filter',
         $scope.loading=true;
         $scope.loadingTaxonomia=false;
         $scope.alerts = [];
+        $scope.editar=false;
         $scope.closeAlert = function (index) {
             if (index) {
                 $scope.alerts.splice(index, 1);
