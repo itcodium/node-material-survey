@@ -4,15 +4,17 @@
         }
 
     </style>
-
     <div class="form-row">
         <div class="col-sm-12">
             <div class="md-form">
                 <input  id="txtSurvey" 
                         type="text" 
                         ng-model="input.model.name"
+                        
                         placeholder="Nombre de la encuesta" 
-                        class="form-control form-control-sm" />
+                        class="form-control form-control-sm" 
+                        ng-disabled="input.method=='DELETE'"
+                        />
                         
             </div>
         </div>
@@ -22,9 +24,10 @@
                     <input  class="form-control form-control-sm calendar"
                             type="text" id="vigenciaDesde"
                             name="vigenciaDesde"
-                            data-value="{{input.model.vigenciaDesde | date:'yyyy/MM/dd'}}"
-                            ng-model="{{input.model.vigenciaDesde | date:'yyyy/MM/dd'}}"
-                            placeholder="Vigencia desde">
+                            ng-model="input.model.vigenciaDesde"
+                            placeholder="Vigencia desde"
+                            ng-disabled="input.method=='DELETE'"
+                            >
                     
             </div>
             <div class="md-form col-md-6  mb-0" >
@@ -32,9 +35,10 @@
                     type="text" 
                     id="vigenciaHasta" 
                     name="vigenciaHasta" 
-                    ng-model="{{input.model.vigenciaHasta  | date:'yyyy/MM/dd'}}"
-                    data-value="{{input.model.vigenciaDesde | date:'yyyy/MM/dd'}}"
-                    placeholder="Vigencia hasta" >
+                    ng-model="input.model.vigenciaHasta"
+                    placeholder="Vigencia hasta" 
+                    ng-disabled="input.method=='DELETE'"
+                    >
             </div>
     </div>
  
@@ -44,7 +48,9 @@
                             class="form-check-input" 
                             type="checkbox" 
                             name="pollCheck" 
-                            ng-model="input.model.isEnabled"> 
+                            ng-model="input.model.isEnabled"
+                            ng-disabled="input.method=='DELETE'"
+                            > 
             <label class="form-check-label" for="pollCheck">Habilitar</label> <br>
         </div>
         <div class="md-form col-md-6  mb-0">
@@ -52,7 +58,9 @@
                         class="form-check-input" 
                         type="checkbox" 
                         name="pollDefault" 
-                        ng-model="input.model.isDefault"> 
+                        ng-model="input.model.isDefault"
+                        ng-disabled="input.method=='DELETE'"
+                        > 
                 <label class="form-check-label" for="pollDefault">Encuesta por defecto</label>
         </div>
     </div>
@@ -104,29 +112,4 @@
                             </label>
                         </div>
 -->
-<!-- Fin  new 
-
-
-<div ng-show="loading" class="container loadingContent"></div>
-
-<div class="form-group" ng-show="!loading">
-
-   
-    <br>
-
-  
-
-    <br/>
-
-    <div class="form-group">
-        <div class="col-md-8">
-            <input id="pollCheck" type="checkbox" name="pollCheck" ng-model="survey.isEnabled"> <label for="pollCheck">Habilitar</label> <br>
-            <input id="pollDefault" type="checkbox" name="pollDefault" ng-model="survey.isDefault"> <label for="pollDefault">Encuesta por defecto</label>
-        </div>
-    </div>
-    <br/><br/>
-</div>
-
-
--->
-
+ 

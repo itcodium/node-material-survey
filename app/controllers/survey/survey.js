@@ -54,8 +54,12 @@ exports.test= function(req, res){
 }
 
 exports.create = function (req, res) {
+    console.log("Create -> ")
     Survey.create(req.body, function (err, item) {
-      if (err) return handleError(err);
+      if (err) {
+            console.log("err",err)
+            res.status(500).jsonp({"message":err.message});
+        }
       res.jsonp(item)
     });
 }
@@ -79,7 +83,10 @@ exports.survey = function(req, res, next, id){
     var query = Survey.findById(id);
     query.populate("taxonomia").populate("institucion").exec(function (err, item){
         if (err) { return next(err); }
-        if (!item) { return next(new Error("can't find survey")); }
+        if (!item) { 
+            res.status(500).jsonp({"message":"The "+id+" record was not found." });
+            return;
+        }
         req.survey = item;
         return next();
     });

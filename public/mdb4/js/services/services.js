@@ -39,7 +39,7 @@ angular.module('rrhh.services', [])
 angular.module('app.services', [])
 .service('AppServiceCaller', function ($http, $window, $httpParamSerializerJQLike) {
 
-        //var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
+        // var config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
         var config = { headers: { 'Content-Type': 'application/json' } };
 
         var response = function (response) {
@@ -53,6 +53,7 @@ angular.module('app.services', [])
              return $http.get(url, { params: parametros }, {});
         };
         this.post = function (url, parametros) {
+            config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
             return $http.post(url, $httpParamSerializerJQLike(parametros), config).then(response, error);
         };
         this.put = function (url,parametros) {
