@@ -1,11 +1,1 @@
-extends layouts/default
-
-h1 Algo salió mal
-br
-span 500
-
-block content
-  #error-message-box
-    #error-stack-trace
-      pre
-        code!= error
+ #{error}

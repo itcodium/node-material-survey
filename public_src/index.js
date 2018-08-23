@@ -1,0 +1,48 @@
+
+import './assets/css/style.css';
+import 'underscore';
+
+import {app} from './app/app.init';
+
+import {appController}       from './app/app';
+import {controllerHoteles}   from './app/hoteles/controller.hoteles';
+import {controllerSurveys}   from './app/surveys/controller.surveys';
+
+import {hotelItemCtrl}       from './app/hoteles/controllers/hotelItem';
+import {ratingCtrl}          from './app/hoteles/controllers/hotelRating';
+import {hotelFilterCtrl}     from './app/hoteles/controllers/hotelFilter';
+import {hotelSearchStarCtrl} from './app/hoteles/controllers/searchStars';
+import {hotelSearchNameCtrl} from './app/hoteles/controllers/searchName';
+
+require ('./app/directives/index')(app);
+require ('./app/components/index')(app);
+
+
+
+ 
+// Uncomment one of the following lines to see error handling
+// require('unknown-module')
+// } syntax-error
+
+// Uncomment this next line to trigger a warning
+// require('Assert')
+
+ 
+
+ if (module.hot) {
+  module.hot.accept('./app/hoteles/controller.hoteles', function() {
+    location.reload();  
+  })
+
+  module.hot.accept('./app/directives/index', function() {
+    location.reload();  
+  })
+  
+  module.hot.accept('./app/components/index', function() {
+    location.reload();  
+  })
+  
+  module.hot.accept();
+  module.hot.dispose(function() {});
+}
+

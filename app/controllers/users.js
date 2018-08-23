@@ -1,31 +1,13 @@
-/**
- * Module dependencies.
- */
-
 var mongoose = require('mongoose')
-  , User = mongoose.model('User')
-  , RestablecerPassword = mongoose.model('RestablecerPassword')
-  , Perfiles = mongoose.model('Perfiles')
-  , Institucion = mongoose.model('Institucion');
-var  crypto = require('crypto');
-var ldap=require('../../app/controllers/ldap/ldap.pim.js')
-var pimEmail=require('../../app/controllers/email/email.js')
 var APP_CONFIG=require('../../app/config.js')
 
-//exports.signin = function (req, res) {}
-
-/**
- * Auth callback
- */
-
+ 
+/*
 exports.authCallback = function (req, res, next) {
   res.redirect('/')
 }
 
-/**
- * Show login form
- */
-
+ 
 exports.signin = function (req, res) {
     console.log("password password password",res);
 
@@ -34,10 +16,7 @@ exports.signin = function (req, res) {
     message: req.flash('error')
   })
 }
-
-/**
- * Show sign up form
- */
+ 
 
 exports.signup = function (req, res) {
   res.render('users/signup', {
@@ -45,10 +24,7 @@ exports.signup = function (req, res) {
     user: new User()
   })
 }
-
-/**
- * Logout
- */
+ 
 
 exports.signout = function (req, res) {
   req.logout()
@@ -56,19 +32,13 @@ exports.signout = function (req, res) {
         res.redirect('/'); //Inside a callback… bulletproof!
   });
 }
-
-/**
- * Session
- */
+ 
 
 exports.session = function (req, res) {
   res.redirect('/')
 }
 
-/**
- * Create user
- */
-
+ 
 function makePassword(){
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -107,7 +77,8 @@ var create_callback=function (req,res,sendedData,data,error){
     }
 
 }
-
+*/
+/*
 exports.create = function (req, res) {
 
 
@@ -144,28 +115,12 @@ exports.create = function (req, res) {
 
 
   // ldap.userSearch(user.name,create_callback,req,res,user);
+}
+
+*/
 
 
 /*
-  user.provider = 'local'
-
-  user.save(function (err) {
-    if (err) {
-      return res.render('users/signup', { errors: err.errors, user: user })
-    }
-    req.logIn(user, function(err) {
-      if (err) return next(err)
-      return res.redirect('/')
-    })
-  })
-    */
-
-}
-
-/**
- *  Show profile
- */
-
 exports.show = function (req, res) {
   console.log("exports.show",req.profile);
   var user = req.profile
@@ -180,9 +135,8 @@ exports.me = function (req, res) {
   res.jsonp(req.user || null);
 }
 
-/**
- * Find user by id
- */
+
+ 
 
 exports.user = function (req, res, next, id) {
   console.log("exports.user", id);
@@ -197,10 +151,7 @@ exports.user = function (req, res, next, id) {
       next()
     })
 }
-
-/**
- * ABM Usuarios
- */
+ 
 
 exports.abm = function (req, res, next) {
     req.institucion = [];
@@ -383,9 +334,7 @@ restablecerContraseña=function(req,res){
             mostrarMensaje(req,res,PATH_RESTABLECER,"Se ha enviado un email con las instrucciones para restablecer la contraseña. ","success");
         }
     });
-/*
-
- */
+ 
 
 }
 
@@ -460,3 +409,4 @@ var usuarioActualizarContraseña= function(req,res,user){
         }
     });
 }
+*/

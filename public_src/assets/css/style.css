@@ -1,0 +1,39 @@
+body {
+  background-color: #fafafa;
+}
+ 
+
+@font-face {
+   font-family: 'Ostrich Sans Rounded';
+   src:   url('../fonts/ostrich-sans-rounded.woff') format('woff'), 
+   		    url('../fonts/ostrich-sans-rounded.ttf') format('truetype'), 
+   		    url('../fonts/ostrich-sans-rounded.svg') format('svg');
+   	font-weight: 500;
+	  font-style: normal;
+ }
+
+/* Small devices (tablets, 768px and up)  */
+@media (min-width: 768px) { 
+  .collapse.dont-collapse {
+    height: auto !important;
+  }  
+ }
+ 
+/* Medium devices (desktops, 992px and up)  */
+@media (min-width: 992px) { 
+  .collapse.dont-collapse {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width:  1200px) { 
+  .collapse.dont-collapse {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+  
+}

@@ -1,8 +1,0 @@
-<div  class="form-group">
-    <p>{{orden}}. {{radio.question}}</p>
-    <div ng-repeat="listItem in radio.list">
-        <label style="font-weight: normal">
-            <input ng-disabled="disabled" ng-model="radio.selected" value="{{listItem.text}}" type="radio" name="rd{{orden}}">{{listItem.text}}
-        </label>
-    </div>
-</div>

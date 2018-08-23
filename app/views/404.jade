@@ -1,13 +1,2 @@
-extends layouts/default
-
-block main
-  h1 Opa! algo salió mal
-  br
-  span 404
-
-block content
-  #error-message-box
-    #error-stack-trace
-      pre
-        code!= error
-
+ #{message}
+   

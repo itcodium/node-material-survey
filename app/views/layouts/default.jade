@@ -1,18 +1,16 @@
+
 doctype
 html(lang='es',
-	ng-app='itcodium', 
+  ng-app='itcodium',  
 	xmlns='http://www.w3.org/1999/xhtml', 
 	xmlns:fb='https://www.facebook.com/2008/fbml', 
 	itemscope='itemscope', 
 	itemtype='http://schema.org/Product')
 
   include ../includes/head
-  body(ng-controller='appController', class='fixed-sn white-skin')
+  body( ng-controller='appController',class="light-gray-skin")
     include ../includes/navBar
-    main
-      div(class='main-wrapper')
-        section(class='container-fluid')
-          block content
-
+    main(class="mt-5")
+      div(class="container", data-ng-view)
     page-footer
     include ../includes/foot

@@ -1,0 +1,93 @@
+<div class="table-title">
+        <div class="row">
+            <div class="col-sm-5">
+                <h2><b>Surveys</b></h2>
+            </div>
+            <div class="col-sm-7 text-md-right">
+                <a  class="btn btn-sm white" ng-if="grilla.add" ng-click="grilla.onAdd()" data-toggle="modal">
+                    <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                </a>
+                <a  class="btn btn-sm white" ng-if="grilla.edit" data-toggle="modal"> 
+                        <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+                </a>						
+                <a  class="btn btn-danger btn-sm" ng-if="grilla.delete" data-toggle="modal"> 
+                        <i class="fa fa-trash fa-2x" ></i> 
+                </a>						
+            </div>
+        </div>
+</div>
+
+
+<div class="table-responsive">
+    <table class="table text-md-left" ng-if="grilla.config.loading || grilla.data.length>0"  id="">
+        <thead>
+            <tr>
+                <th ng-if="grilla.selectedGrid" grilla.selectedGrid></th>
+                <th ng-show="columns.show" ng-click="grilla.order(columns)"
+                    ng-repeat="columns in grilla.config.columns">
+                    {{columns.name}}
+                    <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                </th>
+            </tr>
+        </thead>
+        <tbody ng-if="!grilla.config.loading" >
+            <tr  md-row data-ng-repeat="row in grilla.data" >
+                <td md-cell ng-if="grilla.selectedGrid" style="width: 30px;">
+                    <md-checkbox ng-model="row.selected" aria-label=""  ng-change="grilla.onCheck($index,row)"></md-checkbox>
+                </td>
+                <td md-cell ng-repeat="column_data in grilla.config.columns "
+                    ng-show="column_data.show"
+                    ng-style="(column_data.filter == 'number' || column_data.filter == 'int' || column_data.filter == 'coef' || column_data.filter == 'currency') ? {'width': column_data.width, 'text-align': 'right' } :  {'width': column_data.width, 'text-align': column_data.align}"
+                    >
+                    {{ grilla.showVal(row[column_data.field], column_data.filter )}}
+                </td>
+            </tr>
+            <tfoot md-foot ng-if="grilla.footData.length>0">
+            <tr md-row data-ng-repeat="row in grilla.footData" ng-if="grilla.footData.length>0">
+
+                <td md-cell ng-repeat="column_data in grilla.config.columns "
+                    ng-show="column_data.show"
+                    ng-style="(column_data.filter == 'number' || column_data.filter == 'int' || column_data.filter == 'coef' || column_data.filter == 'currency') ? {'width': column_data.width, 'text-align': (column_data.align=='' )? 'right':column_data.align} :  {'width': column_data.width, 'text-align': column_data.align}"
+                >
+
+                    <strong>
+                        {{ grilla.showVal(row[column_data.field], column_data.filter )}}
+                    </strong>
+                </td>
+            </tr>
+            </tfoot>
+        </tbody>
+    </table>
+    <div class="progress md-progress primary-color-dark" ng-if="grilla.config.loading">
+            <div class="indeterminate"></div>
+    </div>
+    <nav aria-label="Page navigation example" ng-if="grilla.pager.totalItems>grilla.pager.pageSize && mostrarPaginacion">
+            <ul class="pagination justify-content-end">
+                <li class="page-item" ng-class="{disabled:grilla.pager.currentPage === 1}">
+                    <a  class="page-link" ng-click="grilla.onPaginate(1)">First</a>
+                </li>
+                <li class="page-item" ng-class="{ 'disabled': grilla.config.query.page==1 }" >
+                    <a class="page-link" ng-click="grilla.previous()" tabindex="-1">
+                        Previous</a>
+                </li>
+                <!--Numbers-->
+                <li class="page-item" 
+                ng-class="{ 'active':  grilla.pager.currentPage===page }"
+                ng-repeat="page in grilla.pager.pages">
+                    <a class="page-link" ng-click="grilla.onPaginate(page)">{{page}}</a></li>
+                <!--Next-->
+                <li class="page-item" ng-class="{ 'disabled': grilla.pager.currentPage=== grilla.pager.totalPages }">
+                    <a class="page-link" ng-click="grilla.next()" >Next</a>
+                </li>
+                <li class="page-item" ng-class="{disabled:grilla.pager.currentPage === grilla.pager.totalPages}">
+                        <a class="page-link" ng-click="grilla.onPaginate(grilla.pager.totalPages)">Last</a>
+                    </li>
+            </ul>
+        </nav>
+</div>
+
+
+
+<div  style="border: 0; padding: 15px;" ng-if="grilla.data.length==0 && grilla.config.showNoRegister==true">
+    No se encontraron datos para mostrar
+</div>

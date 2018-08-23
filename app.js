@@ -1,164 +1,113 @@
-var express = require('express'),
-	 fs = require('fs'),
-   passport = require('passport');
+var express = require('express');
+var passport = require('passport');
 var path = require('path');
-var http = require('http');
-//var favicon = require('serve-favicon');
-var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var connect = require('connect');
-var  crypto = require('crypto');
-var _ = require('underscore');
+
+//var methodOverride = require('method-override');
+// var http = require('http');
+// var logger = require('morgan');
+// var fs = require('fs'),
 
 
-// var ldap=require('./app/controllers/ldap/ldap.pim.js')
- 
+// ver este link
+// http://angular-tips.com/blog/2015/06/using-angular-1-dot-x-with-es6-and-webpack/
+// npm install --save-dev angular-route@1.5.7
+// npm install --save-dev angular-animate@1.5.7
+// npm install --save-dev webpack@latest 
 
- 
 
-// -------------------------------------------------------------------
+var env = process.env.NODE_ENV || 'development',
+    config = require('./config/config')[env], 
+    mongoose = require('mongoose')
 
-// Load configurations
-// if test env, load example file
-var env = process.env.NODE_ENV || 'development'  ,
- config = require('./config/config')[env]
-  , auth = require('./config/middlewares/authorization')
-  , mongoose = require('mongoose')
 
-//  db connection
- var db = mongoose.connect(config.db)
+var db = mongoose.connect(config.db,{useNewUrlParser: true })
+    require('./config/passport')(passport, config)
 
-require('./app/models/auditoria.js')
+
 require('./app/models/institucion.js')
 require('./app/models/taxonomia.js')
-require('./app/models/user.js')
-require('./app/models/admin/acciones.js')
-require('./app/models/admin/Perfiles.js')
-require('./app/models/pentaho.js')
-require('./app/models/userPrecarga.js')
-require('./app/models/survey/survey.js')
+require('./app/models/survey.js')
 require('./config/passport')(passport, config)
-
-// -------- End Codigo Origen Server.js ------------------------------
- 
-
+    
 
 var app = express();
 
-// var server = http.createServer(app);
 
-/*
-var io = require('socket.io').listen(server);
-io.sockets.on("connection", function(socket) {
-    socket.request.session // Now it's available from Socket.IO sockets too! Win!
-    console.log("- Socket Conected -",path.join(__dirname, 'public'))
-});
-*/
+// INIT Configuracion de webpack 
+// npm install --save-dev webpack-hot-middleware
 
-/*
-server.on('request', function(request, response) {
-    console.log("- Request -",request.url);
-});
-*/
+if (env=='development'){
+  const webpack = require('webpack');
 
-/*
-var server2 = http.createServer(app);
-var io2 = require('socket.io').listen(server2);
-io2.sockets.on("connection", function(socket2) {
-    socket2.request.session // Now it's available from Socket.IO sockets too! Win!
-    console.log("- Socket Conected -",path.join(__dirname, 'public'))
-});
+  const webpack_config = require('./webpack.dev.js');
+  const webpack_options = {
+    contentBase: './dist',
+    hot: true,
+    host: 'localhost'
+  };
 
-*/
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require("webpack-hot-middleware");
+  const webpack_compiler = webpack(webpack_config);
+  app.use(webpackDevMiddleware(webpack_compiler, {
+    publicPath: webpack_config.output.publicPath
+  })); 
+  const wphmw = webpackHotMiddleware(webpack_compiler);
+  app.use(wphmw);
+}
+// FIN Configuracion de webpack 
 
-// app.use(logger('dev'));
+
+//app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+  
 
-//console.log("encodeURIComponent",encodeURIComponent(":public:Secretaría Naciona de la Administración Pública:PQSSF - Descripcion de las solicitudes x Geografia.prpt"));
-//console.log("encodeURI",encodeURI(":public:Secretaría Naciona de la Administración Pública:PQSSF - Descripcion de las solicitudes x Geografia.prpt"));
-
-
-
-// -------------------------------------------------------------------
-// -------- Codigo utilizado en server.js
-
-// levanto las config de express y ruteos
 require('./config/express')(app, config, passport)
-require('./config/routes')(app, passport, auth)
-require('./config/upload')(app, passport, auth)
+require('./config/routes')(app, passport)
 
-// -------- End Codigo Origen Server.js ------------------------------
-
-  app.set('views', config.root + '/app/views')
-  app.set('view engine', 'jade');
-
- // app.use('/', routes);
+app.set('views', config.root + '/app/views')
+app.set('view engine', 'jade');
 
 
-
-
-// catch 404 and forward to error handler
 app.use(function(req, res, next) {
-
-
-
-  var err = new Error('Not Found');
+  var err = new Error('Not Found '+ req.originalUrl);
   err.status = 404;
   next(err);
 });
 
-// error handlers
-
-
 // development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
+ // if (app.get('env') === 'development') {}
+
+ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-      //modif caob agregado 500.jade
-    res.render('500.jade', {
-      message: err.message,
-      error: err
-    });
+    if (err.status==500){
+      res.render('500.jade', {
+        message: err.message,
+        error: err
+      });
+    }
+    
+
+    if (err.status==404){
+
+        res.render('404.jade', {
+          message: err.message,
+          error: err
+        });
+    }
   });
-}
-
-// production error handler
-// no stacktraces leaked to user
-//app.use(function(err, req, res, next) {
-//  res.status(err.status || 500);
-//  res.render('500.jade', {
-//    message: err.message,
-//    error: {}
-//  });
-//});
-
-
-var port = process.env.PORT || 1616
-//app.listen(port)
 
 
 
-// var v2Polls= require('./app/controllers/polls')
-// io.sockets.on('connection', v2Polls.vote);
-/*
-server.listen(port, function(){
-    console.log('Express server listening on port ' + app.get('port'));
-});
-*/
+ 
 
-
-//console.log('Application started on port '+ port)
-
-//logger.init(app, passport, mongoose)
-
-// module.exports = app;
 exports = module.exports = app
 
 
-
+ 

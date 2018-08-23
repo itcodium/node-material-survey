@@ -1,35 +1,24 @@
 ﻿
+script(type='text/javascript', src='/libs/mdb/jquery-3.3.1.min.js') 
+script(type='text/javascript', src='/libs/mdb/popper.min.js')
+script(type='text/javascript', src='/libs/mdb/bootstrap.min.js')
+script(type='text/javascript', src='/libs/mdb/mdb.min.js')
+
+//- script(type='text/javascript',src='/js/common/ModalTemplate.js')
+//- script(type='text/javascript',src='/js/common/validations.js')
+//- script(type='text/javascript',src='/js/common/JSArrays.js')
 
 
-script(type='text/javascript', src='/mdb4/libs/angular/angular.min.js')
-script(type='text/javascript', src='/mdb4/libs/angular/angular-route.js')
+script(type='text/javascript', src='/js/vendor.bundle.js')
+script(type='text/javascript', src='/js/app.bundle.js')
 
-
-
-script(type='text/javascript', src='/mdb4/libs/mdb/jquery-3.3.1.min.js') 
-script(type='text/javascript', src='/mdb4/libs/mdb/popper.min.js')
-script(type='text/javascript', src='/mdb4/libs/mdb/bootstrap.min.js')
-script(type='text/javascript', src='/mdb4/libs/mdb/mdb.min.js')
-
-script(type='text/javascript',src='/mdb4/js/common/ApiCaller.js')
-script(type='text/javascript',src='/mdb4/js/common/ModalTemplate.js')
-script(type='text/javascript',src='/mdb4/js/common/validations.js')
-script(type='text/javascript',src='/mdb4/js/common/JSArrays.js')
-
-
-script(type='text/javascript', src='/mdb4/js/app.js')
-script(type='text/javascript', src='/mdb4/js/directives/directives.js')
-
-script(type='text/javascript', src='/mdb4/js/services/services.js')
-script(type='text/javascript', src='/mdb4/js/app.routes.js')
-script(type='text/javascript', src='/mdb4/js/app.lang.js')
-script(type='text/javascript', src='/mdb4/js/controllers/users.js')
-script(type='text/javascript', src='/mdb4/js/controllers/surveys.js')
-script(type='text/javascript', src='/mdb4/js/app.config.js')
-
-script(type="text/javascript").
- window.user = !{user};
+if !user
+ script(type="text/javascript").
+  window.user = "";
+else
+ script(type="text/javascript").
+  window.user = !{user};
 
 script.
- $('.button-collapse').sideNav();
+ $('.button-collapse').sideNav({ closeOnClick: true });
  

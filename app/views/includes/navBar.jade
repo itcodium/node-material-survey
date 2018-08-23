@@ -1,92 +1,31 @@
+
 header
-    nav(class='navbar navbar-expand-lg navbar-dark double-nav fixed-top scrolling-navbar')
-        div(class='float-left')
-            a(href='#', data-activates='slide-out' ,class='button-collapse')
-                i( class='fa fa-bars')
-        div(class='breadcrumb-dn mr-auto')
-            p 
-                b Surveys
-        ul(class='nav navbar-nav nav-flex-icons ml-auto')
-            li(class='nav-item')
-                a(class='nav-link')
-                    i(class='fa fa-envelope grey-text')
-                    span(class='clearfix d-none d-sm-inline-block grey-text') Contact
-            li(class='nav-item')
-                a(class='nav-link')
-                    i(class='fa fa-gear grey-text')
-                    span(class='clearfix d-none d-sm-inline-block grey-text') Settings
-            li(class='nav-item dropdown')
-                a(class='nav-link dropdown-toggle grey-text',
-                href='#', id='navbarDropdownMenuLink' ,data-toggle='dropdown' ,aria-haspopup='true' ,aria-expanded='false')
-                    i(class='fa fa-user')
-                    span(class='clearfix d-none d-sm-inline-block grey-text') Account
-                div( class='dropdown-menu dropdown-menu-right' ,aria-labelledby='navbarDropdownMenuLink')
-                    a(class='dropdown-item grey-text' ,href='#') Action
-                    a(class='dropdown-item grey-text', href='#') Another action
-                    a(class='dropdown-item grey-text', href='#') Something else here
-   
-    div( id='slide-out' ,class='side-nav fixed')
+    nav( class="navbar navbar-toggleable double-nav elegant-color  fixed-top scrolling-navbar")
+        div(class='d-flex justify-content-between mx-6')
+            div 
+                a(href='#', data-activates='slide-out' ,class='button-collapse')
+                    i( class='fa fa-bars')
+            div 
+                img(src='/assets/icons/logo.png', height='28',align='left' class='d-inline-block align-top mx-3')  
+
+
+    div( id='slide-out' ,class='side-nav fixed  elegant-color')
+        br
+        img(src='/assets/icons/logo.png',width='80%',align='left', class='d-inline-block align-top mx-3')  
+        br
+        br
+        br
         ul( class='custom-scrollbar list-unstyled')
-            li
-                div( class='logo-wrapper waves-light', style='text-align:center' )
-                    a(href='#/')
-                        img( src='/mdb4/images/logo.png' ,margin='0 auto')
-            li
-                ul( class='social')
-                    li
-                        a(href='#', class='icons-sm fb-ic')
-                            i(class='fa fa-facebook') 
-                        
-                    
-                    li
-                        a(href='#', class='icons-sm pin-ic')
-                            i(class='fa fa-pinterest') 
-                        
-                    
-                    li
-                        a(href='#', class='icons-sm gplus-ic')
-                            i(class='fa fa-google-plus') 
-                        
-                    
-                    li
-                        a(href='#',class='icons-sm tw-ic')
-                            i(class='fa fa-twitter') 
-    
             li
                 form( class='search-form' ,role='search')
                     div( class='md-form my-0 waves-light')
                         input(type='text', class='form-control py-2', placeholder='Search')
-                    
-
             li
                 ul( class='collapsible collapsible-accordion')
                     li
-                        a(class='collapsible-header waves-effect arrow-r')
-                            i(class='fa fa-chevron-right')
-                            Submit blog
-                            i(class='fa fa-angle-down rotate-icon')
-
-                        div(class='collapsible-body')
-                            ul
-                                li
-                                    a(href='#', class='waves-effect') Submit listing
-                                li
-                                    a(href='#', class='waves-effect') Registration form
-
+                        a(href='/#!/surveys', ng-click='toogleNavBar()' , data-toggle="collapse",data-target=".navbar-collapse.show", class='collapsible-header waves-effect') Survey
                     li
-                        a(class='collapsible-header waves-effect arrow-r')
-                            i(class='fa fa-hand-pointer-o')
-                            | Instrunction
-                            i(class='fa fa-angle-down rotate-icon')
-
-                        div( class='collapsible-body')
-                            ul
-                                li
-                                    a(href='#', class='waves-effect') For bloggers
-                                
-                                li
-                                    a(href='#', class='waves-effect') For authors
-                    
+                        a(href='/#!/', ng-click='toogleNavBar()' ,  data-toggle="collapse",data-target=".navbar-collapse.show", class='collapsible-header waves-effect') Hoteles
                     li
                         a(class='collapsible-header waves-effect arrow-r')
                             i(class='fa fa-eye') 
@@ -111,3 +50,4 @@ header
                                 
                                 li
                                     a(href='#', class='waves-effect') Write a message
+ <br>

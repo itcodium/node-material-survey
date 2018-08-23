@@ -1,0 +1,19 @@
+
+<div class="card m-3 border-0">
+        <div class="card m-2 border-0">
+                <input type="checkbox"  ng-change="toggleAll(this)" ng-checked="getChecked()" ng-model="checkAllinput" ng-value="checkall" class="form-check-input" id="todas">
+                <label class="form-check-label" for="todas">
+                        Todas las estrellas
+                </label>
+        </div>
+        <div class="card m-2 border-0" ng-repeat="lstar in starsNumbers track by $index">
+                <input type="checkbox" 
+                ng-model="lstar.value" 
+                ng-change="onchange()" 
+                id="{{lstar.star}}"
+                class="form-check-input">
+                <label class="form-check-label" for="{{lstar.star}}">
+                        <rating exists="true" data="$index+1"></rating>        
+                </label>
+        </div>
+</div>
