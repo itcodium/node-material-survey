@@ -1,5 +1,8 @@
 
-export var SurveyApp=function ($scope,$http,$filter,ModalTemplate,ApiCaller,AppServiceCaller,AplicationText) {
+export var SurveyApp=function (
+                    $scope,$http,$filter,
+                    ModalTemplate,ApiCaller,AppServiceCaller,AplicationText)
+    {
     
         var _this=this;
         this.api =null;
@@ -32,6 +35,7 @@ export var SurveyApp=function ($scope,$http,$filter,ModalTemplate,ApiCaller,AppS
             _this.grid.setPageLimit(config.limit)
 
             _this.grid.onDelete=function(){
+                _this.modal.model=_this.grid.selectedItem;
                 _this.modal.open('DELETE'); 
             }
     
@@ -39,6 +43,7 @@ export var SurveyApp=function ($scope,$http,$filter,ModalTemplate,ApiCaller,AppS
                 _this.modal.open('ADD'); 
             }
             _this.grid.onEdit=function(){
+                _this.modal.model=_this.grid.selectedItem;
                 _this.modal.open('EDIT'); 
             }
         }
@@ -46,7 +51,6 @@ export var SurveyApp=function ($scope,$http,$filter,ModalTemplate,ApiCaller,AppS
         
         this.modalSubmit = function (form) {
             this.form = form;
-            console.log("_this.modal.model",_this.modal.model)
             if (form.$valid) {
                 if (this.method == "EDIT") {
                     _this.api.put(_this.modal.model._id, _this.modal.model, Put_callBack);
@@ -62,7 +66,6 @@ export var SurveyApp=function ($scope,$http,$filter,ModalTemplate,ApiCaller,AppS
         }
 
         var Put_callBack=function(res){
-            console.log("Put_callBack -> ",res)
             if (!_this.api.isError(res)) {
                 if (res.statusText != 'OK') {
                     toastr.error(res.data.message);
@@ -73,7 +76,6 @@ export var SurveyApp=function ($scope,$http,$filter,ModalTemplate,ApiCaller,AppS
         }
 
         var Post_callBack=function(res){
-            console.log("Post_callBack -> ",res)
             if (!_this.api.isError(res)) {
                 if (res.statusText != 'OK') {
                     toastr.error(res.data.message);
@@ -85,22 +87,16 @@ export var SurveyApp=function ($scope,$http,$filter,ModalTemplate,ApiCaller,AppS
         }
         
         var Delete_callBack=function(res){
-            console.log(" Delete_callBack -> ",res)
             if (!_this.api.isError(res)) {
                 if (res.statusText != 'OK') {
                     toastr.error(res.data.message);
                 } else {
                     _this.modal.hide();
+                    _this.grid.selectedItem=null;
+                    _this.grid.HttpGetFromDB();
                     toastr.success(res.data.message);
                 }
             }
         }
-
-        // surveyPut_callBack
-        // surveyDelete_callBack
-        // surveyPost_callBack
-
-        
-
     }
     

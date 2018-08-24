@@ -23,24 +23,30 @@
 </div>
 <div class="form-row">
         <div class="md-form col-md-6  mb-0">
-                <input  class="form-control form-control-sm calendar"
-                        type="text" id="vigenciaDesde"
-                        name="vigenciaDesde"
-                        ng-model="ctrModal.model.vigenciaDesde"
-                        placeholder="Vigencia desde"
-                        ng-disabled="ctrModal.method=='DELETE'"
-                        >
-                
+            <datepicker date-format="yyyy/MM/dd">
+                    <input 
+                    class="form-control form-control-sm"
+                    ng-model="ctrModal.model.vigenciaDesde"
+                    placeholder="Vigencia desde"
+                    ng-disabled="ctrModal.method=='DELETE'"
+                    autocomplete="off"
+                    formatted-input format-type="fecha"
+                    type="text"/>
+            </datepicker>
         </div>
         <div class="md-form col-md-6  mb-0" >
-                <input class="form-control form-control-sm calendar" 
-                type="text" 
-                id="vigenciaHasta" 
-                name="vigenciaHasta" 
-                ng-model="ctrModal.model.vigenciaHasta"
-                placeholder="Vigencia hasta" 
-                ng-disabled="ctrModal.method=='DELETE'"
-                >
+            <datepicker date-format="yyyy/MM/dd" date-min-limit="ctrModal.model.vigenciaHasta">
+                <input 
+                    id="vigenciaHasta" 
+                    name="vigenciaHasta" 
+                    class="form-control form-control-sm"
+                    ng-model="ctrModal.model.vigenciaHasta"
+                    placeholder="Vigencia hasta"
+                    formatted-input format-type="fecha"
+                    ng-disabled="ctrModal.method=='DELETE'"
+                    autocomplete="off"
+                    type="text"/>
+            </datepicker>
         </div>
 </div>
 

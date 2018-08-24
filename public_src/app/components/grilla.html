@@ -1,22 +1,23 @@
 <div class="table-title">
         <div class="row">
             <div class="col-sm-5">
-                <h2><b>Surveys</b></h2>
+                <h2><b>{{grilla.title}}</b></h2>
             </div>
             <div class="col-sm-7 text-md-right">
-                <a  class="btn btn-sm white" ng-if="grilla.add" ng-click="grilla.onAdd()" data-toggle="modal">
-                    <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-                </a>
-                <a  class="btn btn-sm white" ng-if="grilla.edit" data-toggle="modal"> 
+                    <a  class="btn btn-danger btn-sm" ng-click="grilla.onDelete()" ng-if="grilla.delete && grilla.selectedItem" data-toggle="modal"> 
+                            <i class="fa fa-trash fa-2x" ></i> 
+                    </a>	
+                <a  class="btn btn-sm white" ng-click="grilla.onEdit()" ng-if="grilla.edit && grilla.selectedItem" data-toggle="modal"> 
                         <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
                 </a>						
-                <a  class="btn btn-danger btn-sm" ng-if="grilla.delete" data-toggle="modal"> 
-                        <i class="fa fa-trash fa-2x" ></i> 
-                </a>						
+                <a  class="btn btn-sm white" ng-click="grilla.onAdd()" ng-if="grilla.add"  data-toggle="modal">
+                        <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                    </a>
             </div>
         </div>
 </div>
-
+ 
+ 
 
 <div class="table-responsive">
     <table class="table text-md-left" ng-if="grilla.config.loading || grilla.data.length>0"  id="">
@@ -30,22 +31,28 @@
                 </th>
             </tr>
         </thead>
-        <tbody ng-if="!grilla.config.loading" >
-            <tr  md-row data-ng-repeat="row in grilla.data" >
-                <td md-cell ng-if="grilla.selectedGrid" style="width: 30px;">
-                    <md-checkbox ng-model="row.selected" aria-label=""  ng-change="grilla.onCheck($index,row)"></md-checkbox>
+        <tbody  ng-if="!grilla.config.loading" >
+            <tr   data-ng-repeat="row in grilla.data" >
+                <td ng-if="grilla.selectedGrid" class="form-check pb-0">
+                <input class="form-check-input"  
+                        id="check_{{$index}}"
+                        type="checkbox" 
+                        ng-model="row.selected" 
+                        aria-label=""  
+                        ng-change="grilla.onCheck($index,row)"/>
+                    <label class="form-check-label m-0 p-0" for="check_{{$index}}"></label>
                 </td>
-                <td md-cell ng-repeat="column_data in grilla.config.columns "
+                <td ng-repeat="column_data in grilla.config.columns "
                     ng-show="column_data.show"
                     ng-style="(column_data.filter == 'number' || column_data.filter == 'int' || column_data.filter == 'coef' || column_data.filter == 'currency') ? {'width': column_data.width, 'text-align': 'right' } :  {'width': column_data.width, 'text-align': column_data.align}"
                     >
                     {{ grilla.showVal(row[column_data.field], column_data.filter )}}
                 </td>
             </tr>
-            <tfoot md-foot ng-if="grilla.footData.length>0">
-            <tr md-row data-ng-repeat="row in grilla.footData" ng-if="grilla.footData.length>0">
+            <tfoot ng-if="grilla.footData.length>0">
+            <tr data-ng-repeat="row in grilla.footData" ng-if="grilla.footData.length>0">
 
-                <td md-cell ng-repeat="column_data in grilla.config.columns "
+                <td  ng-repeat="column_data in grilla.config.columns "
                     ng-show="column_data.show"
                     ng-style="(column_data.filter == 'number' || column_data.filter == 'int' || column_data.filter == 'coef' || column_data.filter == 'currency') ? {'width': column_data.width, 'text-align': (column_data.align=='' )? 'right':column_data.align} :  {'width': column_data.width, 'text-align': column_data.align}"
                 >

@@ -1,5 +1,5 @@
-const CleanWebpackPlugin = require('../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/clean-webpack-plugin');
-const webpack = require('../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
 	entry: {
@@ -65,5 +65,6 @@ module.exports = {
 		}
 	},
 }; 
+
 
  

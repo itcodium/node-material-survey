@@ -184,12 +184,12 @@ export var Components= (function () {
             if (filter == 'date') {
                 var fechaUpdate;
                 if (typeof value!='object'){
-                    fechaUpdate= value; //.replace("Z"," ").replace("T"," ");
+                    fechaUpdate= value;
                 }else{
                     fechaUpdate=value;
                 }
-                
-                return (moment(fechaUpdate).utc()._isValid) ? moment(fechaUpdate).local().format('YYYY-MM-DD') : fechaUpdate;
+
+                return (moment(fechaUpdate).parseZone()._isValid) ? moment(fechaUpdate).parseZone().format('YYYY-MM-DD') : fechaUpdate;
             }
 
 
@@ -310,7 +310,7 @@ export var ModalTemplate = function () {
         $("#" + this.modal_name).modal('hide');
 
         if(this.method == API_METHOD.DELETE){
-            this.items.splice(this.select_index,1);
+            // this.items.splice(this.select_index,1);
         }
         if(this.method == API_METHOD.EDIT){
             console.log("EDIT")
@@ -324,8 +324,6 @@ export var ModalTemplate = function () {
         this.select_index = -1;
         this.model_aux = {};
         this.model = {};
-        console.log("resetModel")
-
     }
     this.cancel = function () {
         this.items[this.select_index] = angular.copy(this.model_aux)

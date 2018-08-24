@@ -1,5 +1,9 @@
 var  angular = require('angular');
 var  ngRoute = require('angular-route');
+import '../assets/css/angular-datepicker.css';
+var  ngDatepicker = require('angularjs-datepicker');
+
+
 
 import {AppServiceCaller,AplicationText} from './services';
 
@@ -18,7 +22,7 @@ var locationProvider=function($locationProvider) {
    $locationProvider.hashPrefix("!");
 }
 
-export var app = angular.module("itcodium", ['ngRoute','app.services']);
+export var app = angular.module("itcodium", ['ngRoute',  '720kb.datepicker','app.services']);
 angular.module ('app.services', []).service('AppServiceCaller', AppServiceCaller);
 
 app.config(['$routeProvider',       routerProvider]);

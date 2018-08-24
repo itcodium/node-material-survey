@@ -1,10 +1,9 @@
     import {app} from '../app.init';
     import {ApiCaller}  from '../api.caller';
     import {Components,ModalTemplate} from '../components/components';
-    import {SurveyApp} from './survey.logic';
+    import {SurveyApp} from '../components/grillaModalCrud';
     
-    //require("jquery");
-    //require('bootstrap');
+ 
     
     export var controllerSurveys= function  ($scope,$http,$filter,AppServiceCaller, AplicationText) {
          
@@ -29,66 +28,31 @@
                     limit:5
                 }
             );
+        $scope.survey.grid.title="Survey"
+        $scope.survey.modal.title="Survey Modal"
         $scope.survey.grid.HttpGetFromDB();
         
 
-        setTimeout(function(){ 
-            $scope.survey.grid.onAdd();
-        }, 1000);
+        /*  -- Solo para pruebas abre el modal y llena el modelo de datos
 
-        var date = new Date;
-            var hms=date.getHours().toString()+":"+ date.getMinutes().toString()+":"+ date.getSeconds().toString();
-            $scope.survey.modal.enviroment="test"
-            $scope.survey.modal.setModel({
-                name:"Test -> "+ hms,
-                vigenciaDesde:"2018/01/01",
-                vigenciaHasta:"2018/12/31",
-                isEnabled:true,
-                isDefault:true
-            });
+                setTimeout(function(){ 
+                    $scope.survey.grid.onAdd();
+                }, 1000);
 
-    /*
-        // Copiado hasta aca
+                var date = new Date;
+                    var hms=date.getHours().toString()+":"+ date.getMinutes().toString()+":"+ date.getSeconds().toString();
+                    $scope.survey.modal.enviroment="test"
+                    $scope.survey.modal.setModel({
+                        name:"Test -> "+ hms,
+                        vigenciaDesde:"2018/01/01",
+                        vigenciaHasta:"2018/12/31",
+                        isEnabled:true,
+                        isDefault:true
+                    });
+        */
 
-        $scope.modalEditSurvey.onShow=function(){
-            if (this.method == API_METHOD.ADD) {
-                $("#vigenciaDesde").val();
-                $("#vigenciaHasta").val();
-                $scope.modalEditSurvey.title = "New survey"
-            }else{
-                    this.model.vigenciaDesde=$filter('date')(  this.model.vigenciaDesde, "yyyy/MM/dd") ;
-                    this.model.vigenciaHasta=$filter('date')(  this.model.vigenciaHasta, "yyyy/MM/dd") ;
-                    $("#vigenciaHasta").val(this.model.vigenciaHasta);
-                    $("#vigenciaDesde").val(this.model.vigenciaDesde);
-                 if (this.method == API_METHOD.DELETE) {
-                    $scope.modalEditSurvey.title = "Delete survey"  
-                 }
-                 if (this.method == API_METHOD.EDIT) {
-                    $scope.modalEditSurvey.title = "Update survey"  
-                 }
-            }
-        }
-        $scope.modalEditSurvey.submit = function (form) {
-            this.form = form;
-            if (form.$valid) {
-                if (this.method == "EDIT") {
-                    $scope.modalEditSurvey.model.vigenciaDesde= $("#vigenciaDesde").val();
-                    $scope.modalEditSurvey.model.vigenciaHasta= $("#vigenciaHasta").val();
-                    api.put($scope.modalEditSurvey.model._id, $scope.modalEditSurvey.model, surveyPut_callBack);
-                }
-                if (this.method == "DELETE") {
-                    api.delete($scope.modalEditSurvey.model._id, surveyDelete_callBack);
-                }
-                if (this.method == "ADD") {
-                    $scope.modalEditSurvey.model.vigenciaDesde= $("#vigenciaDesde").val();
-                    $scope.modalEditSurvey.model.vigenciaHasta= $("#vigenciaHasta").val();
-                    $scope.modalEditSurvey.model.id_perfil = 1
-                    $scope.modalEditSurvey.model.creado_por="test"
-                    api.post($scope.modalEditSurvey.model, surveyPost_callBack);
-                }
-            }
-        }
- */
+
+ 
     };
     
     controllerSurveys.$inject = ['$scope','$http','$filter','AppServiceCaller','AplicationText'];
