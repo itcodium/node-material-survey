@@ -1,6 +1,5 @@
 
 import './assets/css/style.css';
-import 'underscore';
 
 import {app} from './app/app.init';
 
@@ -14,8 +13,8 @@ import {hotelFilterCtrl}     from './app/hoteles/controllers/hotelFilter';
 import {hotelSearchStarCtrl} from './app/hoteles/controllers/searchStars';
 import {hotelSearchNameCtrl} from './app/hoteles/controllers/searchName';
 
-require ('./app/directives/index')(app);
-require ('./app/components/index')(app);
+require ('./app/directives')(app);
+require ('./app/components')(app);
 
 
 
@@ -33,7 +32,10 @@ require ('./app/components/index')(app);
   module.hot.accept('./app/hoteles/controller.hoteles', function() {
     location.reload();  
   })
-
+  module.hot.accept('./app/surveys/controller.surveys', function() {
+    location.reload();  
+  })
+ 
   module.hot.accept('./app/directives/index', function() {
     location.reload();  
   })

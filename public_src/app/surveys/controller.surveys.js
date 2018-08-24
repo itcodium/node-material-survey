@@ -1,13 +1,13 @@
     import {app} from '../app.init';
     import {ApiCaller}  from '../api.caller';
-    import {API_METHOD}       from '../api.caller';
     import {Components,ModalTemplate} from '../components/components';
+    import {SurveyApp} from './survey.logic';
     
-    require("jquery");
-    require('bootstrap');
+    //require("jquery");
+    //require('bootstrap');
     
     export var controllerSurveys= function  ($scope,$http,$filter,AppServiceCaller, AplicationText) {
-       
+         
         var SURVEY_COLUMNS=[
             {show:false,name:'id',             field:'_id',            tip: '',               order:{desc:false}},
             {show:true ,name:'Name',           field:'name',           tip: '',               order:{desc:false}},
@@ -16,57 +16,41 @@
             {show:true ,name:'Enabled',        field:'isEnabled',      tip: '',               order:{desc:false}},
             {show:true ,name:'Default',        field:'isDefault',      tip: '',               order:{desc:true}}
         ]
-        var PageText = {
-            "usuario": "Usuario",
-            "nombre": "Nombre",
-            "apellido": "Apellido",
-            "email": "Email",
-            "password": "Password",
-            "perfil": "Perfil",
-            "vigenciaDesde": "Vigencia desde",
-            "vigenciaHasta": "Vigencia hasta",
-            "usuario_minlength": "Ingresar al menos 3 caracteres",
-            "password_verify": "Reescribir la contraseña"
-        };
-
+        $scope.survey=new SurveyApp($scope,$http,$filter,ModalTemplate,ApiCaller,AppServiceCaller,AplicationText);
         
-        var api = new ApiCaller("survey");
-            api.setCaller(AppServiceCaller)
-            
-        $scope.AplicationText = AplicationText;
+
+        $scope.survey.setApiCaller("survey");
+        $scope.survey.createModal("editSurvey","Survey","_id",require("./forms/addSurvey.html"));
+        $scope.survey.createGrid(
+                Components,
+                {
+                    url:"/api/survey",
+                    columns: SURVEY_COLUMNS,
+                    limit:5
+                }
+            );
+        $scope.survey.grid.HttpGetFromDB();
         
-        $scope.modalEditSurvey = new ModalTemplate();
-        $scope.modalEditSurvey.modal_name = "editSurvey";
-        $scope.modalEditSurvey.title = "Survey";
-        $scope.modalEditSurvey.key_id = "_id";
-        $scope.modalEditSurvey.template =require("./forms/addSurvey.html"); 
-        $scope.modalEditSurvey.pageText = $scope.pageText;
-        $scope.modalEditSurvey.AplicationText = AplicationText;
 
-        
-        
-        $scope.grillaSurvey=new Components.Grilla($http,$filter);
-        $scope.grillaSurvey.config.url="/api/survey";
-        $scope.grillaSurvey.config.columns=SURVEY_COLUMNS;
-        $scope.grillaSurvey.setPageLimit(4)
-        $scope.grillaSurvey.HttpGetFromDB();
+        setTimeout(function(){ 
+            $scope.survey.grid.onAdd();
+        }, 1000);
 
-        $scope.grillaSurvey.onDelete=function(){
-            $scope.modalEditSurvey.open('DELETE'); 
-        }
+        var date = new Date;
+            var hms=date.getHours().toString()+":"+ date.getMinutes().toString()+":"+ date.getSeconds().toString();
+            $scope.survey.modal.enviroment="test"
+            $scope.survey.modal.setModel({
+                name:"Test -> "+ hms,
+                vigenciaDesde:"2018/01/01",
+                vigenciaHasta:"2018/12/31",
+                isEnabled:true,
+                isDefault:true
+            });
 
-        $scope.grillaSurvey.onAdd=function(){
-            $scope.modalEditSurvey.open('ADD'); 
-        }
-
-        $scope.grillaSurvey.onEdit=function(){
-            $scope.modalEditSurvey.open('EDIT'); 
-        }
+    /*
+        // Copiado hasta aca
 
         $scope.modalEditSurvey.onShow=function(){
-            
-        
- 
             if (this.method == API_METHOD.ADD) {
                 $("#vigenciaDesde").val();
                 $("#vigenciaHasta").val();
@@ -84,22 +68,17 @@
                  }
             }
         }
- 
         $scope.modalEditSurvey.submit = function (form) {
-            
             this.form = form;
             if (form.$valid) {
-            
                 if (this.method == "EDIT") {
                     $scope.modalEditSurvey.model.vigenciaDesde= $("#vigenciaDesde").val();
                     $scope.modalEditSurvey.model.vigenciaHasta= $("#vigenciaHasta").val();
                     api.put($scope.modalEditSurvey.model._id, $scope.modalEditSurvey.model, surveyPut_callBack);
                 }
-
                 if (this.method == "DELETE") {
                     api.delete($scope.modalEditSurvey.model._id, surveyDelete_callBack);
                 }
-
                 if (this.method == "ADD") {
                     $scope.modalEditSurvey.model.vigenciaDesde= $("#vigenciaDesde").val();
                     $scope.modalEditSurvey.model.vigenciaHasta= $("#vigenciaHasta").val();
@@ -109,53 +88,7 @@
                 }
             }
         }
-
-        function surveyGet_callBack(res) {
-            $scope.surveyList= res.data;
-            $scope.modalEditSurvey.setItems(res.data);
-        }
-        function surveyPut_callBack(res) {
-            console.log(" surveyPut_callBack -> ",res)
-            if (!api.isError(res)) {
-                if (res.statusText != 'OK') {
-                    toastr.error(res.data.message);
-                } else {
-                    $scope.modalEditSurvey.hide();
-                }
-            }
-        }
-
-        var surveyPost_callBack = function (res) {
-            console.log(" surveyPost_callBack -> ",res)
-            if (!api.isError(res)) {
-                if (res.statusText != 'OK') {
-                    toastr.error(res.data.message);
-                } else {
-                    $scope.grillaSurvey.HttpGetFromDB();
-                    $scope.modalEditSurvey.hide();
-                }
-            }
-        }
-        var surveyDelete_callBack = function (res) {
-            if (!api.isError(res)) {
-                if (res.statusText != 'OK') {
-                    toastr.error(res.data.message);
-                } else {
-                    $scope.modalEditSurvey.hide();
-                    toastr.success(res.data.message);
-                }
-            }
-        }
- 
-        
-        /*
-        function surveyGet_callBack (res) {
-            console.log("res",res)
-            $scope.grillaSurvey.data=res.data;
-            $scope.grillaSurvey.config.loading=false;
-        }
-        */
-
+ */
     };
     
     controllerSurveys.$inject = ['$scope','$http','$filter','AppServiceCaller','AplicationText'];

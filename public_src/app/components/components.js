@@ -290,6 +290,7 @@ export var ModalTemplate = function () {
     this.model = {}
     this.items = {}
     this.calendar=[];
+    this.enviroment="";
     this.click = function () {
         console.log("Click this.modal_name", this.modal_name);
     },
@@ -321,8 +322,10 @@ export var ModalTemplate = function () {
 
     this.resetModel = function () {
         this.select_index = -1;
-        this.model_aux = null;
-        this.model = null;
+        this.model_aux = {};
+        this.model = {};
+        console.log("resetModel")
+
     }
     this.cancel = function () {
         this.items[this.select_index] = angular.copy(this.model_aux)
@@ -330,13 +333,16 @@ export var ModalTemplate = function () {
         this.onCancel();
     }
     this.open = function (method, index) {
-        console.log("method -> ",method)
+        
         if (method == API_METHOD.EDIT || method == API_METHOD.DELETE) {
             if (typeof index !== 'undefined') {
                 this.setItem(index)
             }
         } else {
-            this.resetModel();
+            console.log("this.enviroment",this.enviroment)
+            if(this.enviroment.toUpperCase()!='TEST'){
+                this.resetModel();
+            }
         }
         this.method = method;
         this.show();
@@ -344,7 +350,6 @@ export var ModalTemplate = function () {
 
     this.show = function () {
         var id="#"+this.modal_name;
-        console.log("Show id",id,$(id).html())
         $(id).modal('show');
        this.onShow();
     }
@@ -354,7 +359,9 @@ export var ModalTemplate = function () {
         this.model = this.items[index]
     }
 
-
+    this.setModel = function (data) {
+        this.model = data;
+    }
     this.setItems = function (data) {
         this.items = data;
     }

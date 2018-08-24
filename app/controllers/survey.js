@@ -72,14 +72,18 @@ exports.show = function(req, res){
 
 exports.all = function(req, res){
     var order={};
+    console.log("-1");
     if(req.query.field){
         try {
+            console.log("0");
             order=JSON.parse("{\""+req.query.field +"\":\""+ req.query.order+"\"}");
         }
         catch(err) {
+            console.log("0 Error");
             res.status(500).jsonp({"message":err.message});
         }
     }
+    console.log("1");
     var perPage=parseInt(req.query.limit);
     var page=parseInt(req.query.page);
     var skip=(perPage * page) - perPage ;
@@ -89,10 +93,13 @@ exports.all = function(req, res){
             .limit(perPage)
             .populate("taxonomia").populate("institucion")
             .exec(function(err, data) {
+                console.log("2");
                 Survey.countDocuments().exec(function(err, count) {
                     if (err){
+                        console.log("3");
                         res.status(500).jsonp({"message":err.message});
                     }
+                    console.log("4");
                     res.jsonp(
                         {   docs: data,
                             current: page,
