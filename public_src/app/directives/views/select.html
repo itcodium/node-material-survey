@@ -1,0 +1,17 @@
+<section class="card p-2 pb-3 mb-1 ">
+    <p>{{orden}}. {{select.question}}</p>
+       <div class="row ml-2">
+                <div class="col-md-6">
+                    <select ng-model="selected" class="mdb-select">
+                            <option ng-repeat="sl in select.list" value="{{sl.text}}">{{sl.text}}</option>
+                            <option value="" disabled selected>(Seleccionar)</option>
+                    </select>
+                </div>
+        </div>
+    <script>
+        $(document).ready(function() {
+            $('.mdb-select').material_select();
+        });
+    </script>
+</section>
+

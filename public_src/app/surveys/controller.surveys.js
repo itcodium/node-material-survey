@@ -1,21 +1,23 @@
     import {app} from '../app.init';
     import {ApiCaller}  from '../api.caller';
     import {Components,ModalTemplate} from '../components/components';
-    import {SurveyApp} from '../components/grillaModalCrud';
+    import {GridModalCrud} from '../components/grillaModalCrud';
     
- 
+    
     
     export var controllerSurveys= function  ($scope,$http,$filter,AppServiceCaller, AplicationText) {
          
+        
         var SURVEY_COLUMNS=[
             {show:false,name:'id',             field:'_id',            tip: '',               order:{desc:false}},
-            {show:true ,name:'Name',           field:'name',           tip: '',               order:{desc:false}},
+            {show:true ,name:'Name',           field:'name',           tip: '',               order:{desc:false},
+             link:{page:"surveyDetail",param:"_id"}},
             {show:true ,name:'Vigencia desde', field:'vigenciaDesde',  tip: '',filter:'date', order:{desc:false}},
             {show:true ,name:'Vigencia hasta', field:'vigenciaHasta',  tip: '',filter:'date', order:{desc:false}},
             {show:true ,name:'Enabled',        field:'isEnabled',      tip: '',               order:{desc:false}},
-            {show:true ,name:'Default',        field:'isDefault',      tip: '',               order:{desc:true}}
+            {show:true ,name:'Default',        field:'isDefault',      tip: '',               order:{desc:true}},
         ]
-        $scope.survey=new SurveyApp($scope,$http,$filter,ModalTemplate,ApiCaller,AppServiceCaller,AplicationText);
+        $scope.survey=new GridModalCrud($scope,$http,$filter,ModalTemplate,ApiCaller,AppServiceCaller,AplicationText);
         
 
         $scope.survey.setApiCaller("survey");
@@ -54,7 +56,6 @@
 
  
     };
-    
     controllerSurveys.$inject = ['$scope','$http','$filter','AppServiceCaller','AplicationText'];
     app.controller('controllerSurveys', ["$scope",'$http','$filter',"AppServiceCaller", "AplicationText", controllerSurveys])
 

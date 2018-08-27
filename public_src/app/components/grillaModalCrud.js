@@ -1,5 +1,5 @@
 
-export var SurveyApp=function (
+export var GridModalCrud=function (
                     $scope,$http,$filter,
                     ModalTemplate,ApiCaller,AppServiceCaller,AplicationText)
     {
@@ -46,6 +46,10 @@ export var SurveyApp=function (
                 _this.modal.model=_this.grid.selectedItem;
                 _this.modal.open('EDIT'); 
             }
+            _this.grid.afterGet=function(){
+                _this.grid.selectedItem=null;
+            }
+            
         }
 
         
@@ -92,7 +96,6 @@ export var SurveyApp=function (
                     toastr.error(res.data.message);
                 } else {
                     _this.modal.hide();
-                    _this.grid.selectedItem=null;
                     _this.grid.HttpGetFromDB();
                     toastr.success(res.data.message);
                 }

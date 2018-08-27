@@ -1,0 +1,30 @@
+<section class="card p-2 pb-3 mb-1">
+    <p class="mb-4">{{orden}}. {{quality.question}}</p>
+    <table class="table">
+           <tr>
+               <td></td>
+               <td ng-repeat="item in quality.list">
+                    {{item.text}}
+               </td>
+               <td></td>
+           </tr>
+           <tr>
+                <td>{{quality.labelLeft}}</td>
+                <td scope="col" ng-repeat="item in quality.list">
+                            <input  ng-disabled="disabled" 
+                                    ng-model="item.selected" 
+                                    value="{{item.text}}"
+                                    type="radio" 
+                                    name="q{{orden}}"
+                                    class="form-check-input" 
+                                    id="qty{{$index}}"/>
+                                    
+                            <label class="form-check-label" for="qty{{$index}}"></label>
+                </td>
+                <td>{{quality.labelRight}}</td>
+           </tr>
+    </table>
+</section>
+
+
+

@@ -1,11 +1,21 @@
 
 import './assets/css/style.css';
+ 
+
+
+window.initDatePicker  =function (id){
+ 
+}
+
 
 import {app} from './app/app.init';
 
-import {appController}       from './app/app';
-import {controllerHoteles}   from './app/hoteles/controller.hoteles';
-import {controllerSurveys}   from './app/surveys/controller.surveys';
+import {appController}            from './app/app';
+import {controllerHoteles}        from './app/hoteles/controller.hoteles';
+import {controllerSurveys}        from './app/surveys/controller.surveys';
+import {controllerSurveyDetail}   from './app/surveys/controller.detail';
+
+
 
 import {hotelItemCtrl}       from './app/hoteles/controllers/hotelItem';
 import {ratingCtrl}          from './app/hoteles/controllers/hotelRating';
@@ -35,7 +45,9 @@ require ('./app/components')(app);
   module.hot.accept('./app/surveys/controller.surveys', function() {
     location.reload();  
   })
- 
+  module.hot.accept('./app/surveys/controller.detail', function() {
+    location.reload();  
+  })
   module.hot.accept('./app/directives/index', function() {
     location.reload();  
   })

@@ -149,13 +149,18 @@ export var Components= (function () {
                         _this.totalItems=res.data.count;
                         _this.setPage();
                     }
+                    _this.afterGet();
             }, function(error){
                 _this.config.loading=false;
                 alert("Error")
                 // Toast.showError("Error al obtener datos de la grilla, "+error.data.message,'Error');
             });
+
         }
-     
+        this.afterGet=function(){
+
+        }
+
         this.onCheck=function(index,param){
             // console.log("index,param, _this.multipleSelect ",_this.multipleSelect ,index,param)
             if(_this.multipleSelect!=true){

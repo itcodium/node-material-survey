@@ -1,20 +1,7 @@
 var moment = require('moment');
 module.exports=function(app){
-    
-    app.directive('hello',function(){
-        return{
-            restrict:'E',
-            scope:{},
-            template: require('./hello.html'),
-            controllerAs: 'vm',
-            controller:function(){
-                var vm=this;
-                this.greeting='Hello webpack!!';
-            }
-        }
-    })   
-    
-    .directive('modalInclude', ['$compile', function ($compile) {
+ 
+    app.directive('modalInclude', ['$compile', function ($compile) {
         return { 
           restrict: 'E', 
           scope: {
@@ -36,10 +23,6 @@ module.exports=function(app){
             scope: { input: '=' }
         };
     });
- 
- 
-
-
 
     var DFormattedInput=function($filter, $browser) {
         return {

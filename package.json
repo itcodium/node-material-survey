@@ -38,6 +38,7 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "angular-moment-picker": "^0.10.2",
     "angular-sanitize": "^1.5.7",
     "angularjs-datepicker": "^2.1.23",
     "body-parser": "^1.18.3",

@@ -46,7 +46,12 @@
                     ng-show="column_data.show"
                     ng-style="(column_data.filter == 'number' || column_data.filter == 'int' || column_data.filter == 'coef' || column_data.filter == 'currency') ? {'width': column_data.width, 'text-align': 'right' } :  {'width': column_data.width, 'text-align': column_data.align}"
                     >
-                    {{ grilla.showVal(row[column_data.field], column_data.filter )}}
+                    <span ng-if="!column_data.link">
+                        {{ grilla.showVal(row[column_data.field], column_data.filter )}}
+                    </span>
+                    <span ng-if="column_data.link">
+                           <a class="text-primary" href="/#!/{{column_data.link.page}}/{{row[column_data.link.param]}}"><span >{{ grilla.showVal(row[column_data.field], column_data.filter )}}</span></a>
+                    </span>
                 </td>
             </tr>
             <tfoot ng-if="grilla.footData.length>0">

@@ -1,0 +1,31 @@
+﻿<!-- 
+
+<div class="alert-division" ng-show="alerts.length > 0">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+        <span ng-show="alert.type === 'danger'" class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+        </span>
+        <span class="sr-only">Error:</span>
+        <strong ng-show="alert.strong">{{alert.strong}}</strong>
+        {{alert.msg}}
+        <a ng-show = "alert.ltext" href="" ng-click="frontDoor(alert.lfunc)"
+           class="alert-link">{{alert.ltext}}</a>
+    </alert>
+</div>
+-->
+<!-- END MENSAJE 
+-->
+
+<h1>{{survey.name}}</h1>
+<div  ng-show="survey.questions.length">
+    <p>El Estado, en el afán de buscar la calidez y calidad de los servicios públicos, se encuentra realizando la siguiente encuesta de percepción sobre los servicios públicos.</p>
+    <!-- ng-show="!detail.voted" -->
+    <input   class="form-control btn-default" ng-click="detail.sendSurvey()"   type="button" value="Enviar encuesta" />
+    <div id="DinamicDiv"></div>  
+    <input id="btnEnviarEncuesta"  class="form-control btn-default" ng-click="detail.sendSurvey()"   type="button" value="Enviar encuesta" />
+    <!-- ng-show="!detail.voted" -->
+</div>
+<div ng-show="survey.questions.length==0">Esta encuesta no tiene aún las preguntas configuradas</div>
+
+
+
+
