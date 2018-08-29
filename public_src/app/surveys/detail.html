@@ -24,8 +24,13 @@
     <input id="btnEnviarEncuesta"  class="form-control btn-default" ng-click="detail.sendSurvey()"   type="button" value="Enviar encuesta" />
     <!-- ng-show="!detail.voted" -->
 </div>
-<div ng-show="survey.questions.length==0">Esta encuesta no tiene aún las preguntas configuradas</div>
-
+<div ng-show="survey.questions.length==0">
+    <p>Esta encuesta no tiene aún las preguntas configuradas</p>
+    <br>
+    <button type="button" ng-click="addQuestion()" class="btn btn-outline-info waves-effect">
+        Add Question
+    </button>
+</div>
 
 
 

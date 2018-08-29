@@ -1,16 +1,16 @@
 <div class="table-title">
         <div class="row">
-            <div class="col-sm-5">
+            <div class="col-sm-7">
                 <h2><b>{{grilla.title}}</b></h2>
             </div>
-            <div class="col-sm-7 text-md-right">
-                    <a  class="btn btn-danger btn-sm" ng-click="grilla.onDelete()" ng-if="grilla.delete && grilla.selectedItem" data-toggle="modal"> 
+            <div class="col-sm-5 text-md-right">
+                    <a  class="btn btn-danger btn-sm pl-3 pr-3" ng-click="grilla.onDelete()" ng-if="grilla.delete && grilla.selectedItem" data-toggle="modal"> 
                             <i class="fa fa-trash fa-2x" ></i> 
                     </a>	
-                <a  class="btn btn-sm white" ng-click="grilla.onEdit()" ng-if="grilla.edit && grilla.selectedItem" data-toggle="modal"> 
+                <a  class="btn btn-sm white pl-3 pr-3" ng-click="grilla.onEdit()" ng-if="grilla.edit && grilla.selectedItem" data-toggle="modal"> 
                         <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
                 </a>						
-                <a  class="btn btn-sm white" ng-click="grilla.onAdd()" ng-if="grilla.add"  data-toggle="modal">
+                <a  class="btn btn-sm white pl-3 pr-3" ng-click="grilla.onAdd()" ng-if="grilla.add"  data-toggle="modal">
                         <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
                     </a>
             </div>

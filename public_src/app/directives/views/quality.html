@@ -1,16 +1,16 @@
-<section class="card p-2 pb-3 mb-1">
+<section class="card p-2 mb-2">
     <p class="mb-4">{{orden}}. {{quality.question}}</p>
     <table class="table">
            <tr>
                <td></td>
-               <td ng-repeat="item in quality.list">
+               <td class="ml-0 pl-0"  ng-repeat="item in quality.list">
                     {{item.text}}
                </td>
                <td></td>
            </tr>
            <tr>
                 <td>{{quality.labelLeft}}</td>
-                <td scope="col" ng-repeat="item in quality.list">
+                <td scope="col" class="ml-0 pl-0"  ng-repeat="item in quality.list">
                             <input  ng-disabled="disabled" 
                                     ng-model="item.selected" 
                                     value="{{item.text}}"
@@ -19,7 +19,7 @@
                                     class="form-check-input" 
                                     id="qty{{$index}}"/>
                                     
-                            <label class="form-check-label" for="qty{{$index}}"></label>
+                            <label class="form-check-label  ml-0 pl-0" for="qty{{$index}}"></label>
                 </td>
                 <td>{{quality.labelRight}}</td>
            </tr>

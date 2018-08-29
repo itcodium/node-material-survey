@@ -1,3 +1,3 @@
 git add .
-git commit -m "2018-08-26 Fin visualizacion encuesta"
+git commit -m "2018-08-26 Edicion grilla II"
 git push

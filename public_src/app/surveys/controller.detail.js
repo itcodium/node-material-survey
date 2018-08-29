@@ -1,10 +1,8 @@
 import {app} from '../app.init';
 import {ApiCaller}  from '../api.caller';
-import {Components,ModalTemplate} from '../components/components';
-import {GridModalCrud} from '../components/grillaModalCrud';
 
-
-// ,datacontext, Global,SurveyVote
+//import {Components,ModalTemplate} from '../components/components';
+//import {GridModalCrud} from '../components/grillaModalCrud';
 
 
 export var SurveyCrud=function ($scope,$http, $routeParams,$compile,AppServiceCaller)
@@ -16,7 +14,6 @@ export var SurveyCrud=function ($scope,$http, $routeParams,$compile,AppServiceCa
         _this.api=new ApiCaller(param);
         _this.api.setCaller(AppServiceCaller)
     }
-
     this.getSurveyById=function(param){
         _this.api.getById(this.surveyDetail_callback,param);
     }
@@ -24,7 +21,6 @@ export var SurveyCrud=function ($scope,$http, $routeParams,$compile,AppServiceCa
         $scope.survey=res.data;
         _this.survey=res.data;
         _this.renderSurvey();
-        
     }
     this.sendSurvey=function(){
         // Pendiente ....
@@ -90,78 +86,6 @@ export var SurveyCrud=function ($scope,$http, $routeParams,$compile,AppServiceCa
                 default:
                     var x="No value found";
             }
-
-             /*
-            if($scope.survey.questions[i].type.type=="CUSTOM"){
-                
-            }
-            if($scope.survey.questions[i].type.type=="LIST"){
-                
-            }
-            if(_this.survey.questions[i].type.type=="CHECKLIST"){
-                
-            }
-            if($scope.survey.questions[i].type.type=="SELECT"){
-                var selectedItem=-1;
-                for(var j=0;j<$scope.survey.questions[i].list.length;j++){
-                
-                    if($scope.survey.questions[i].list[j].text==$scope.survey.questions[i].selected.text){
-                        selectedItem=j;
-                        break;
-                    }
-                    
-                }
-                this.setCompileObject('<div disabled="true"  survey-select selected="survey.questions['+i+'].list['+selectedItem+']" orden="'+(i+1)+'" select="survey.questions['+i+']" ></div>');
-
-            }
-
-           
-            if(_this.survey.questions[i].type.type=="QUALITY") {
-                
-            }
-
-            if(_this.survey.questions[i].type.type=="MATRIX") {
-                
-            }
-
-            if(_this.survey.questions[i].type.type=="DATETIME") {
-                var strHtml='<div>  \
-                    <p>'+i+'. {{survey.questions['+i+'].question}}</p><br>  \
-                    <div class="col-md-2">  \
-                        <input   placeholder="yy/mm/dd" ng-model="survey.questions['+i+'].response" class="form-control input-sm" type="text" id="datepicker'+i+'" name="datepicker'+i+'" ng-model="datepicker'+i+'"/>  \
-                    </div>  \
-                    </div> <br><br> \
-                <script> \
-                    $("#datepicker'+i+'").datepicker({ \
-                        defaultDate: "+1w", \
-                        changeYear: true, \
-                        dateFormat: "yy/mm/dd",\
-                        changeMonth: true, \
-                        numberOfMonths: 1 \
-                    });\
-                </script>';
-                //var html= $compile(strHtml)($scope);
-                //$(_this.renderObjectId).append(html);
-                
-            }
-            if(_this.survey.questions[i].type.type=="TIME") {
-                var strHtml='   <div class="form-group"> \
-                                        <p>'+i+'. {{survey.questions['+i+'].question}}</p> \
-                                <div class="input-group bootstrap-timepicker timepicker"> \
-                                    <input   id="timepicker'+i+'" ng-model="survey.questions['+i+'].response" data-minute-step="1" type="text" class="form-control input-small"> \
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span> \
-                                </div> \
-                                <script type="text/javascript"> \
-                                    $("#timepicker'+i+'").timepicker(); \
-                                </script> \
-                                <!--http://jdewit.github.io/bootstrap-timepicker/--> \
-                                </div>';
-
-
-                // var html= $compile(strHtml)($scope);
-                // $(_this.renderObjectId).append(html);
-            }
-            */
         }
     }
     
@@ -174,6 +98,11 @@ export var controllerSurveyDetail = function ($scope,$http, $routeParams,$compil
     $scope.detail.setApiCaller("survey");
     $scope.detail.getSurveyById($routeParams.id);
     $scope.detail.setRenderObjectId("#DinamicDiv");
+
+    $scope.addQuestion=function(){
+        window.location.href = "/#!/surveyAddQuestion/"+$routeParams.id;
+    }
+    
 
 }
 

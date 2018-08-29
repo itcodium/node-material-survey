@@ -12,6 +12,7 @@ module.exports=function(app){
         $scope.grilla.selectedGrid=this.selectedGrid;
         $scope.grilla.multipleSelect=(typeof  this.multipleSelect=='undefined'?true:this.multipleSelect);
         $scope.mostrarPaginacion= (typeof  this.mostrarPaginacion=='undefined'?true:this.mostrarPaginacion);
+        $scope.orderByDb= (typeof  this.orderByDb=='undefined'?true:this.orderByDb);
     }
     grillaCtrl.$inject = ['$scope'];
     
@@ -22,7 +23,7 @@ module.exports=function(app){
             data: '=',
             
             data: '=',
-            orderByDB:'=',
+            orderByDb:'=',
             footData: '=',
             mostrarPaginacion:'=',
             btnEdit:'=',

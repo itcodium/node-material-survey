@@ -65,10 +65,6 @@ exports.create = function (req, res) {
     });
 }
 
-exports.show = function(req, res){
-    console.log("exports.show: ",req.survey);
-    res.jsonp(req.survey);
-}
 
 exports.all = function(req, res){
     var order={};
@@ -80,7 +76,6 @@ exports.all = function(req, res){
             res.status(500).jsonp({"message":err.message});
         }
     }
-
     var perPage=parseInt(req.query.limit);
     var page=parseInt(req.query.page);
     var skip=(perPage * page) - perPage ;
@@ -116,7 +111,13 @@ exports.survey = function(req, res, next, id){
         req.survey = item;
         return next();
     });
+
 }
+exports.show = function(req, res){
+    console.log("exports.show: ",req.survey);
+    res.jsonp(req.survey);
+}
+
 
 exports.update = function(req, res){
     var survey = req.survey

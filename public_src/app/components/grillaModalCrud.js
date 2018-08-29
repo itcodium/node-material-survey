@@ -37,21 +37,24 @@ export var GridModalCrud=function (
             _this.grid.onDelete=function(){
                 _this.modal.model=_this.grid.selectedItem;
                 _this.modal.open('DELETE'); 
+                _this.onOpenModal();
             }
     
             _this.grid.onAdd=function(){
                 _this.modal.open('ADD'); 
+                _this.onOpenModal();
             }
             _this.grid.onEdit=function(){
                 _this.modal.model=_this.grid.selectedItem;
                 _this.modal.open('EDIT'); 
+                _this.onOpenModal();
             }
             _this.grid.afterGet=function(){
                 _this.grid.selectedItem=null;
             }
             
         }
-
+        this.onOpenModal=function(){}
         
         this.modalSubmit = function (form) {
             this.form = form;

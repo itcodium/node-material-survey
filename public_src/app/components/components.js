@@ -142,13 +142,20 @@ export var Components= (function () {
                     method: "GET",
                     params: _this.config.queryParams(param)
                 }).then(function(res){
-                    if (res.data.docs.length>0){
-                        _this.data=res.data.docs;
-                        _this.config.showNoRegister=true;
-                        _this.config.loading=false;
-                        _this.totalItems=res.data.count;
-                        _this.setPage();
+                    
+                    if(!param){
+                        if (res.data.docs && res.data.docs.length>0){
+                            _this.data=res.data.docs;
+                            _this.totalItems=res.data.count;
+                            _this.setPage();
+                        }else{
+                            console.log(res)
+                        }
+                    }else{
+                        param(res)
                     }
+                    _this.config.showNoRegister=true;
+                    _this.config.loading=false;
                     _this.afterGet();
             }, function(error){
                 _this.config.loading=false;
@@ -347,6 +354,7 @@ export var ModalTemplate = function () {
                 this.resetModel();
             }
         }
+        console.log("this.model",this.model,method, index)
         this.method = method;
         this.show();
     }

@@ -14,6 +14,8 @@ import {appController}            from './app/app';
 import {controllerHoteles}        from './app/hoteles/controller.hoteles';
 import {controllerSurveys}        from './app/surveys/controller.surveys';
 import {controllerSurveyDetail}   from './app/surveys/controller.detail';
+import {controllerAddQuestion}    from './app/surveys/controller.add.question';
+
 
 
 
@@ -46,6 +48,9 @@ require ('./app/components')(app);
     location.reload();  
   })
   module.hot.accept('./app/surveys/controller.detail', function() {
+    location.reload();  
+  })
+  module.hot.accept('./app/surveys/controller.add.question', function() {
     location.reload();  
   })
   module.hot.accept('./app/directives/index', function() {
