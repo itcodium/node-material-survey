@@ -31,6 +31,8 @@
                 }
             );
         $scope.survey.grid.title="Survey"
+        $scope.survey.grid.config.query.field='name';
+
         $scope.survey.modal.title="Survey Modal"
         $scope.survey.grid.HttpGetFromDB();
         

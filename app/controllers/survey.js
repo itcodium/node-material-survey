@@ -67,6 +67,7 @@ exports.create = function (req, res) {
 
 
 exports.all = function(req, res){
+ 
     var order={};
     if(req.query.field){
         try {
@@ -79,16 +80,20 @@ exports.all = function(req, res){
     var perPage=parseInt(req.query.limit);
     var page=parseInt(req.query.page);
     var skip=(perPage * page) - perPage ;
+ 
     Survey.find({})
             .sort(order)
             .skip(skip)
             .limit(perPage)
             .populate("taxonomia").populate("institucion")
             .exec(function(err, data) {
+               
                 Survey.countDocuments().exec(function(err, count) {
                     if (err){
+                   
                         res.status(500).jsonp({"message":err.message});
                     }
+                
                     res.jsonp(
                         {   docs: data,
                             current: page,
@@ -114,7 +119,6 @@ exports.survey = function(req, res, next, id){
 
 }
 exports.show = function(req, res){
-    console.log("exports.show: ",req.survey);
     res.jsonp(req.survey);
 }
 
@@ -132,15 +136,37 @@ exports.delete = function(req, res){
         if (err) {
             res.status(500).jsonp({"message":err.message});
         } else {
-            res.status(200).jsonp({"message":"Deleted record."});
+            res.status(200).jsonp({"message":"Se ha borrado un registro."});
         }
     })
 }
 
+exports.deleteQuestion= function(req, res){
+    try {
+        Survey.findById(req.params.surveyId,function (err, itemSurvey){
+            if (err) {
+                res.status(500).jsonp({status:"error","message":err.message});
+            }
+            var item = itemSurvey.questions.id(req.params.questionId);
+            item.remove(function (err) {
+                if (err) {
+                    res.status(500).jsonp({"message":err.message});
+                } else {
+                    res.status(200).jsonp({"message":"Se ha borrado un registro."});
+                }
+            });
+            itemSurvey.save();
+        });
+    }
+    catch(err) {
+        res.status(500).jsonp({"message":err.message});
+    }
+}
+
+
 exports.getAllTypes= function(req, res){
     SurveyType.find(function(err, items) {
-        console.log("req.query","getAllTypes",items);
-            res.jsonp(items);
+        res.jsonp(items);
     });
 }
 
@@ -156,9 +182,6 @@ exports.vote= function(req, res) {
                 index=i;
             }
         }
-
-
-
         if (index==-1){
             // req.body.survey.ciudadano= req.body.ciudadano;
              // var answer=req.body;
@@ -179,19 +202,21 @@ exports.vote= function(req, res) {
 }
 
 exports.addQuestion= function(req, res){
-   console.log("> addQuestion req.body <",req.body);
-
+    console.log("> addQuestion req.body <",req.body);
      //console.log("*** Question req.body._id  *** ->",req.body);
     Survey.findById(req.params.surveyId,function(err, item) {
+        if (!item) { 
+            res.status(500).jsonp({"message":"The record was not found." });
+            return;
+        }
         var subItem= item.questions.id(req.body._id);
-
         console.log("**** addQuestion req.body ****",req.body);
         if(!subItem){
             var question=new Question(req.body);
             item.questions.push(question);
             item.save(function(newItem,err) {
                 console.log('SAVE Success!',newItem);
-                 res.jsonp(newItem)
+                res.jsonp({"status":"ok",message:"se inserto un registro", data: newItem})
             })
 
         }else{
@@ -205,13 +230,14 @@ exports.addQuestion= function(req, res){
 
             item.save(function (err,newitem) {
                 console.log('Update Success!',newitem);
-                res.jsonp(newitem);
+                res.jsonp({"status":"ok",message:"se inserto un registro", data: newItem})
             });
         }
     });
 
 
 }
+
 
 
 

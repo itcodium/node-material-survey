@@ -1,3 +1,109 @@
 <section>
-    ctrModal: {{ctrModal.model}}
+    <div class="form-row mb-3">
+            <select class="browser-default form-control form-control-sm" 
+                    required="required"  id="cmbSurvey"
+                    ng-disabled="cboTypeDisabled"
+                    ng-model="ctrModal.model.type"
+                    ng-options="s as s.type for s in ctrModal.surveyTypes" >
+                <option class="" value="">(Seleccionar tipo)</option>
+            </select>
+    </div>
+    <div class="md-form m-0 p-0">
+        <input  id="txtSurvey" 
+                type="text" 
+                ng-model="ctrModal.model.question"
+                placeholder="Nombre de la encuesta" 
+                class="form-control form-control-sm" />
+    </div>
+ 
+    
+    <div ng-show='ctrModal.model.type.type'>
+            <div class="row" ng-show='(ctrModal.model.type.type!="CUSTOM" && ctrModal.model.type.type!="TIME" && ctrModal.model.type.type!="DATETIME")'>
+                <form class="form-horizontal">
+                    <fieldset>
+                        <!-- AGRUEGAR LISTA-->
+                        <div class="form-group">
+                            <label for="cmbSurvey" class="control-label col-xs-2">Lista</label>
+                            <div class="col-xs-7">
+                                <input id="item" type="text" class="form-control" ng-model="listText.text" placeholder="">
+                            </div>
+                            <div class="col-xs-3">
+                                <button id="btnAceptar" type="button" ng-disabled='listText.text==""'  ng-click="addItemToList()"  class="btn btn-success">Agregar</button>
+                            </div>
+                        </div>
+                        <!-- EDITAR QUALITY-->
+                        <div class="form-group" ng-show='ctrModal.model.type.type=="QUALITY"' >
+                            <label for="labelLeft" class="control-label col-xs-2">Etiqueta</label>
+                            <div class="col-xs-7">
+                                <input id="labelLeft" class="form-control" type="text" ng-model="ctrModal.model.labelLeft" rows="3"/>
+                            </div>
+                            <div class="col-xs-3">&nbsp;</div>
+                        </div>
+                        <!-- ng-show='ctrModal.model.type.type!="DATETIME" && ctrModal.model.type.type!="TIME" && ctrModal.model.type.type!="CUSTOM"' -->
+                        <div class="form-group" class="row" ng-show='ctrModal.model.type.type!="DATETIME" && ctrModal.model.type.type!="TIME" && ctrModal.model.type.type!="CUSTOM"'>
+                            <div class="col-xs-2"></div>
+                            <div class="col-xs-7">
+                                <!-- EDITAR LISTA-->
+                                <div ng-show="editarLista">
+                                    <input type="text" required="required" class="form-control" ng-model="ItemTextEdit.text"  placeholder="">
+                                    <br>
+                                </div>
+                                <!-- MOSTRAR OPCIONES LISTA-->
+
+                                <ul class="list-group" >
+                                    <li class="list-group-item" ng-repeat="item in ctrModal.model.list">
+                                        {{item.text}}
+                                        <a ng-show="editarLista" class="label  label-primary" ng-click="modificar_lista(item)">Modificar</a>
+                                        <a ng-show="editarLista" class="label  label-danger" ng-click="eliminar_lista($index)">Eliminar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-3" ng-show="ctrModal.model.list.length>0">
+                                <a id="btnEditar" ng-show="!editarLista" ng-click="editar_lista()" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                                <a id="btnCancelarEditar"  ng-show="editarLista" ng-click="editar_lista()" class="btn btn-warning"><span class="glyphicon"></span>Aceptar</a>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-show='ctrModal.model.type.type=="QUALITY"' >
+                            <label for="labelRight" class="control-label col-xs-2">Etiqueta</label>
+                            <div class="col-xs-7">
+                                <input id="labelRight" class="form-control" type="text" ng-model="ctrModal.model.labelRight" />
+                            </div>
+                            <div class="col-xs-3">&nbsp;</div>
+                        </div>
+
+                        <!-- AGREGAR COLUMNAS-->
+                        <div class="form-group" ng-show='ctrModal.model.type.type=="MATRIX"'>
+                            <div class="col-xs-2">
+                                <label class="control-label">Columnas</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <div>
+                                    <input  id="itemColumnName"  type="text" class="form-control" ng-model="columnText.text" placeholder="">
+                                    <br>
+                                </div>
+                                <!-- EDITAR LISTA-->
+                                <div ng-show="editarLista">
+                                    <input type="text" required="required" class="form-control" ng-model="ItemTextColumnEdit.text"  placeholder="">
+                                    <br>
+                                </div>
+
+                                <!-- COLUMNAS MOSTRAR-->
+                                <ul class="list-group">
+                                    <li class="list-group-item" ng-repeat="column in ctrModal.model.columns">
+                                        {{column.text}}
+                                        <a ng-show="editarLista" class="label  label-primary" ng-click="modificar_columnas(column)">Modificar</a>
+                                        <a ng-show="editarLista" class="label  label-danger" ng-click="eliminar_columnas($index)">Eliminar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-3">
+                                <button id="btnAgregarColumna" type="button" ng-disabled='columnText.text==""'  ng-click="addItemToColumn()"  class="btn btn-success">Aceptar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
 </section>

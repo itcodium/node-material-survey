@@ -133,7 +133,35 @@ export var Components= (function () {
             }
             
         }
-        this.HttpGetFromDB=function(param){
+        
+        /*
+        this.callback=function(res){
+            if(!param){
+                if (res.data.docs && res.data.docs.length>0){
+                    _this.data=res.data.docs;
+                    _this.totalItems=res.data.count;
+                    _this.setPage();
+                }else{
+                    console.log(res)
+                }
+            }else{
+                param(res)
+            }
+            _this.config.showNoRegister=true;
+            _this.config.loading=false;
+            _this.afterGet();
+        }
+        */
+
+       this.callback=function(res){
+            if (res.data.docs && res.data.docs.length>0){
+                _this.data=res.data.docs;
+                _this.totalItems=res.data.count;
+                _this.setPage();
+            }
+        }
+
+        this.HttpGetFromDB=function(param,callback){
             _this.config.filtered=true;
             _this.config.showNoRegister=false;
             _this.config.loading=true;
@@ -142,22 +170,17 @@ export var Components= (function () {
                     method: "GET",
                     params: _this.config.queryParams(param)
                 }).then(function(res){
-                    
-                    if(!param){
-                        if (res.data.docs && res.data.docs.length>0){
-                            _this.data=res.data.docs;
-                            _this.totalItems=res.data.count;
-                            _this.setPage();
-                        }else{
-                            console.log(res)
-                        }
+                    if(callback){
+                        _this.callback=callback;
+                        _this.callback(res);
                     }else{
-                        param(res)
-                    }
+                        _this.callback(res)
+                    };
                     _this.config.showNoRegister=true;
                     _this.config.loading=false;
                     _this.afterGet();
-            }, function(error){
+                    
+                }, function(error){
                 _this.config.loading=false;
                 alert("Error")
                 // Toast.showError("Error al obtener datos de la grilla, "+error.data.message,'Error');

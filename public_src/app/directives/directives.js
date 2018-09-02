@@ -24,6 +24,7 @@ module.exports=function(app){
         };
     });
 
+
     var DFormattedInput=function($filter, $browser) {
         return {
             require: 'ngModel',

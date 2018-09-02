@@ -14,7 +14,7 @@ export var GridModalCrud=function (
             _this.api=new ApiCaller(param);
             _this.api.setCaller(AppServiceCaller)
         }
-        this.createModal=function(modalName,modalTitle,model_id,form){
+        this.createModal=function(modalName,modalTitle,model_id,form,pSubmit){
             _this.modal = new ModalTemplate();
             _this.modal.modal_name     = modalName ;   
             _this.modal.title          = modalTitle;   
@@ -22,7 +22,7 @@ export var GridModalCrud=function (
             _this.modal.template       = form;        
             _this.modal.pageText       = $scope.pageText;
             _this.modal.AplicationText = AplicationText;
-            _this.modal.submit=_this.modalSubmit;
+            _this.modal.submit=pSubmit ? pSubmit: _this.modalSubmit;
             
         }
         this.afterCreateGrid=function(){
@@ -60,29 +60,31 @@ export var GridModalCrud=function (
             this.form = form;
             if (form.$valid) {
                 if (this.method == "EDIT") {
-                    _this.api.put(_this.modal.model._id, _this.modal.model, Put_callBack);
+                    _this.api.put(_this.modal.model._id, _this.modal.model, _this.Put_callBack);
                 }
                 if (this.method == "DELETE") {
-                    _this.api.delete(_this.modal.model._id, Delete_callBack);
+                    _this.api.delete(_this.modal.model._id, _this.Delete_callBack);
                 }
 
                 if (this.method == "ADD") {
-                    _this.api.post(_this.modal.model, Post_callBack);
+                    _this.api.post(_this.modal.model, _this.Post_callBack);
                 }
             }
         }
 
-        var Put_callBack=function(res){
+        this.Put_callBack=function(res){
             if (!_this.api.isError(res)) {
                 if (res.statusText != 'OK') {
                     toastr.error(res.data.message);
                 } else {
                     _this.modal.hide();
+                    toastr.success(res.data.message);
+                    _this.grid.HttpGetFromDB();
                 }
             }
         }
 
-        var Post_callBack=function(res){
+        this.Post_callBack=function(res){
             if (!_this.api.isError(res)) {
                 if (res.statusText != 'OK') {
                     toastr.error(res.data.message);
@@ -93,16 +95,18 @@ export var GridModalCrud=function (
             }
         }
         
-        var Delete_callBack=function(res){
+        this.Delete_callBack=function(res){
             if (!_this.api.isError(res)) {
                 if (res.statusText != 'OK') {
                     toastr.error(res.data.message);
                 } else {
                     _this.modal.hide();
                     _this.grid.HttpGetFromDB();
+                    _this.grid.selectedItem=null;
                     toastr.success(res.data.message);
                 }
             }
         }
+
     }
     

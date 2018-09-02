@@ -56,7 +56,7 @@ module.exports = function (app, passport) {
  
  // Survey routes
   var vSurvey= require('../app/controllers/survey')
-  app.get('/api/survey.GetTypes', vSurvey.getAllTypes);
+  app.get('/api/survey/getTypes', vSurvey.getAllTypes);
 
   app.get('/api/survey', vSurvey.all);
   app.get('/api/survey/encuestaPorTramite', vSurvey.encuestaPorTramite);
@@ -66,11 +66,11 @@ module.exports = function (app, passport) {
   app.get('/api/survey/:surveyId', vSurvey.show);
   app.param('surveyId', vSurvey.survey);
   app.post('/api/survey',  vSurvey.create);
-
-  app.put('/api/survey/addQuestionToList/:surveyId', vSurvey.addQuestion);
+  app.put   ('/api/survey/addQuestion/:surveyId', vSurvey.addQuestion);
   app.put('/api/survey/vote/:surveyId',  vSurvey.vote);
   app.put('/api/survey/:surveyId',  vSurvey.update);
   app.delete('/api/survey/:surveyId',  vSurvey.delete);
+  app.delete('/api/survey/:surveyId/:questionId', vSurvey.deleteQuestion);
 
 
 

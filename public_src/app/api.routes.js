@@ -3,7 +3,7 @@ export var ApiRoutes=function() {
     var API_URL_PROTOCOLO= "";
     var API_URL=  "";
    
-    this.getUrl= function (api, param) {
+    this.getUrl= function (api, id,route) {
         this.USUARIOS= "usuario";
         this.HOTELES="hoteles";
         this.SURVEY="survey";
@@ -19,11 +19,20 @@ export var ApiRoutes=function() {
             API_URL = API_URL_PROTOCOLO + "//localhost:7777/api/";
         }
 
-        if(!param){
-            return API_URL + this[api.toUpperCase()] ; 
+        //if(!id){
+        
+        if(route){
+            console.log("* Route *", api,id,route )
+            return API_URL + this[api.toUpperCase()]+"/"+route ; 
         }else{
-            return API_URL + this[api.toUpperCase()] + "/" + param ;   
+            console.log("* Id  *", api,id,route )
+            if(id){
+                return API_URL + this[api.toUpperCase()] + "/" +id ;   
+            }else{
+                return API_URL + this[api.toUpperCase()] ;   
+            }    
         }
+        
         
     }
 };

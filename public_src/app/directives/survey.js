@@ -18,7 +18,7 @@ module.exports=function(app){
     app.directive('surveyQuality', function () {
             return {
                 restrict: 'EA',
-                template: require('./views/quality.html'),
+                template: require('./views/survey/quality.html'),
                 replace: true,
                 scope: { quality: '=',orden:'=',disabled:'=' }
             }
@@ -27,7 +27,7 @@ module.exports=function(app){
     app.directive('surveySelect', function () {
         return {
             restrict: 'EA',
-            template: require('./views/select.html'),
+            template: require('./views/survey/select.html'),
             replace: true,
             scope: { select: '=',orden:'=',selected:'=',disabled:'=' }
         }
@@ -35,7 +35,7 @@ module.exports=function(app){
     app.directive('surveyChecklist', function () {
             return {
                 restrict: 'EA',
-                template: require('./views/checklist.html'),
+                template: require('./views/survey/checklist.html'),
                 replace: true,
                 scope: { check: '=',orden:'=',disabled:'='}
             }
@@ -44,7 +44,7 @@ module.exports=function(app){
     app.directive('surveyRadiolist', function () {
             return {
                 restrict: 'EA',
-                template: require('./views/radiolist.html'),
+                template: require('./views/survey/radiolist.html'),
                 replace: true,
                 scope: { radio: '=',orden:'=',disabled:'='}
             }
@@ -53,7 +53,7 @@ module.exports=function(app){
     app.directive('surveyCustom', function () {
             return {
                 restrict: 'EA',
-                template: require('./views/custom.html'),
+                template: require('./views/survey/custom.html'),
                 replace: true,
                 scope: { custom: '=',orden:'=',disabled:'='}
             }
@@ -62,7 +62,7 @@ module.exports=function(app){
     app.directive('surveyMatrix', function () {
             return {
                 restrict: 'EA',
-                template: require('./views/matrix.html'),
+                template: require('./views/survey/matrix.html'),
                 replace: true,
                 scope: { matrix: '=',orden:'=',disabled:'='}
             }
@@ -71,7 +71,7 @@ module.exports=function(app){
     app.directive('surveyDatetime', function () {
             return {
                 restrict: 'EA',
-                template: require('./views/datetime.html'),
+                template: require('./views/survey/datetime.html'),
                 replace: true,
                 scope: { input:'=', orden:'='}
             }
@@ -80,7 +80,7 @@ module.exports=function(app){
     app.directive('surveyTimepicker', function () {
         return {
             restrict: 'EA',
-            template: require('./views/timepicker.html'),
+            template: require('./views/survey/timepicker.html'),
             replace: true,
             scope: { input: '=',orden:'='},
             controller:function($scope){

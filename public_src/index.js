@@ -29,6 +29,7 @@ require ('./app/directives')(app);
 require ('./app/components')(app);
 
 
+// Use fron javascript (html page ) window.test=function(){}
 
  
 // Uncomment one of the following lines to see error handling

@@ -6,7 +6,8 @@ export var API_METHOD = {
 
 import {ApiRoutes} from './api.routes';
 
-export var ApiCaller = function (api) {
+export var ApiCaller = function (api,AppServiceCaller) {
+    var _this=this;
     var APP_API=new ApiRoutes();
 
     this.setCaller = function (param) {
@@ -14,6 +15,11 @@ export var ApiCaller = function (api) {
             this.caller = param;
         }
     }
+    
+    if(AppServiceCaller){
+        _this.setCaller(AppServiceCaller)
+    }
+
     this.error = function (res) {
         alert(res.data)
     }
@@ -26,25 +32,30 @@ export var ApiCaller = function (api) {
         return result;
     }
     
-    this.get = function (callback,params) {
-       this.caller.get(APP_API.getUrl(api), params)
+    this.makeUrl=function(route,id){
+        //console.log("api,route,id,url ",api,route,id,APP_API.getUrl(api,id,route))
+        return APP_API.getUrl(api,id,route);
+    }
+    this.get = function (callback,params,route) {
+        this.caller.get(this.makeUrl(route), params)
             .then(callback, this.error)
     }
-    this.getById = function (callback, id) {
-        this.caller.get(APP_API.getUrl(api, id), {})
+    this.getById = function (callback, id,route) {
+        this.caller.get(this.makeUrl(route,id), {})
             .then(callback, this.error)
     }
     
-    this.post = function (data, callback) {
-        this.caller.post(APP_API.getUrl(api), data)
+    this.post = function (data, callback,route) {
+        this.caller.post(this.makeUrl(route), data)
             .then(callback, this.error)
     }
-    this.put = function (id,data,callback) {
-        this.caller.put(APP_API.getUrl(api, data._id), data)
+    this.put = function (id,data,callback,route) {
+        // console.log("data-> ",this.makeUrl(route, data._id))
+        this.caller.put(this.makeUrl(route, data._id) , data)
             .then(callback, this.error)
     }
-    this.delete = function (id, callback) {
-        this.caller.delete(APP_API.getUrl(api, id), {})
+    this.delete = function (id,callback,route) {
+        this.caller.delete(this.makeUrl(route, id), {})
             .then(callback, this.error)
     }
 };
