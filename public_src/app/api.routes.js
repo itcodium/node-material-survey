@@ -10,7 +10,8 @@ export var ApiRoutes=function() {
         
         if (process.env.NODE_ENV == 'production') {
             API_URL_PROTOCOLO = "http:";
-            API_URL = API_URL_PROTOCOLO + "//domunal-pmatch.193b.starter-ca-central-1.openshiftapps.com/api/";
+            API_URL = API_URL_PROTOCOLO + "//atodojs-pmatch.193b.starter-ca-central-1.openshiftapps.com/api/";
+            
             //API_URL = API_URL_PROTOCOLO + "//localhost:8080/api/";
         }
                 
