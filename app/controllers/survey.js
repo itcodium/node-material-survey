@@ -230,7 +230,7 @@ exports.addQuestion= function(req, res){
 
             item.save(function (err,newitem) {
                 console.log('Update Success!',newitem);
-                res.jsonp({"status":"ok",message:"se inserto un registro", data: newItem})
+                res.jsonp({"status":"ok",message:"se modifico un registro.", data: newitem})
             });
         }
     });

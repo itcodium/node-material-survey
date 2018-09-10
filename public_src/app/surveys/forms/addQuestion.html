@@ -1,9 +1,11 @@
 <section>
     <div class="form-row mb-3">
+        
+        <!-- ng-disabled="cboTypeDisabled"-->
             <select class="browser-default form-control form-control-sm" 
                     required="required"  id="cmbSurvey"
-                    ng-disabled="cboTypeDisabled"
                     ng-model="ctrModal.model.type"
+                    ng-disabled="ctrModal.method!='ADD'"
                     ng-options="s as s.type for s in ctrModal.surveyTypes" >
                 <option class="" value="">(Seleccionar tipo)</option>
             </select>
@@ -13,6 +15,7 @@
                 type="text" 
                 ng-model="ctrModal.model.question"
                 placeholder="Nombre de la encuesta" 
+                ng-disabled="ctrModal.method=='DELETE'"
                 class="form-control form-control-sm" />
     </div>
  

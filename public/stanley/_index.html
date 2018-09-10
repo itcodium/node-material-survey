@@ -50,14 +50,14 @@
     <div id="preloader"></div>
     <header>
         <!-- header-area start -->
-        <div id="sticker" class="header-area" style="background-color: #111;opacity: 1;">
-            <div class="container"   >
-                <div class="row"  >
+        <div id="sticker" class="header-area">
+            <div class="container" >
+                <div class="row" >
                     <div class="col-md-12 col-sm-12" >
                         <!-- Navigation -->
                         <nav class="navbar navbar-default" >
                             <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header" >
+                            <div class="navbar-header">
                                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
                                     <span class="sr-only">Toggle navigation</span>
                                     <span class="icon-bar"></span>
@@ -74,8 +74,8 @@
                                 </a>
                             </div>
                             <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example"  >
-                                <ul class="nav navbar-nav navbar-right" >
+                            <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
+                                <ul class="nav navbar-nav navbar-right">
                                     <li class="active">
                                         <a class="page-scroll" href="#home">Home</a>
                                     </li>
@@ -117,67 +117,131 @@
     margin-left: auto;
     margin-right: auto;
     width:720px;
-    opacity: 0.8;
-   
+    opacity: 0.90;
 }
 
 .divBack{
             z-index: 100; 
             width: 100%;
-            min-height: 480px;
             display: block;
-         
+            background: url('img/back2.jpg') no-repeat center center; 
             background-position: center;
             background-repeat: no-repeat;
             background-color: transparent; 
-        
-          
-            
-            background-size: auto 1280px;
-            background: url('img/back4.jpg') no-repeat center center; 
-            
-            
+            background-size: auto 720px;
+            background-color: #fff;  
 }
 
 
 .gradient {
- 
-  background-image: -webkit-radial-gradient(top, circle cover, #111, #333 100%);
+    background: #92c7d6;
+  background-image: -webkit-radial-gradient(top, circle cover, #abaeb6, #111931 90%);
   background-image: -moz-radial-gradient(top, circle cover, #8a92aa, #111931 80%);
   background-image: -o-radial-gradient(top, circle cover, #8a92aa, #111931 80%);
   background-image: radial-gradient(top, circle cover, #8a92aa, #111931 80%);
- 
 }
- 
 
+ 
 </style>
 
  
-<br>
-<br>
-<br>
-    <div style="position: relative;" class="gradient" >
-            <div class="divBack"  >
+
+    <div>
+            
+            <div class="gradient">
         &nbsp;
-        
-            <img  class="center" style="opacity: 0.75; width: 780px"  src="img/SISa botonera.png">        
-             
+        <img  class="center"  src="img/SISa botonera.png">        
+    </div>  
 
-            
-            
-            <div style="display:none; position: absolute;bottom:0px;text-align: center;margin:0 auto;background-color:transparent;opacity: 0.85;width: 100%;padding:10px;">
-                    <button  type="button" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-heart"></i>
-                        <button  type="button" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-cloud"></i>
-                            <button  type="button" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-heart"></i>
-                        <button  type="button" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-cloud"></i>
-                            <button  type="button" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-heart"></i>
+      
+        </div>
+    <div id="home" class="slider-area" style="display:none" >
+        <div class="bend niceties preview-2">
+            <div id="ensign-nivoslider" class="slides">
+                <img src="img/slider/1.jpg" alt="" title="#slider-direction-1" />
+                <img src="img/slider/2.jpg" alt="" title="#slider-direction-2" />
+                <img src="img/slider/3.jpg" alt="" title="#slider-direction-3" />
+                <img src="img/slider/4.jpg" alt="" title="#slider-direction-4" />
+                <img src="img/slider/5.jpg" alt="" title="#slider-direction-5" />
+                <img src="img/slider/6.jpg" alt="" title="#slider-direction-6" />
+                <img src="img/slider/7.jpg" alt="" title="#slider-direction-7" />
+                <img src="img/slider/8.jpg" alt="" title="#slider-direction-8" />
+            </div>
+            <!-- direction 1 -->
+            <div id="slider-direction-1" class="slider-direction slider-one">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="slider-content">
+                                <!-- layer 1 -->
+                                <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <h2 class="title1">The Best Business Information </h2>
+                                </div>
+                                <!-- layer 2 -->
+                                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                                    <h1 class="title2">We're In The Business Of Helping You Start Your Business</h1>
+                                </div>
+                                <!-- layer 3 -->
+                                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <a class="ready-btn right-btn page-scroll" href="#services">See Services</a>
+                                    <a class="ready-btn page-scroll" href="#about">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-        </div>  
-
-
+            </div>
+            <!-- direction 2 -->
+            
+            <div id="slider-direction-2" class="slider-direction slider-two">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="slider-content text-center">
+                                <!-- layer 1 -->
+                                <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <h2 class="title1">The Best Business Information </h2>
+                                </div>
+                                <!-- layer 2 -->
+                                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                                    <h1 class="title2">We're In The Business Of Get Quality Business Service</h1>
+                                </div>
+                                <!-- layer 3 -->
+                                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <a class="ready-btn right-btn page-scroll" href="#services">See Services</a>
+                                    <a class="ready-btn page-scroll" href="#about">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- direction 3 -->
+            <div id="slider-direction-3" class="slider-direction slider-two">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="slider-content">
+                                <!-- layer 1 -->
+                                <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <h2 class="title1">The Best business Information </h2>
+                                </div>
+                                <!-- layer 2 -->
+                                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                                    <h1 class="title2">Helping Business Security  & Peace of Mind for Your Family</h1>
+                                </div>
+                                <!-- layer 3 -->
+                                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <a class="ready-btn right-btn page-scroll" href="#services">See Services</a>
+                                    <a class="ready-btn page-scroll" href="#about">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-
     <!-- End Slider Area -->
     <!-- Start MisionyVision Area -->
     <div id="MisionyVision" class="blog-area" >
@@ -191,8 +255,6 @@
                         </div>
                     </div>
                 </div>
-                <iframe src="wow/wowslider.html" style="width:100%;height:360px;max-width:100%;overflow:hidden;border:none;padding:0;margin:0 auto;display:block;" marginheight="0" marginwidth="0"></iframe>
-                <br><br>
                 <div class="row">
                     <!-- Start Left Blog -->
                     <div class="col-md-4 col-sm-4 col-xs-12">
