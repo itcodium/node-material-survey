@@ -26,6 +26,8 @@
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
+ 
+
   <link href="lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
   <link href="lib/owlcarousel/owl.carousel.css" rel="stylesheet">
   <link href="lib/owlcarousel/owl.transitions.css" rel="stylesheet">
@@ -42,18 +44,50 @@
   <!-- Responsive Stylesheet File -->
   <link href="css/responsive.css" rel="stylesheet">
 
+  
+
   <!-- =======================================================
     Theme Name: eBusiness
     Theme URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
     Author: BootstrapMade.com
     License: https://bootstrapmade.com/license/
   ======================================================= -->
+
+<style>   
+.third-effect .mask {
+   opacity: 0;
+   overflow:visible;
+   border:100px solid rgba(0,0,0,0.7);
+   box-sizing:border-box;
+   transition: all 0.4s ease-in-out;
+}
+
+.third-effect a.info {
+   position:relative;
+   top:-10px; /* Center the link */
+   opacity: 0;
+   transition: opacity 0.5s 0s ease-in-out;
+}
+
+.third-effect:hover .mask {
+   opacity: 1;
+   border:100px solid rgba(0,0,0,0.7);
+}
+
+.third-effect:hover a.info {
+   opacity:1;
+   transition-delay: 0.3s;
+}
+
+
+</style>
 </head>
 
 <body data-spy="scroll" data-target="#navbar-example">
 
 
- 
+       
+
             
     <div id="preloader"></div>
     <header>
@@ -74,7 +108,7 @@
                                 </button>
                                 <!-- Brand -->
                                 <a style="padding:1px 0 0 2px" class="navbar-brand page-scroll sticky-logo" href="index.html">
-                                <img src="img/logo_2.png" width="150" />
+                                <img src="img/logo_3.png" width="130" />
                                     <!-- Uncomment below if you prefer to use an image logo -->
                                     <!-- <img src="img/logo.png" alt="" title=""> -->
                                 </a>
@@ -152,22 +186,41 @@
   background-image: radial-gradient(top, circle cover, #8a92aa, #111931 80%);
  
 }
+ 
+
  .left{
      border: solid 1px #333;
-     padding: 15px 55px 15px 50px;
-     height: 50%;
-     margin-top:25%;
+     padding: 15px 50px 15px 50px;
+     height: 60%;
+     margin-top:18%;
      float: left;
-     opacity: 0.2;
+   
  }
  .right{
      border: solid 1px #333;
      padding: 15px 55px 15px 50px;
-     height: 50%;
-     margin-top:25%;
+     height: 60%;
+     margin-top:18%;
      float: right;
-     opacity: 0.2;
+  
+     
  }
+
+ 
+ .nav-fade a {
+   background: #fff;
+   
+   display: inline-block;
+   transition: background .25s ease-in-out;
+   -moz-transition: background .25s ease-in-out;
+   -webkit-transition: background .25s ease-in-out;
+   
+   }
+
+   .nav-fade a:hover {
+      background: #ddd;
+      opacity: 0.2;
+      }
 
 </style>
 
@@ -190,48 +243,39 @@
         background-size: 920px 567px;
             
     }
+
     </style>
 <br>
 <br>
 <br>
-<div >
-        <div  style="position: relative;width: 100%;background-color: khaki;" class="gradient" >
-        <div class="relative">
-                <div class="absolute">
-                        <a class="left" href="#fuego">&nbsp;</a>
-                        <a class="left" href="ControlAcceso/index.html">&nbsp;</a>
-                        <a class="left" href="#">&nbsp;</a>
-                        <a class="left" style="padding-right: 75px;" href="ProteccionPanelesSolares/index.html">&nbsp;</a>
-                        <a class="right" href="#manprev">&nbsp;</a>
-                        <a class="right" href="#">&nbsp;</a>
-                        <a class="right" href="#">&nbsp;</a>
-                        <a class="right" href="#">&nbsp;</a>
+
+
+     
+
+        <div  style="position: relative;width: 100%;" class="gradient" >
+            <div class="relative">
+                <div class="absolute nav-fade">
+                        <a class="left"  target="_blank" href="#fuego" style="display:none">&nbsp;</a>
+                        <a class="left fade" style="margin-top:25%;height: 170px;"  target="_blank" href="pdf/ca.html">&nbsp;</a>
+                        <a class="left"  target="_blank" href="#" style="display:none">&nbsp;</a>
+                        <a class="left fade"   style="margin-top:33%;height: 170px;" target="_blank" href="pdf/panelesSolares.html"  style="padding-right: 75px;">&nbsp;</a>
+                        <a class="right" target="_blank" href="#manprev" style="display:none">&nbsp;</a>
+                        <a class="right fade" target="_blank"  style="margin-top:23%;height: 170px;" href="pdf/pperim.html">&nbsp;</a>
+                        <a class="right" target="_blank" href="#" style="display:none">&nbsp;</a>
+                        <a class="right" target="_blank" href="#" style="display:none">&nbsp;</a>
 
                 </div>
               </div>
               
             </div>
-              <!-- 
-
-    <div  class="gradient"  style="position: relative;" >
-         
-                  
-            <div class="divBack"  style="overflow: auto;margin:0 auto;position :static" >
-
-                 
-        &nbsp;
-        <img  class="center" style=" opacity: 0.75;margin: 0 auto;   min-width: 720px;max-width: 720px;" align="center"  
-        src="img/SISa botonera.png">        
-        </div>  
-<a class="fuego" href="#">&nbsp;</a>
-        
-    </div>
-    
-</div>-->
-
+ 
     <!-- End Slider Area -->
     <!-- Start MisionyVision Area -->
-    <div id="MisionyVision" class="blog-area" >
+
+    <div id="MisionyVision" class="blog-area " >
+    
+          
+
         <div class="blog-inner area-padding">
             <div class="blog-overly"></div>
             <div class="container ">
@@ -253,7 +297,7 @@
                                     <a>Misión</a>
                                 </h4>
                                 <p>
-                                    Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
+                                    La misión de SISA es desarrollar e integrar soluciones cubriendo las necesidades de planeación, consultoría e ingeniería aplicada a la Seguridad Integral de sus Clientes con Calidad y Excelencia.
                                 </p>
                             </div>
                         </div>
@@ -268,7 +312,8 @@
                                     <a>Visión</a>
                                 </h4>
                                 <p>
-                                    Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
+                                    
+                                    Desarrollar e Implementar Soluciones con Sistemas y Equipos de Seguridad de Última Generación.
                                 </p>
                             </div>
                         </div>
@@ -282,8 +327,8 @@
                                 <h4>
                                     <a>Objetivo</a>
                                 </h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
+                                <p>Ser líderes en la integración de Soluciones de Seguridad, incorporando alta ingeniería y tecnología de vanguardia.
+                                    Con una amplia Red de Colaboración (Socios de Negocio) para atender prácticamente cualquier requerimiento de sus Clientes.
                                 </p>
                             </div>
                         </div>
@@ -295,145 +340,147 @@
     </div>
     <!-- End MisionyVision -->
     <!-- Start Service area -->
-    <div id="services" class="services-area area-padding" >
+
+    <style>
+    .Cimg-responsive {
+            margin: 0 auto;
+        }
+    </style>
+    <div id="services" class="services-area area-padding gradient2" >
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="section-headline services-head text-center">
-                        <h2>Our Services</h2>
+                        <h2>Nuestros servicios</h2>
                     </div>
                 </div>
             </div>
+            <br>
+            
             <div class="row text-center">
+                 
                 <div class="services-contents">
-                    <!-- Start Left services -->
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="about-move">
-                            <div class="services-details">
-                                <div class="single-services">
-                                    <a class="services-icon" href="#">
-										<image src="icons\btn_supr_fuego.png" width=150>
-                                        <i style="display:none" class="fa fa-code"></i>
-                                    </a>
-                                    <h5 style="display:none">Detección y Supresión de Fuego</h5>
-                                    <p>
-                                        will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
-                                    </p>
-                                </div>
+                    <!-- Detección y Supresión de Fuego -->
+                    <div class="row text-center" >
+                            <div class="col-sm-3 text-center">
+                                    <image class="Cimg-responsive" src="icons\btn_supr_fuego.png" width=130 class="img-responsive"></image>
                             </div>
-                            <!-- end about-details -->
-                        </div>
+                            <p class="text-justify" style="padding: 25px;">
+                                    Consta de dos tipos de instalación, (detección) que refiere a una línea de tubería con adaptaciones de fusibles térmicos, que al detectar el fuego acciona la instalación de (supresión) que inmediatamente por medio de un actuador mecánico presuriza el contenedor del liquido supresor y por la tubería instalada y dirigida hacia los aparatos a proteger suprime el incendio en cuestión de segundos.
+                                    Supresión a base de FM-200 y Co2.
+                            </p>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="about-move">
-                            <div class="services-details">
-                                <div class="single-services">
-                                    <a class="services-icon" href="#">
-										<image src="icons\btn_ctr_acceso.png" width=150>
-                                        <i style="display:none" class="fa fa-camera-retro"></i>
-                                    </a>
-                                    <h5 style="display:none">Control de Acceso</h5>
-                                    <p>
-                                        will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
-                                    </p>
-                                </div>
+                    <!--  Detección y Supresión de Fuego -->
+                    <div class="row text-center" >
+                            <div class="col-sm-3 text-center">
+                                    <image class="Cimg-responsive" src="icons\btn_supr_fuego.png" width=130 class="img-responsive"></image>
                             </div>
-                            <!-- end about-details -->
-                        </div>
+                            <p class="text-justify" style="padding: 25px;">
+                                    Consta de dos tipos de instalación, (detección) que refiere a una línea de tubería con adaptaciones de fusibles térmicos, que al detectar el fuego acciona la instalación de (supresión) que inmediatamente por medio de un actuador mecánico presuriza el contenedor del liquido supresor y por la tubería instalada y dirigida hacia los aparatos a proteger suprime el incendio en cuestión de segundos.
+
+                                    Supresión a base de FM-200 y Co2.
+                            </p>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <!-- end col-md-4 -->
-                        <div class=" about-move">
-                            <div class="services-details">
-                                <div class="single-services">
-                                    <a class="services-icon" href="#">
-										<image src="icons\btn_cctv.png" width=150>
-                                        <i style="display:none" class="fa fa-wordpress"></i>
-                                    </a>
-                                    <h5 style="display:none">CCTV</h5>
-                                    <p>
-                                        will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
-                                    </p>
-                                </div>
+                    <!-- Control de Acceso-->
+                    <div class="row text-center" >
+                            <div class="col-sm-3 text-center">
+                                    <image class="Cimg-responsive" src="icons\btn_ctr_acceso.png" width=130 class="img-responsive"></image>
                             </div>
-                            <!-- end about-details -->
-                        </div>
+                            <p class="text-justify" style="padding: 25px;">
+                                    Ofrecemos asesoría especializada para la mejor administración del área de seguridad industrial, contribuyendo a la prevención y control de riesgos de trabajo para convertir a la seguridad industrial en una pieza fundamental para alcanzar los objetivos del negocio.
+
+                                    Asesoría, Elaboración de proyectos e ingeniería, Evaluación de riesgos, Programación y puesta en marcha así como Pólizas de Mantenimiento.
+                            </p>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <!-- end col-md-4 -->
-                        <div class=" about-move">
-                            <div class="services-details">
-                                <div class="single-services">
-                                    <a class="services-icon" href="#">
-										<image src="icons\btn_automat.png" width=150>
-                                        <i style="display:none" class="fa fa-camera-retro"></i>
-                                    </a>
-                                    <h4 style="display:none">Automatización y Control</h4>
-                                    <p>
-                                        will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
-                                    </p>
-                                </div>
+
+
+       
+
+                    <!--CCTV  -->
+                    <div class="row text-center" >
+                            <div class="col-sm-3 text-center">
+                                    <image class="Cimg-responsive" src="icons\btn_cctv.png" width=130 class="img-responsive"></image>
+                            </div>    
+                        <p class="text-justify" style="padding: 25px;">
+                                    Los circuitos cerrados de televisión (cctv) se están convirtiendo en un electrodoméstico más en los negocios de México. El problema de la seguridad en todos los estados ha logrado que cada mexicano trate de adquirir un sistema que le permita monitorear el establecimiento y sus alrededores para quedarse medianamente tranquilo.
+
+                            </p>
+                            
+                    </div>
+
+                    <!-- Automatización y Control -->
+                    <div class="row text-center" >
+                            <div class="col-sm-3 text-center">
+                                    <image class="Cimg-responsive" src="icons\btn_automat.png" width=130 class="img-responsive"></image>
                             </div>
-                            <!-- end about-details -->
-                        </div>
+                            <p class="text-justify" style="padding: 25px;">
+                                    Ofrecemos asesoría especializada para la mejor administración del área de seguridad industrial, contribuyendo a la prevención y control de riesgos de trabajo para convertir a la seguridad industrial en una pieza fundamental para alcanzar los objetivos del negocio.
+
+                                    Asesoría, Elaboración de proyectos e ingeniería, Evaluación de riesgos, Programación y puesta en marcha así como Pólizas de Mantenimiento.
+                                                                        
+                            </p>
                     </div>
-                    <!-- End Left services -->
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <!-- end col-md-4 -->
-                        <div class=" about-move">
-                            <div class="services-details">
-                                <div class="single-services">
-                                    <a class="services-icon" href="#">
-										<image src="icons\btn_piso_falso.png" width=150>
-                                        <i style="display:none" class="fa fa-bar-chart"></i>
-                                    </a>
-                                    <h4 style="display:none">Piso Falso</h4>
-                                    <p>
-                                        will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
-                                    </p>
-                                </div>
+ 
+
+                    <!-- Piso Falso -->
+                    <div class="row text-center" >
+                            <div class="col-sm-3 text-center">
+                                    <image class="Cimg-responsive" src="icons\btn_piso_falso.png" width=130 class="img-responsive"></image>
                             </div>
-                            <!-- end about-details -->
-                        </div>
+                            <p class="text-justify" style="padding: 25px;">
+                                    La rapidez en la adecuación de las áreas de trabajo, las remodelaciones necesarias para la optimización de los recursos, la facilidad de disponer de contactos de energía, voz y datos donde se requieren, la ventaja de contar con un acabado siempre uniforme o la utilización de la cámara plena para la circulación del aire acondicionado evitando los costosos ductos, son solo algunos de los enormes beneficios que se obtienen al utilizar los pisos elevados.
+                            </p>
                     </div>
-                    <!-- End Left services -->
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <!-- end col-md-4 -->
-                        <div class=" about-move">
-                            <div class="services-details">
-                                <div class="single-services">
-                                    <a class="services-icon" href="#">
-										<image src="icons\btn_prot_perimetral.png" width=150>
-                                        <i style="display:none" class="fa fa-ticket"></i>
-                                    </a>
-                                    <h4 style="display:none">Protección Perimetral</h4>
-                                    <p>
-                                        will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
-                                    </p>
-                                </div>
+       
+
+                    <!--  Protección Perimetral-->
+                    <div class="row text-center" >
+                            <div class="col-sm-3 text-center">
+                                    <image class="Cimg-responsive" src="icons\btn_prot_perimetral.png" width=130 class="img-responsive"></image>
                             </div>
-                            <!-- end about-details -->
-                        </div>
+                            <p class="text-justify" style="padding: 25px;">
+                                
+                                        
+ELECTROCOIL
+
+Es un sistema de protección perimetral que cumple con todos los principios básicos que se deben tomar en cuenta para el aseguramiento de algún sitio, instalación estratégica o VIP.
+
+El sistema de detección se compone por elementos de disuasión activos y pasivos. La localización del intruso se realiza por medio de pulsos eléctricos que se envían a través del espiral interno mismo que corre por la parte interior del obstáculo físico. A su vez, éste se instala sobres alambrados, rejas, muros, azoteas bardas, etc. Adicionalmente una unidad de monitoreo se encarga de medir las señales eléctricas que activarán la alarma en caso de detectar alteraciones en las mismas. El intruso recibirá una descarga eléctrica no letal (7,000 voltios) y dará tiempo al personal de vigilancia para actuar.
+                                    
+                            </p>
                     </div>
-                    <!-- LAST -->
-                    <div class="col-md-4 col-sm-4 col-xs-12" style="display:none">
-                        <!-- end col-md-4 -->
-                        <div class=" about-move">
-                            <div class="services-details">
-                                <div class="single-services">
-                                    <a class="services-icon" href="#">
-										<image src="icons\btn_mant_preventivo.png" width=150>
-                                        <i style="display:none" class="fa fa-ticket"></i>
-                                    </a>
-                                    <h4 style="display:none">Mantenimientos Preventivos</h4>
-                                    <p>
-                                        will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
-                                    </p>
-                                </div>
+ 
+ 
+                    <!--  Mantenimientos Preventivos-->
+                    <div class="row text-center" >
+                            <div class="col-sm-3 text-center">
+                                    <image class="Cimg-responsive" src="icons\btn_mant_preventivo.png" width=130 class="img-responsive"></image>
                             </div>
-                            <!-- end about-details -->
-                        </div>
+                            <p class="text-justify" style="padding: 25px;">
+                                    En Construcción...
+                            </p>
                     </div>
+                     
+                    <!-- Paneles fotovoltaicos -->
+                    <div class="row text-center" >
+                            <div class="col-sm-3 text-center">
+                                    <image class="Cimg-responsive" src="icons\parq_fotov.png" width=130 class="img-responsive"></image>
+                            </div>
+                            <p class="text-justify" style="padding: 25px;">
+                                    En Construcción...
+                            </p>
+                    </div>
+                    
+                    <!--  Gas -->
+                    <div class="row text-center" >
+                            <div class="col-sm-3 text-center">
+                                    <image class="Cimg-responsive" src="icons\gas_oleo.png" width=130 class="img-responsive"></image>
+                            </div>
+                            <p class="text-justify" style="padding: 25px;">
+                                    En Construcción...
+                            </p>
+                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -464,15 +511,7 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="well-middle">
                         <div class="single-well">
-                            <!--
-                                <a href="#">
-                                    <h4 class="sec-head">project Maintenance</h4>
-                                </a>
-
-                                <p>
-                                    Redug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure aspernatur sit adipisci quaerat unde at nequeRedug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure
-                                </p>
-                                    -->
+                       
                             <ul>
                                 <li><i class="fa fa-check"></i> SBA - Security Breach Assessment.</li>
                                 <li><i class="fa fa-check"></i> Apoyados con expertos internacionales.</li>
@@ -495,7 +534,37 @@
     <!-- End consultoria area -->
 
     <!-- Start Testimonials -->
-    <div class="testimonials-area" >
+
+<!-- 
+   
+
+- Casinos
+
+- Centros comerciales
+
+- Centros penitenciarios y correccionales
+
+- Compañías de seguridad
+
+- Edificios de oficinas y apartamentos
+
+- Edificios gubernamentales
+
+- Escuelas
+
+- Estacionamientos
+
+- Grandes almacenes
+
+- Hospitales
+
+- hoteles
+
+- Industria de transportación
+
+- Zonas residenciales
+-->
+    <div id="Presencia" class="testimonials-area" >
         <div class="testi-inner area-padding">
             <div class="testi-overly"></div>
             <div class="container ">
@@ -508,10 +577,17 @@
                             <div class="testimonial-carousel">
                                 <div class="single-testi">
                                     <div class="testi-text">
+                                        <br>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pulvinar luctus est eget congue.<br>consectetur adipiscing elit. Sed pulvinar luctus est eget congue.
+                                            Si está involucrado con la responsabilidad de la seguridad de algún tipo de inmueble, estamos seguros que le podemos apoyar.
+                                            Nuestras soluciones aplican prácticamente en cualquier tipo de establecimiento o industria:
+                                                
+                                                
                                         </p>
-                                        <h6>Boby</h6>
+                                        <p>
+                                             - Aeropuertos
+                                        </p>
+                                        <p> - Automoción: venta y exposición</p>
                                     </div>
                                 </div>
                                 <!-- End single item -->
@@ -628,15 +704,15 @@
                     <!-- Start  contact -->
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="form contact-form">
-                            <div id="sendmessage">Your message has been sent. Thank you!</div>
+                            <div id="sendmessage">Su mensaje ha sido enviado. Gracias!</div>
                             <div id="errormessage"></div>
                             <form action="" method="post" role="form" class="contactForm">
                                 <div class="form-group">
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                                     <div class="validation"></div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email" />
                                     <div class="validation"></div>
                                 </div>
                                 <div class="form-group">
@@ -647,7 +723,7 @@
                                     <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                                     <div class="validation"></div>
                                 </div>
-                                <div class="text-center"><button type="submit">Send Message</button></div>
+                                <div class="text-center"><button type="submit">Enviar mensaje</button></div>
                             </form>
                         </div>
                     </div>
@@ -667,22 +743,22 @@
                             <div class="footer-head">
                                 <div class="footer-logo">
                                     <h2>
-                                        <img src="img/logo_2.png" width="150" />
+                                        <img src="img/logo_3.png" width="140" />
                                     </h2>
                                 </div>
                                 <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
                                 <div class="footer-icons">
                                     <ul>
-                                        <li>
+                                        <li style="display:none">
                                             <a href="#"><i class="fa fa-facebook"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
+                                            <a href="https://twitter.com/sisaseguridad"><i class="fa fa-twitter"></i></a>
                                         </li>
-                                        <li>
+                                        <li style="display:none">
                                             <a href="#"><i class="fa fa-google"></i></a>
                                         </li>
-                                        <li>
+                                        <li  style="display:none">
                                             <a href="#"><i class="fa fa-pinterest"></i></a>
                                         </li>
                                     </ul>
@@ -765,6 +841,8 @@
     <!-- Contact Form JavaScript File -->
     <script src="contactform/contactform.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/production.min.js"></script>
+
 </body>
 
 </html>
