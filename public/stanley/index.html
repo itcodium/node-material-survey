@@ -125,13 +125,7 @@
                                     <li>
                                         <a class="page-scroll" href="#services">Servicios</a>
                                     </li>
-                                    <li>
-                                        <a class="page-scroll" href="#consultoria">Consultoria</a>
-                                    </li>
-
-                                    <li>
-                                        <a class="page-scroll" href="#Presencia">Presencia</a>
-                                    </li>
+                              
                                     <li>
                                         <a class="page-scroll" href="#contact">Contacto</a>
                                     </li>
@@ -195,6 +189,10 @@
      margin-top:18%;
      float: left;
    
+     -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+
  }
  .right{
      border: solid 1px #333;
@@ -202,6 +200,9 @@
      height: 60%;
      margin-top:18%;
      float: right;
+     -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
   
      
  }
@@ -256,9 +257,9 @@
             <div class="relative">
                 <div class="absolute nav-fade">
                         <a class="left fade" data="Deteccion fuego" style="margin-top:25%;height: 170px;visibility: hidden;"  target="_blank" href="#" >&nbsp;</a>
-                        <a class="left fade" data="control acceso"  target="_blank" href="pdf/ca.html" style="margin-top:33%;height: 170px;border:solid 1px green" >&nbsp;</a>
+                        <a class="left fade" data="control acceso"  target="_blank" href="pdf/ca.html" style="margin-top:33%;height: 170px;" >&nbsp;</a>
                         <a class="left fade"   data="CCTV" style="margin-top:40%;height: 170px;margin-left: 15px;visibility: hidden;" target="_blank" href="#" >&nbsp;</a>
-                        <a class="left fade"  data="Paneles Fotovoltaicos" target="_blank" style="margin-left:15px;height: 170px;margin-top:44%;" href="pdf/panelesSolares.html">&nbsp;</a>
+                        <a class="left fade"  data="Paneles Fotovoltaicos" target="_blank" style="margin-left:18px;height: 170px;margin-top:44%;" href="pdf/panelesSolares.html">&nbsp;</a>
                         
                         <a class="right" target="_blank" href="#manprev" style="display:none">&nbsp;</a>
                         <a class="right fade" target="_blank"  style="margin-top:23%;height: 170px;visibility: hidden;" >&nbsp;</a>
@@ -345,7 +346,32 @@
     <style>
     .Cimg-responsive {
             margin: 0 auto;
+            transition: 1s ease;
+            -webkit-filter: brightness(85%);
+            -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+            transform: scale(1);
+         
         }
+
+        .Cimg-responsive:hover {
+            
+            -webkit-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+            transform: scale(1.05);
+            
+            -webkit-transform: rotateZ(-10deg);
+            -ms-transform: rotateZ(-10deg);
+            transform: rotateZ(-10deg);
+            transition: 0.5s ease;
+
+            -webkit-filter: brightness(100%);
+            transition: 0.2s ease;
+        
+}
+
+ 
+
     </style>
     <div id="services" class="services-area area-padding gradient2" >
         <div class="container">
@@ -377,18 +403,6 @@
                 <!-- Tab panes -->
                 <div class="tab-content" style="background: url('img/back3.jpg') repeat center center; "  >
                   <div role="tabpanel" class="tab-pane active"  id="serviceTab1" >
-                        <!-- Detección y Supresión de Fuego -->
-                            <div class="row text-center servicios">
-                                <div class="col-sm-3 text-center">
-                                        <image class="Cimg-responsive" src="icons\btn_supr_fuego.png" width=130 class="img-responsive"></image> 
-                                </div>
-                                <div class="col-sm-9 text-center" >
-                                        <p class="text-justify servicios" >
-                                                Consta de dos tipos de instalación, (detección) que refiere a una línea de tubería con adaptaciones de fusibles térmicos, que al detectar el fuego acciona la instalación de (supresión) que inmediatamente por medio de un actuador mecánico presuriza el contenedor del liquido supresor y por la tubería instalada y dirigida hacia los aparatos a proteger suprime el incendio en cuestión de segundos. Supresión a base de FM-200 y Co2.
-                                        </p>
-                                </div>
-                                
-                        </div>
                         <!--  Detección y Supresión de Fuego -->
                         <div class="row text-center servicios" >
                                 <div class="col-sm-3 text-center">
@@ -533,55 +547,7 @@
             </div>
         </div>
     </div>
-    <!-- End Service area -->
-    <!-- Start consultoria area -->
-    <div id="consultoria" class="about-area area-padding" >
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="section-headline text-center">
-                        <h2>Consultoría</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <!-- single-well start-->
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="well-left">
-                        <div class="single-well">
-                            <a href="#">
-                                <img src="img/consultoria/security.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- single-well end-->
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="well-middle">
-                        <div class="single-well">
-                       
-                            <ul>
-                                <li><i class="fa fa-check"></i> SBA - Security Breach Assessment.</li>
-                                <li><i class="fa fa-check"></i> Apoyados con expertos internacionales.</li>
-                                <li>
-                                    <i class="fa fa-check"></i>
-                                    <span>Partimos de su avance y desarrollo tecnológico existente para analizar los riesgos actuales y potenciales.</span>
-                                </li>
-                                <li><i class="fa fa-check"></i> Readiness & Awareness.</li>
-                                <li><i class="fa fa-check"></i> Análisis de sus procedimientos.</li>
-                                <li><i class="fa fa-check"></i> Desarrollamos soluciones a los problemas detectados.</li>
-                                <li><i class="fa fa-check"></i> Desarrollamos en su caso, el plan de negocios (costo beneficio).</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- End col-->
-            </div>
-        </div>
-    </div>
-    <!-- End consultoria area -->
-
-    <!-- Start Testimonials -->
+ 
 
 <!-- 
    
@@ -592,80 +558,9 @@
 
 
 -->
-    <div id="Presencia" class="testimonials-area" >
-        <div class="testi-inner area-padding">
-            <div class="testi-overly"></div>
-            <div class="container ">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <!-- Start testimonials Start -->
-                        <div class="testimonial-content text-center">
-                            <a class="quate" href="#"><i class="fa fa-quote-right"></i></a>
-                            <!-- start testimonial carousel -->
-                            <div class="testimonial-carousel">
-                                <div class="single-testi">
-                                    <div class="testi-text">
-                                        <br>
-                                        <p>
-                                            Si está involucrado con la responsabilidad de la seguridad de algún tipo de inmueble, estamos seguros que le podemos apoyar.
-                                            Nuestras soluciones aplican prácticamente en cualquier tipo de establecimiento o industria:
-                                            <br>
-                                            <br>
-                                         - Aeropuertos<br>
-                                         - Automoción: venta y exposición<br>
-                                         - Casinos<br>
-                                         - Centros comerciales<br>
-                                         - Centros penitenciarios y correccionales<br>
-                                        </p>
-                                    </div>
-                                </div>
-                                <!-- End single item -->
-                                <div class="single-testi">
-                                    <div class="testi-text">
-                                        <p>
-                                        - Compañías de seguridad<br>
-                                        - Edificios de oficinas y apartamentos<br>
-                                        - Edificios gubernamentales<br>
-                                        - Escuelas<br>
-                                        - Estacionamientos<br>
-                                    </p>
-                                    </div>
-                                </div>
-                                <!-- End single item -->
-                                <div class="single-testi">
-                                    <div class="testi-text">
-                                        <p>
-                                        - Grandes almacenes<br>
-                                        - Hospitales<br>
-                                        - hoteles<br>
-                                        - Industria de transportación<br>
-                                        - Zonas residenciales<br></p>
-                                    </div>
-                                </div>
-                                <!-- End single item -->
-                            </div>
-                        </div>
-                        <!-- End testimonials end -->
-                    </div>
-                    <!-- End Right Feature -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Testimonials -->
-    <!-- Start Suscrive Area
-    <div class="suscribe-area" >
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
-                    <div class="suscribe-text text-center">
-                        <h3>Welcome to our SISA company</h3>
-                        <a class="sus-btn" href="#">Get A quate</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+ 
+    
+ 
     <!-- End Suscrive Area -->
     <!-- Start contact Area -->
     <div id="contact" class="contact-area" >
@@ -675,19 +570,13 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="section-headline text-center">
-                            <h2>Contact us</h2>
+                            <h2>Contacto</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <!-- Start contact icon column
-
-
-
-
-
-                        -->
-                    <div class="col-md-4 col-sm-4 col-xs-12">
+                    <!-- Start contact icon column -->
+                    <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="contact-icon text-center">
                             <div class="single-icon">
                                 <i class="fa fa-mobile"></i>
@@ -701,25 +590,13 @@
                         </div>
                     </div>
                     <!-- Start contact icon column -->
-                    <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="contact-icon text-center">
                             <div class="single-icon">
                                 <i class="fa fa-envelope-o"></i>
                                 <p>
                                     Email: ventas@sisaseguridad.com.mx<br>
                                     <span>Web: www.sisaseguridad.com.mx</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Start contact icon column -->
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="contact-icon text-center">
-                            <div class="single-icon">
-                                <i class="fa fa-map-marker"></i>
-                                <p>
-                                    Location: A108 Adam Street<br>
-                                    <span>NY 535022, USA</span>
                                 </p>
                             </div>
                         </div>
@@ -772,7 +649,7 @@
         <div class="footer-area">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="footer-content">
                             <div class="footer-head">
                                 <div class="footer-logo">
@@ -801,35 +678,20 @@
                         </div>
                     </div>
                     <!-- end single footer -->
-                    <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="footer-content">
                             <div class="footer-head">
                                 <h4>Ing. Joaquín Morales</h4>
                                 <div class="footer-contacts">
                                     <p><span>Tel:</span> +52(55) 59 58 44 76</p>
                                     <p><span>Email:</span> ventas@sisaseguridad.com.mx</p>
-                                    <p><span>Working Hours:</span> 9am-5pm</p>
+                                    <p><span>Horario de atencion:</span> 9am-5pm</p>
 
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- end single footer -->
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="footer-content">
-                            <div class="footer-head">
-                                <h4>Instagram</h4>
-                                <div class="flicker-img">
-                                    <a ><img src="img/portfolio/1.jpg" alt=""></a>
-                                    <a ><img src="img/portfolio/2.jpg" alt=""></a>
-                                    <a ><img src="img/portfolio/3.jpg" alt=""></a>
-                                    <a ><img src="img/portfolio/4.jpg" alt=""></a>
-                                    <a ><img src="img/portfolio/5.jpg" alt=""></a>
-                                    <a ><img src="img/portfolio/6.jpg" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+               
                 </div>
             </div>
         </div>
