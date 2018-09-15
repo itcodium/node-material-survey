@@ -346,30 +346,19 @@
     <style>
     .Cimg-responsive {
             margin: 0 auto;
-            transition: 1s ease;
-            -webkit-filter: brightness(85%);
-            -webkit-transform: scale(1);
-            -ms-transform: scale(1);
-            transform: scale(1);
-         
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
-
+ 
         .Cimg-responsive:hover {
-            
-            -webkit-transform: scale(1.05);
-            -ms-transform: scale(1.05);
-            transform: scale(1.05);
-            
-            -webkit-transform: rotateZ(-10deg);
-            -ms-transform: rotateZ(-10deg);
-            transform: rotateZ(-10deg);
-            transition: 0.5s ease;
-
-            -webkit-filter: brightness(100%);
-            transition: 0.2s ease;
-        
-}
-
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+            }
  
 
     </style>
@@ -406,7 +395,9 @@
                         <!--  Detección y Supresión de Fuego -->
                         <div class="row text-center servicios" >
                                 <div class="col-sm-3 text-center">
+                                        
                                         <image class="Cimg-responsive" src="icons\btn_supr_fuego.png" width=130 class="img-responsive"></image>
+                                        
                                 </div>
                                 <div class="col-sm-9 text-center" >
                                     <p class="text-justify servicios" style="padding: 25px;">
