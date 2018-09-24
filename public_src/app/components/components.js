@@ -377,7 +377,7 @@ export var ModalTemplate = function () {
                 this.resetModel();
             }
         }
-        console.log("this.model",this.model,method, index)
+        console.log("this.model",this,method, index)
         this.method = method;
         this.show();
     }

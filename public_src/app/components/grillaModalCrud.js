@@ -23,7 +23,6 @@ export var GridModalCrud=function (
             _this.modal.pageText       = $scope.pageText;
             _this.modal.AplicationText = AplicationText;
             _this.modal.submit=pSubmit ? pSubmit: _this.modalSubmit;
-            
         }
         this.afterCreateGrid=function(){
 

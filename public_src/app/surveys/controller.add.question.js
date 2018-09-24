@@ -15,7 +15,11 @@ export var controllerAddQuestion= function  ($scope,$http,$filter,$routeParams,A
     $scope.question.setApiCaller("survey");
 
     var submit = function (form) {
+        
+   
         var model=$scope.question.modal.model;
+           // model.list=$scope.events.getList()
+           console.log("enviar model -> ",model )
         var    id=$scope.question.modal.survey._id;
         this.form = form;
         if (form.$valid) {
@@ -30,6 +34,75 @@ export var controllerAddQuestion= function  ($scope,$http,$filter,$routeParams,A
                 $scope.question.api.delete( undefined,$scope.question.Delete_callBack, id+"/"+q_id);
              }
         }
+    
+    }
+    
+    $scope.events={
+        init:function($scope){
+            this.data=$scope.question.grid.selectedItem;
+            console.log("this.data",this.data)
+            if(!this.data){
+                this.data={};
+                this.data.list=[];
+                this.data.columns=[];
+                $scope.question.modal.model.list=this.data.list;
+                $scope.question.modal.model.columns=this.data.columns;
+            }
+
+            this.selectedIndex=null;
+            this.page={};
+            // this.EditQuetion=false;
+            // this.page.message="";
+            this.editarLista=false;
+            this.editarColumnas=false;
+            // this.columnText={"text":""};
+            // this.listText={"text":""};
+        },
+        getList:function(){
+            return this.data.list;
+        },
+        addItemToList: function(){
+            if(typeof this.listText.$$hashKey!='undefined'){
+                this.editarColumnas=false;
+            }else{
+                
+                this.data.list.push(this.listText);
+                console.log("ELSE data->  listText",this.listText,this.data);
+            }
+            this.listText={};
+        },
+
+        addItemToColumn:function(){
+            if(typeof this.columnText.$$hashKey!='undefined'){
+                this.editarColumnas=false;
+            }else{
+                this.data.columns.push(this.columnText);
+            }
+            this.columnText={};
+        },
+        modificar_columnas:function(item){
+            //console.log("- modificarColumna - Update",item);
+            this.ItemTextColumnEdit=item;
+        },
+        modificar_lista:function(item,index){
+            //console.log("- modificar_lista - Update",item);
+            this.ItemTextEdit=item;
+            this.editarLista=true;
+            this.selectedIndex=index;
+        },
+        eliminar_columnas:function(index){
+           // console.log("- eliminarColumna - Update",index);
+            this.data.columns.splice(index, 1);
+        },
+        eliminar_lista:function(index){
+            this.data.list.splice(index, 1);
+        },
+        editar_lista:function(){
+            this.editarLista=!this.editarLista;
+           
+            // this.ItemTextEdit.text="";
+        }
+
     }
 
     $scope.question.createModal("editQuestion","Questions","_id",require("./forms/addQuestion.html"),submit);
@@ -43,45 +116,47 @@ export var controllerAddQuestion= function  ($scope,$http,$filter,$routeParams,A
         );
     
     $scope.question.modal.title="Add questions";
+    $scope.question.modal.events=$scope.events;
+    
+    
 
     var callback_surveyType=function(res){
+        
         $scope.question.modal.surveyTypes=res.data;
         $scope.question.grid.HttpGetFromDB({},
             function(res){
                 $scope.question.modal.survey=res.data;
                 $scope.question.grid.data   =res.data.questions;
                 $scope.question.grid.title  =res.data.name;
+              //  $scope.test_selectGridItem();
             }
         );
     }
  
+    $scope.test_selectGridItem=function(){
+        // Funcion solo para test 
+        $scope.question.grid.selectedItem=$scope.question.grid.data[1]
+        $scope.question.grid.onEdit();
+    }
     $scope.question.onOpenModal=function(){
+        
         var modal_type=$scope.question.modal.model.type;
         angular.forEach($scope.question.modal.surveyTypes, function (type, key) {
             if (typeof modal_type!='undefined' && type._id == modal_type._id) {
                 $scope.question.modal.model.type=type;
             }
         });
+        $scope.events.init($scope)
     }
 
     var api=new ApiCaller("survey",AppServiceCaller);
         api.get(callback_surveyType,{},"getTypes")
    
     /* Solo para pruebas abre el modal y llena el modelo de datos */
-    /*          setTimeout(function(){ 
-                $scope.question.grid.onAdd();
-            }, 1000);
-
-            var date = new Date;
-                var hms=date.getHours().toString()+":"+ date.getMinutes().toString()+":"+ date.getSeconds().toString();
-                $scope.survey.modal.enviroment="test"
-                $scope.survey.modal.setModel({
-                    name:"Test -> "+ hms,
-                    vigenciaDesde:"2018/01/01",
-                    vigenciaHasta:"2018/12/31",
-                    isEnabled:true,
-                    isDefault:true
-                });
+    /*
+    setTimeout(function(){ 
+            console.log("$scope.grid",$scope.question.grid.data)
+    }, 1000);
     */
 };
 
