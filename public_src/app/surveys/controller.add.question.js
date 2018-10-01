@@ -39,6 +39,8 @@ export var controllerAddQuestion= function  ($scope,$http,$filter,$routeParams,A
     
     $scope.events={
         init:function($scope){
+
+
             this.data=$scope.question.grid.selectedItem;
             console.log("this.data",this.data)
             if(!this.data){
@@ -55,9 +57,28 @@ export var controllerAddQuestion= function  ($scope,$http,$filter,$routeParams,A
             // this.page.message="";
             this.editarLista=false;
             this.editarColumnas=false;
+
+            this.tab_list_active=true;
             // this.columnText={"text":""};
             // this.listText={"text":""};
+           this.tab_list_active=true;
         },
+        onChangeTab:function(value){
+            /*
+            this.editarLista=false;
+            this.tab_list_active=true;
+            */
+            this.tab_list_active=value;
+            this.selectedIndex=null;
+            console.log("onChangeTab")
+        },
+        activeTab:function(option,action){
+            if((this.tab_list_active==true  && option=="list") || 
+               (this.tab_list_active==false && option=="columns")){
+                return action +" active"
+            } 
+            return ""
+        }, 
         getList:function(){
             return this.data.list;
         },
@@ -65,44 +86,40 @@ export var controllerAddQuestion= function  ($scope,$http,$filter,$routeParams,A
             if(typeof this.listText.$$hashKey!='undefined'){
                 this.editarColumnas=false;
             }else{
-                
-                this.data.list.push(this.listText);
-                console.log("ELSE data->  listText",this.listText,this.data);
+                if(this.tab_list_active){
+                    this.data.list.push(this.listText);
+                } else{
+                    this.data.columns.push(this.listText);
+                }
             }
             this.listText={};
         },
-
-        addItemToColumn:function(){
-            if(typeof this.columnText.$$hashKey!='undefined'){
-                this.editarColumnas=false;
-            }else{
-                this.data.columns.push(this.columnText);
-            }
-            this.columnText={};
-        },
-        modificar_columnas:function(item){
-            //console.log("- modificarColumna - Update",item);
-            this.ItemTextColumnEdit=item;
-        },
         modificar_lista:function(item,index){
-            //console.log("- modificar_lista - Update",item);
             this.ItemTextEdit=item;
             this.editarLista=true;
             this.selectedIndex=index;
         },
-        eliminar_columnas:function(index){
-           // console.log("- eliminarColumna - Update",index);
-            this.data.columns.splice(index, 1);
+        addItemToColumn:function(){
+            if(typeof this.listText.$$hashKey!='undefined'){
+                this.editarColumnas=false;
+            }else{
+                this.data.columns.push(this.listText);
+            }
+            this.listText={};
+        },
+        modificar_columnas:function(item){
+            this.ItemTextColumnEdit=item;
         },
         eliminar_lista:function(index){
-            this.data.list.splice(index, 1);
+            if(this.tab_list_active){
+                this.data.list.splice(index, 1);
+            }else{
+                this.data.columns.splice(index, 1);
+            }
         },
         editar_lista:function(){
             this.editarLista=!this.editarLista;
-           
-            // this.ItemTextEdit.text="";
         }
-
     }
 
     $scope.question.createModal("editQuestion","Questions","_id",require("./forms/addQuestion.html"),submit);
@@ -147,6 +164,8 @@ export var controllerAddQuestion= function  ($scope,$http,$filter,$routeParams,A
             }
         });
         $scope.events.init($scope)
+        $scope.events.tab_list_active=true;
+        console.log("$scope.events.tab_list_active",$scope.events.tab_list_active)
     }
 
     var api=new ApiCaller("survey",AppServiceCaller);

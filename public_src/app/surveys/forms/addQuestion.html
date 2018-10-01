@@ -1,82 +1,128 @@
+
 <section>
-    <div class="form-row mb-3">
-        <!-- ng-disabled="cboTypeDisabled"-->
-            <select class="browser-default form-control form-control-sm" 
-                    required="required"  id="cmbSurvey"
-                    ng-model="ctrModal.model.type"
-                    ng-disabled="ctrModal.method!='ADD'"
-                    ng-options="s as s.type for s in ctrModal.surveyTypes" >
-                <option class="" value="">(Seleccionar tipo)</option>
-            </select>
-    </div>
-    <div class="md-form m-0 p-0">
-        <input  id="txtSurvey" 
-                type="text" 
-                ng-model="ctrModal.model.question"
-                placeholder="Ingredar pregunta" 
-                ng-disabled="ctrModal.method=='DELETE'"
-                class="form-control form-control-sm" />
-    </div>
-    <div ng-show='ctrModal.model.type.type'>
-            <div ng-show='(ctrModal.model.type.type!="CUSTOM" && ctrModal.model.type.type!="TIME" && ctrModal.model.type.type!="DATETIME")'>
-                <form>
-                    <fieldset>
-                        <!-- Add item to list -->
-                        <div class="row mt-3">
-                            <div class="col-lg-10">
-                                <div class="md-form mt-0">
-                                    <input  type="text" id="item"  
-                                            class="form-control" 
-                                            ng-model="ctrModal.events.listText.text" 
-                                            placeholder="Ingresar opcion">
+        <div class="form-row mb-3">
+            <!-- ng-disabled="cboTypeDisabled"-->
+                <select class="browser-default form-control form-control-sm" 
+                        required="required"  id="cmbSurvey"
+                        ng-model="ctrModal.model.type"
+                        ng-disabled="ctrModal.method!='ADD'"
+                        ng-options="s as s.type for s in ctrModal.surveyTypes" >
+                    <option class="" value="">(Seleccionar tipo)</option>
+                </select>
+        </div>
+        <div class="md-form m-0 p-0">
+            <input  id="txtSurvey" 
+                    type="text" 
+                    ng-model="ctrModal.model.question"
+                    placeholder="Ingredar pregunta" 
+                    ng-disabled="ctrModal.method=='DELETE'"
+                    class="form-control form-control-sm" />
+        </div>
+        <div ng-show='ctrModal.model.type.type'>
+                <div ng-show='(ctrModal.model.type.type!="CUSTOM" && ctrModal.model.type.type!="TIME" && ctrModal.model.type.type!="DATETIME")'>
+                    <form>
+                        <fieldset>
+                            <!-- Add item to list -->
+                            <div class="row mt-3">
+                                <div class="col-lg-10">
+                                    <div class="md-form mt-0">
+                                        <input  type="text" id="item"  
+                                                class="form-control" 
+                                                ng-model="ctrModal.events.listText.text" 
+                                                placeholder="Ingresar opcion">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                            <a  class="btn btn-sm white pl-3 pr-3"
+                                                ng-disabled='ctrModal.events.listText.text==""'   
+                                                ng-click="ctrModal.events.addItemToList()">
+                                                    <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                                                </a>
                                 </div>
                             </div>
-                            <div class="col-lg-2">
-                                        <a  class="btn btn-sm white pl-3 pr-3"
-                                            ng-disabled='ctrModal.events.listText.text==""'   
-                                            ng-click="ctrModal.events.addItemToList()">
-                                                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-                                            </a>
-                            </div>
-                        </div>
-
-<!-- 
-                        <a  class="btn btn-danger btn-sm pl-3 pr-3" ng-click="grilla.onDelete()" ng-if="grilla.delete && grilla.selectedItem" data-toggle="modal"> 
-                                <i class="fa fa-trash fa-2x" ></i> 
-                        </a>	
-                    <a  class="btn btn-sm white pl-3 pr-3" ng-click="grilla.onEdit()" ng-if="grilla.edit && grilla.selectedItem" data-toggle="modal"> 
-                            <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
-                    </a>						
+                            <!-- Tabs-->
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                  <a class="nav-link " 
+                                    ng-click='ctrModal.events.onChangeTab(true)' 
+                                    ng-class='ctrModal.events.activeTab("list")' id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true">Lista</a>
+                                </li>
+                                <li class="nav-item" ng-show='ctrModal.model.type.type=="MATRIX"'>
+                                    <a id="profile-tab"  
+                                        class="nav-link " 
+                                        ng-click='ctrModal.events.onChangeTab(false)' 
+                                        ng-class='ctrModal.events.activeTab("columns")'
+                                        data-toggle="tab"  role="tab" aria-controls="profile" aria-selected="false">Columns</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div  class="tab-pane fade" ng-class='ctrModal.events.activeTab("list","show")' id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <!-- Tab 1 -->
+                                    <!-- EDITAR QUALITY-->
+                                            <div class="form-group" ng-show='ctrModal.model.type.type=="QUALITY"' >
+                                                <label for="labelLeft" class="control-label col-xs-2">Etiqueta</label>
+                                                <div class="col-xs-7">
+                                                    <input id="labelLeft" class="form-control" type="text" ng-model="ctrModal.model.labelLeft" rows="3"/>
+                                                </div>
+                                                <div class="col-xs-3">&nbsp;</div>
+                                            </div>
                     
--->
-
-
-                        <!-- EDITAR QUALITY-->
-                        <div class="form-group" ng-show='ctrModal.model.type.type=="QUALITY"' >
-                            <label for="labelLeft" class="control-label col-xs-2">Etiqueta</label>
-                            <div class="col-xs-7">
-                                <input id="labelLeft" class="form-control" type="text" ng-model="ctrModal.model.labelLeft" rows="3"/>
-                            </div>
-                            <div class="col-xs-3">&nbsp;</div>
-                        </div>
-                        <!-- ng-show='ctrModal.model.type.type!="DATETIME" && ctrModal.model.type.type!="TIME" && ctrModal.model.type.type!="CUSTOM"' -->
-                        
-
-                        <div ng-show='ctrModal.model.type.type!="DATETIME" && ctrModal.model.type.type!="TIME" && ctrModal.model.type.type!="CUSTOM"'>
-                                <div class="row" ng-repeat="item in ctrModal.events.data.list">
+                                            <!-- Editar Listas -->
+                                            <div ng-show='ctrModal.model.type.type!="DATETIME" && ctrModal.model.type.type!="TIME" && ctrModal.model.type.type!="CUSTOM"'>
+                                                <div class="row" ng-repeat="item in ctrModal.events.data.list">
+                                                    <div class="col-lg-9">
+                                                        <span ng-hide="ctrModal.events.selectedIndex==$index">
+                                                            {{item.text}}
+                                                        </span>
+                                                        <div class="md-form mt-0">
+                                                        <input ng-show="ctrModal.events.selectedIndex==$index" 
+                                                            type="text" 
+                                                            required="required" 
+                                                            class="form-control form-control-sm" 
+                                                            ng-model="ctrModal.events.ItemTextEdit.text"  
+                                                            placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 justify-content-around">
+                                                            <a class="btn btn-sm white m-0 p-1 pl-3 pr-3" ng-if="ctrModal.events.selectedIndex==$index"
+                                                                ng-click="ctrModal.events.selectedIndex=null">
+                                                                <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                                                            </a>
+                                                            <a  class="btn btn-sm white m-0 p-1 pl-3 pr-3" ng-if="ctrModal.events.selectedIndex!=$index" ng-click="ctrModal.events.modificar_lista(item, $index)"> 
+                                                                <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+                                                            </a>						
+                                                            <a  class="btn btn-danger btn-sm m-0 p-1 pl-2 pr-2 float-right" ng-click="ctrModal.events.eliminar_lista($index)"> 
+                                                                <i class="fa fa-trash fa-2x" ></i> 
+                                                            </a>	
+                                                    </div>
+                                                </div>   
+                                            </div>
+                                            <!-- Editar Listas FIN -->
+                                            <div class="form-group" ng-show='ctrModal.model.type.type=="QUALITY"' >
+                                                <label for="labelRight" class="control-label col-xs-2">Etiqueta</label>
+                                                <div class="col-xs-7">
+                                                    <input id="labelRight" class="form-control" type="text" ng-model="ctrModal.model.labelRight"/>
+                                                </div>
+                                                <div class="col-xs-3">&nbsp;</div>
+                                            </div>
+                                </div>
+                                <!-- Fin tab 1 -->
+                                <div ng-show='ctrModal.model.type.type=="MATRIX"'   class="tab-pane fade" 
+                                    ng-class='ctrModal.events.activeTab("columns","show")'
+                                    id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <!-- Tab 2 content INIT -->
+                                    <div class="row" ng-repeat="item in ctrModal.events.data.columns">
                                         <div class="col-lg-9">
                                             <span ng-hide="ctrModal.events.selectedIndex==$index">
-                                                    {{item.text}}
+                                                {{item.text}}
                                             </span>
                                             <div class="md-form mt-0">
                                             <input ng-show="ctrModal.events.selectedIndex==$index" 
-                                                    type="text" 
-                                                    required="required" 
-                                                    class="form-control form-control-sm" 
-                                                    ng-model="ctrModal.events.ItemTextEdit.text"  
-                                                    placeholder="">
-
-                                                
+                                                type="text" 
+                                                required="required" 
+                                                class="form-control form-control-sm" 
+                                                ng-model="ctrModal.events.ItemTextEdit.text"  
+                                                placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-lg-3 justify-content-around">
@@ -84,82 +130,73 @@
                                                     ng-click="ctrModal.events.selectedIndex=null">
                                                     <i class="fa fa-check fa-2x" aria-hidden="true"></i>
                                                 </a>
-
                                                 <a  class="btn btn-sm white m-0 p-1 pl-3 pr-3" ng-if="ctrModal.events.selectedIndex!=$index" ng-click="ctrModal.events.modificar_lista(item, $index)"> 
-                                                        <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+                                                    <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
                                                 </a>						
                                                 <a  class="btn btn-danger btn-sm m-0 p-1 pl-2 pr-2 float-right" ng-click="ctrModal.events.eliminar_lista($index)"> 
-                                                        <i class="fa fa-trash fa-2x" ></i> 
+                                                    <i class="fa fa-trash fa-2x" ></i> 
                                                 </a>	
                                         </div>
-                                    </div>   
-                                    
-                             
-                            <!-- MOSTRAR OPCIONES LISTA
-                                <div  class="md-form form-sm" >                                              
-                                    
+                                    </div> 
 
-
-                                    <span>
-                                        
-
-                                    </span>
-                                        
-                                </div> -->
-                           
-                           
-                            <!-- 
-                                editar_lista
-                                ng-show="ctrModal.events.editarLista"
-                                ng-show="ctrModal.events.editarLista" 
-
-                            <div class="col-xs-3" ng-show="ctrModal.events.data.list.length>0">
-                                <a id="btnEditar" ng-show="!ctrModal.events.editarLista"         ng-click="ctrModal.events.editar_lista()" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                <a id="btnCancelarEditar"  ng-show="ctrModal.events.editarLista" ng-click="ctrModal.events.editar_lista()" class="btn btn-warning"><span class="glyphicon"></span>Aceptar</a>
-                            </div>
-                            -->
-                        </div>
-
-                        <div class="form-group" ng-show='ctrModal.model.type.type=="QUALITY"' >
-                            <label for="labelRight" class="control-label col-xs-2">Etiqueta</label>
-                            <div class="col-xs-7">
-                                <input id="labelRight" class="form-control" type="text" ng-model="ctrModal.events.labelRight" />
-                            </div>
-                            <div class="col-xs-3">&nbsp;</div>
-                        </div>
-
-                        <!-- AGREGAR COLUMNAS-->
-                        <div class="form-group" ng-show='ctrModal.model.type.type=="MATRIX"'>
-                            <div class="col-xs-2">
-                                <label class="control-label">Columnas</label>
-                            </div>
-                            <div class="col-xs-7">
-                                <div>
-                                    <input  id="itemColumnName"  type="text" class="form-control" ng-model="columnText.text" placeholder="">
-                                    <br>
+                                    <!-- Tab 2 content FIN -->
                                 </div>
-                                <!-- EDITAR LISTA-->
-                                <div ng-show="ctrModal.events.editarLista">
-                                    <input type="text" required="required" class="form-control" ng-model="ItemTextColumnEdit.text"  placeholder="">
-                                    <br>
-                                </div>
-
-                                <!-- COLUMNAS MOSTRAR-->
-                                <ul class="list-group">
-                                    <li class="list-group-item" ng-repeat="column in ctrModal.model.columns">
-                                        {{column.text}}
-                                        <a ng-show="ctrModal.events.editarLista" class="label  label-primary" ng-click="ctrModal.events.modificar_columnas(column)">Modificar</a>
-                                        <a ng-show="ctrModal.events.editarLista" class="label  label-danger" ng-click="ctrModal.events.eliminar_columnas($index)">Eliminar</a>
-                                    </li>
-                                </ul>
                             </div>
-                            <div class="col-xs-3">
-                                <button id="btnAgregarColumna" type="button" ng-disabled='ctrModal.events.columnText.text==""'  ng-click="ctrModal.events.addItemToColumn()"  class="btn btn-success">Aceptar</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
+                            <!-- Tabs Fin-->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                            
+    
+    
+                            
+                        </fieldset>
+                    </form>
+                </div>
             </div>
-        </div>
+    
+                            <!-- AGREGAR COLUMNAS
+                            <div class="form-group" ng-show='ctrModal.model.type.type=="MATRIX"'>
+                                    <div class="col-xs-2">
+                                        <label class="control-label">Columnas??</label>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <div>
+                                            <input  id="itemColumnName"  type="text" class="form-control" ng-model="ctrModal.model.columnText.text" placeholder="">
+                                            <br>
+                                        </div>
+                                         
+                                        <div ng-show="ctrModal.events.editarLista">
+                                            <input type="text" required="required" class="form-control" ng-model="ctrModal.model.ItemTextColumnEdit.text"  placeholder="">
+                                            <br>
+                                        </div>
+                                       
+                                        <ul class="list-group">
+                                            <li class="list-group-item" ng-repeat="column in ctrModal.model.columns">
+                                                {{column.text}}
+                                                <a ng-show="ctrModal.events.editarLista" class="label  label-primary" ng-click="ctrModal.events.modificar_columnas(column)">Modificar</a>
+                                                <a ng-show="ctrModal.events.editarLista" class="label  label-danger" ng-click="ctrModal.events.eliminar_columnas($index)">Eliminar</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <button id="btnAgregarColumna" type="button" ng-disabled='ctrModal.events.columnText.text==""'  ng-click="ctrModal.events.addItemToColumn()"  class="btn btn-success">Aceptar</button>
+                                    </div>
+                                </div>
+                                -->
+                                
+    </section>
+    
+     
 
-</section>
+    
