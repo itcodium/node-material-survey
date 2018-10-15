@@ -1,18 +1,18 @@
-<section class="card p-2 pb-0 mb-2">
-        <p>{{orden}}. {{input.question}}</p>
+<section class="card p-3 pb-0 mb-1">
+        <p>{{orden}}. {{time.question}}</p>
         <div class="row p-2 pt-0">
                 <div class="col-md-6">
                     <div class="input-group"
-                        moment-picker="ctrl.timepicker"
+                        moment-picker="time.input"
                         show-header="false"
                         format="LT">
                     <div class="input-group-prepend">
                             <span class="input-group-text md-addon"><i class="fa fa-clock-o"></i></span>
                     </div>
-                    <input class="form-control form-control-sm"
+                    <input  ng-disabled="disabled" class="form-control form-control-sm"
                     
                             placeholder="Select a time"
-                            ng-model="ctrl.timepicker"
+                            ng-model="time.input"
                             ng-model-options="{ updateOn: 'blur' }">
                     </div>
                 </div>

@@ -23,7 +23,7 @@ export var SurveyCrud=function ($scope,$http, $routeParams,$compile,AppServiceCa
         _this.renderSurvey();
     }
     this.sendSurvey=function(){
-        // Pendiente ....
+        console.log("Pendiente", $scope.survey)
         /*
             $scope.survey.questions.ciudadano=$routeParams.ce;
             $scope.sendSurvey= {ciudadano: $routeParams.ce, answers:$scope.survey.questions};
@@ -60,28 +60,28 @@ export var SurveyCrud=function ($scope,$http, $routeParams,$compile,AppServiceCa
 
             switch ($scope.survey.questions[i].type.type) {
                 case "CUSTOM":   
-                    this.setCompileObject('<div survey-custom orden="'+(i+1)+'" custom="survey.questions['+i+']" ></div>');                 
+                    this.setCompileObject('<div disabled="false" survey-custom orden="'+(i+1)+'" custom="survey.questions['+i+']" ></div>');                 
                     break;
                 case "LIST":
-                    this.setCompileObject('<div disabled="true"  survey-radiolist orden="'+(i+1)+'" radio="survey.questions['+i+']" ></div>')                    
+                    this.setCompileObject('<div disabled="false" survey-radiolist orden="'+(i+1)+'" radio="survey.questions['+i+']" ></div>')                    
                     break;
                 case "CHECKLIST":
                     this.setCompileObject('<div disabled="false" survey-checklist orden="'+(i+1)+'" check="survey.questions['+i+']" ></div>');                    
                     break;
                 case "SELECT":
-                    this.setCompileObject('<div disabled="false"   survey-select orden="'+(i+1)+'" select="survey.questions['+i+']" ></div>');
+                    this.setCompileObject('<div disabled="false" survey-select orden="'+(i+1)+'" select="survey.questions['+i+']" ></div>');
                     break;
                 case "QUALITY":   
-                    this.setCompileObject('<div   survey-quality orden="'+(i+1)+'"  quality="survey.questions['+i+']" ></div>');                 
+                    this.setCompileObject('<div disabled="false" survey-quality orden="'+(i+1)+'"  quality="survey.questions['+i+']" ></div>');                 
                     break;
                 case "MATRIX":                    
-                    this.setCompileObject('<div   survey-matrix orden="'+(i+1)+'"  matrix="survey.questions['+i+']" ></div>');
+                    this.setCompileObject('<div disabled="false" survey-matrix orden="'+(i+1)+'"  matrix="survey.questions['+i+']" ></div>');
                     break;
                 case "DATETIME":                    
-                    this.setCompileObject('<div disabled="false"   survey-datetime orden="'+(i+1)+'" input="survey.questions['+i+']" ></div>');
+                    this.setCompileObject('<div disabled="false" survey-datetime orden="'+(i+1)+'" date="survey.questions['+i+']" ></div>');
                     break;
                 case "TIME":                    
-                    this.setCompileObject('<div disabled="false"   survey-timepicker orden="'+(i+1)+'" input="survey.questions['+i+']" ></div>');
+                    this.setCompileObject('<div disabled="false" survey-timepicker orden="'+(i+1)+'" time="survey.questions['+i+']" ></div>');
                     break;    
                 default:
                     var x="No value found";

@@ -1,10 +1,10 @@
-<section class="card p-2 pb-3 mb-1 ">
+<section class="card p-3 pb-0 mb-1">
     <p>{{orden}}. {{select.question}}</p>
        <div class="row ml-1 mr-1">
                 <div class="col-md-6">
-                    <select ng-model="selected" class="mdb-select">
-                            <option ng-repeat="sl in select.list" value="{{sl.text}}">{{sl.text}}</option>
-                            <option value="" disabled selected>(Seleccionar)</option>
+                    <select  ng-disabled="disabled" ng-model="select.input" class="mdb-select">
+                            <option ng-repeat="sl in select.list"   ng-value="sl.text">{{sl.text}}</option>
+                            <option value="" >(Seleccionar)</option>
                     </select>
                 </div>
         </div>

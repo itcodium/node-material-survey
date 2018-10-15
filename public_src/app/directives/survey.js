@@ -15,6 +15,15 @@ module.exports=function(app){
         }
     })  */
  
+    app.directive('surveyCustom', function () {
+        return {
+            restrict: 'EA',
+            template: require('./views/survey/custom.html'),
+            replace: true,
+            scope: { custom: '=',orden:'=',disabled:'='}
+        }
+    }
+)
     app.directive('surveyQuality', function () {
             return {
                 restrict: 'EA',
@@ -50,15 +59,7 @@ module.exports=function(app){
             }
         }
     )
-    app.directive('surveyCustom', function () {
-            return {
-                restrict: 'EA',
-                template: require('./views/survey/custom.html'),
-                replace: true,
-                scope: { custom: '=',orden:'=',disabled:'='}
-            }
-        }
-    )
+
     app.directive('surveyMatrix', function () {
             return {
                 restrict: 'EA',
@@ -73,7 +74,7 @@ module.exports=function(app){
                 restrict: 'EA',
                 template: require('./views/survey/datetime.html'),
                 replace: true,
-                scope: { input:'=', orden:'='}
+                scope: { date:'=', orden:'=',disabled:'='}
             }
         }
     )
@@ -82,7 +83,7 @@ module.exports=function(app){
             restrict: 'EA',
             template: require('./views/survey/timepicker.html'),
             replace: true,
-            scope: { input: '=',orden:'='},
+            scope: { time: '=',orden:'=',disabled:'='},
             controller:function($scope){
                 moment.locale('en')
                 $scope.myDate = moment()

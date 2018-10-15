@@ -1,4 +1,4 @@
-<section class="card p-2 mb-2">
+<section class="card p-3 pb-0 mb-1">
     <p class="mb-4">{{orden}}. {{quality.question}}</p>
     <table class="table">
            <tr>
@@ -12,7 +12,7 @@
                 <td>{{quality.labelLeft}}</td>
                 <td scope="col" class="ml-0 pl-0"  ng-repeat="item in quality.list">
                             <input  ng-disabled="disabled" 
-                                    ng-model="item.selected" 
+                                    ng-model="quality.input" 
                                     value="{{item.text}}"
                                     type="radio" 
                                     name="q{{orden}}"

@@ -1,4 +1,4 @@
-<section class="card p-2 mb-2">
+<section class="card p-3 pb-0 mb-1">
     <p class="mb-4">{{orden}}. {{matrix.question}}</p>
     <table class="table">
         <tr>
@@ -12,7 +12,7 @@
             <td scope="col"  ng-repeat="item2 in matrix.columns">
                 <input
                     ng-disabled="disabled"
-                    ng-model="matrix.response[$parent.$index]" value='{{item.text}};{{item2.text}}' type="radio" 
+                    ng-model="matrix.input[$parent.$index]" value='{{item.text}};{{item2.text}}' type="radio" 
                     id="mat{{$parent.$index}}{{$index}}"
                     name="mat{{$parent.$index}}{{$index}}"
                     class="form-check-input "/>
