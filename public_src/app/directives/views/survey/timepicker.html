@@ -1,8 +1,9 @@
-<section class="card p-3 pb-0 mb-1">
-        <p>{{orden}}. {{time.question}}</p>
-        <div class="row p-2 pt-0">
-                <div class="col-md-6">
-                    <div class="input-group"
+<div>
+       
+        <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{time.question}}</h2>
+        <div class="d-flex justify-content-start pt-2 pb-2">
+                <div class="col-lg-6">
+                        <div class="input-group"
                         moment-picker="time.input"
                         show-header="false"
                         format="LT">
@@ -14,17 +15,14 @@
                             placeholder="Select a time"
                             ng-model="time.input"
                             ng-model-options="{ updateOn: 'blur' }">
-                    </div>
+                    </div> 
                 </div>
-        </div>
-    
-        <script>
-            $(document).ready(function() {
-                // initDatePicker("#timepicker1")
-            });
-        </script>
-        
-</section>
+        </div>    
+        <div ng-if="buttonOn"  class="d-flex justify-content-end"  >
+                <a class="btn btn-primary" role="button">Next 2</a>
+        </div> 
+ 
+</div>
 
 
     

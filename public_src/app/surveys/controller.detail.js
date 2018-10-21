@@ -20,7 +20,7 @@ export var SurveyCrud=function ($scope,$http, $routeParams,$compile,AppServiceCa
     this.surveyDetail_callback= function (res){
         $scope.survey=res.data;
         _this.survey=res.data;
-        _this.renderSurvey();
+       // _this.renderSurvey();
     }
     this.sendSurvey=function(){
         console.log("Pendiente", $scope.survey)
@@ -55,6 +55,7 @@ export var SurveyCrud=function ($scope,$http, $routeParams,$compile,AppServiceCa
     this.setCompileObject=function(param){
         $(_this.renderObjectId).append($compile(param)($scope));
     }
+    /*
     this.renderSurvey=function(){
         for(var i=0;i<$scope.survey.questions.length;i++){
 
@@ -88,7 +89,7 @@ export var SurveyCrud=function ($scope,$http, $routeParams,$compile,AppServiceCa
             }
         }
     }
-    
+    */
 }
 
 

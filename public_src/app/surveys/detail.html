@@ -1,4 +1,21 @@
 ﻿<!-- 
+<div class="mb-1" ng-class='' ng-repeat="sur in survey.questions">
+             
+        <div ng-if='sur.type.type=="CUSTOM"' disabled="false" survey-custom orden="$index+1" custom="sur" ></div>
+        <div ng-if='sur.type.type=="LIST"' disabled="false" survey-radiolist orden="$index+1" radio="sur" ></div>
+        <div ng-if='sur.type.type=="CHECKLIST"' disabled="false"  orden="$index+1" survey-checklist  check="sur" ></div>
+        <survey-select ng-if='sur.type.type=="SELECT"' disabled="false"  orden="$index+1" select="sur" ></survey-select>
+        <div ng-if='sur.type.type=="QUALITY"' disabled="false"  orden="$index+1" survey-quality quality="sur" ></div>
+        <div ng-if='sur.type.type=="MATRIX"' disabled="false"  orden="$index+1" survey-matrix matrix="sur" ></div>
+        <div ng-if='sur.type.type=="DATETIME"' disabled="false"  orden="$index+1" survey-datetime date="sur" ></div>
+        <div ng-if='sur.type.type=="TIME"' disabled="false"  orden="$index+1" survey-timepicker time="sur" ></div>
+     
+    
+        
+  </div>
+ 
+
+
 
 <div class="alert-division" ng-show="alerts.length > 0">
     <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
@@ -15,26 +32,62 @@
 <!-- END MENSAJE 
 -->
 
-<h1>{{survey.name}}
-    <button type="button" ng-click="addQuestion()" class="btn btn-outline-info waves-effect">
-        Add Question
-    </button>
-</h1>
+<h1>{{survey.name}}</h1> 
+<div  id="carousel-example-1z" class="carousel slide carousel-fade" data-pause="true"  data-ride="false">
+        <ol class="carousel-indicators mb-0" style="z-index:10">
+            <li data-target="#carousel-example-1z" data-slide-to="{{$index}}" class="grey lighten-2" ng-class='$index==0?"active":""' ng-repeat="sur in survey.questions"></li>
+        </ol>
+        <div class="carousel-inner_  " role="listbox" style="z-index:8" >
+          <div class="carousel-item jumbotron"  ng-class='$index==3?"active":""' ng-repeat="sur in survey.questions">
+           
+                <div button-on="true"  ng-if='sur.type.type=="CUSTOM"' disabled="false" survey-custom orden="$index+1" custom="sur" ></div>
+                <div button-on="true"  ng-if='sur.type.type=="LIST"' disabled="false" survey-radiolist orden="$index+1" radio="sur" ></div>
+                <div button-on="true"  ng-if='sur.type.type=="CHECKLIST"' disabled="false"  orden="$index+1" survey-checklist  check="sur" ></div>
+                <survey-select  button-on="true"  ng-if='sur.type.type=="SELECT"' disabled="false"  orden="$index+1" select="sur" ></survey-select>
+                <div  button-on="true" ng-if='sur.type.type=="QUALITY"' disabled="false"  orden="$index+1" survey-quality quality="sur" ></div>
+                <div  button-on="true" ng-if='sur.type.type=="MATRIX"' disabled="false"  orden="$index+1" survey-matrix matrix="sur" ></div>
+                <div button-on="true"  ng-if='sur.type.type=="DATETIME"' disabled="false"  orden="$index+1" survey-datetime date="sur" ></div>
+                <div button-on="true"  ng-if='sur.type.type=="TIME"' disabled="false"  orden="$index+1" survey-timepicker time="sur" ></div>
+                <div ng-if="0" class="fixed-bottom  align-right">
+                        <div class="d-flex justify-content-around">
+                                <a class="btn btn-primary btn-md align-middle" role="button">Next</a>
+                        </div>
+                        
+                </div>
+            </div>
+        </div>
+        <!--/.Slides-->
+        <!--Controls
+        <a class="carousel-control-prev" href="javascript:void(0);#carousel-example-1z" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="javascript:void(0);#carousel-example-1z" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>-->
+      </div>
 
+      <!-- 
 
-<div  ng-show="survey.questions.length">
-    <p>El Estado, en el afán de buscar la calidez y calidad de los servicios públicos, se encuentra realizando la siguiente encuesta de percepción sobre los servicios públicos.</p>
-    <!-- ng-show="!detail.voted" -->
-    <input   class="form-control btn-default" ng-click="detail.sendSurvey()"   type="button" value="Enviar encuesta" />
-    <div id="DinamicDiv"></div>  
-    <input id="btnEnviarEncuesta"  class="form-control btn-default" ng-click="detail.sendSurvey()"   type="button" value="Enviar encuesta" />
-    <!-- ng-show="!detail.voted" -->
-</div>
 <div ng-show="survey.questions.length==0">
-    <p>Esta encuesta no tiene aún las preguntas configuradas</p>
-    <br>
+        <p>Esta encuesta no tiene aún las preguntas configuradas</p>
+        <br>
+    </div>
+    <input   class="form-control btn-default" ng-click="detail.sendSurvey()"   type="button" value="Enviar encuesta" />
+<div ng-repeat="sur in survey.questions">
+    <div class="card p-3 mb-1" ng-if='sur.type.type=="CUSTOM"' disabled="false" survey-custom orden="$index+1" custom="sur" ></div>
+    <div ng-if='sur.type.type=="LIST"' disabled="false" survey-radiolist orden="$index+1" radio="sur" ></div>
+    <div ng-if='sur.type.type=="CHECKLIST"' disabled="false"  orden="$index+1" survey-checklist  check="sur" ></div>
+    <survey-select class="card p-3 mb-1" ng-if='sur.type.type=="SELECT"'  disabled="false"  orden="$index+1"  select="sur" ></survey-select>
+    <div ng-if='sur.type.type=="QUALITY"' disabled="false"  orden="$index+1" survey-quality quality="sur" ></div>
+    <div ng-if='sur.type.type=="MATRIX"' disabled="false"  orden="$index+1" survey-matrix matrix="sur" ></div>
+    <div ng-if='sur.type.type=="DATETIME"' disabled="false"  orden="$index+1" survey-datetime date="sur" ></div>
+    <div ng-if='sur.type.type=="TIME"' disabled="false"  orden="$index+1" survey-timepicker time="sur" ></div>
 </div>
+-->
+<input id="btnEnviarEncuesta"  class="form-control btn-default" ng-click="detail.sendSurvey()"   type="button" value="Enviar encuesta" />
+      
 
 
-
-
+ 

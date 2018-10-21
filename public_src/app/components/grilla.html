@@ -25,9 +25,10 @@
             <tr>
                 <th ng-if="grilla.selectedGrid" grilla.selectedGrid></th>
                 <th ng-show="columns.show" ng-click="grilla.order(columns)"
+                    ng-style="(columns.filter == 'number' || columns.filter == 'int' || columns.filter == 'coef' || columns.filter == 'currency') ? {'width': columns.width, 'text-align': (columns.align=='' )? 'right':columns.align} :  {'width': columns.width, 'text-align': columns.align}"
                     ng-repeat="columns in grilla.config.columns">
                     {{columns.name}}
-                    <i class="fa fa-sort float-right" aria-hidden="true"></i>
+                    <i ng-if="columns.field"  class="fa fa-sort float-right" aria-hidden="true"></i>
                 </th>
             </tr>
         </thead>
@@ -51,7 +52,11 @@
                         {{ grilla.showVal(row[column_data.field], column_data.filter )}}
                     </span>
                     <span ng-if="column_data.link">
-                           <a class="text-primary" href="/#!/{{column_data.link.page}}/{{row[column_data.link.param]}}"><span >{{ grilla.showVal(row[column_data.field], column_data.filter )}}</span></a>
+                           <a class="text-primary" href="/#!/{{column_data.link.page}}/{{row[column_data.link.param]}}">
+                            <span ng-if="!column_data.link.icon">{{ grilla.showVal(row[column_data.field], column_data.filter )}}</span>
+                            <i ng-if="column_data.link.icon" style="color:{{column_data.link.icon.color}}" class="{{column_data.link.icon.class}}" aria-hidden="true"></i>   
+                        </a>
+                           
                     </span>
                 </td>
             </tr>

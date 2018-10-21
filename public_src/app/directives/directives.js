@@ -1,4 +1,4 @@
-var moment = require('moment');
+ 
 module.exports=function(app){
  
     app.directive('modalInclude', ['$compile', function ($compile) {

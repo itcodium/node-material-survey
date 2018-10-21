@@ -1,12 +1,14 @@
-<section class="card p-3 mb-1" >
-    <p>{{orden}}. {{custom.question}}</p>
-    <div class="row p-2 pt-0">
+<div>
+    <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{custom.question}}</h2>
+    <div class="d-flex justify-content-start pt-2 pb-2">
+            <div class="col-lg-6 md-form">
+                <textarea ng-disabled="disabled" ng-model="custom.input" 
+                    class="md-textarea form-control" id=comment></textarea>
+            </div>
+    </div>    
+    <div ng-if="buttonOn"  class="d-flex justify-content-end"  >
+            <a class="btn btn-primary" role="button">Next</a>
+    </div>   
+</div>
 
-        <div class="col-md-6">
-            <textarea ng-disabled="disabled" ng-model="custom.input" 
-            
-            class="form-control form-control-sm" 
-            rows=5 id=comment></textarea>
-        </div>
-    </div>
-</section>
+ 

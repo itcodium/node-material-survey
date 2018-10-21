@@ -77,7 +77,12 @@ export var GridModalCrud=function (
                     toastr.error(res.data.message);
                 } else {
                     _this.modal.hide();
-                    toastr.success(res.data.message);
+                    var msg=res.data.message;
+                    if(!msg || msg=="" ){
+                        msg="Se ha actualizado el registro."
+                    }
+                    toastr.success(msg);
+
                     _this.grid.HttpGetFromDB();
                 }
             }
@@ -102,7 +107,12 @@ export var GridModalCrud=function (
                     _this.modal.hide();
                     _this.grid.HttpGetFromDB();
                     _this.grid.selectedItem=null;
-                    toastr.success(res.data.message);
+                    console.log("res.data.message",res.data.message)
+                    var msg=res.data.message;
+                    if(!msg || msg=="" ){
+                        msg="Se ha borrado un registro."
+                    }
+                    toastr.success(msg);
                 }
             }
         }

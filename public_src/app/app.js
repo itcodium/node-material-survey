@@ -15,7 +15,9 @@ export var appController =function($scope,$route) {
     $scope.refresh=function(){
         $route.reload();
     }
- 
+    
+    $('.button-collapse').sideNav({ closeOnClick: true });
+
     $scope.toogleNavBar=function(){
         console.log("test bar")
         $('#slide-out').attr("style","transform:translateX(-100%);transition-duration: 250ms;");

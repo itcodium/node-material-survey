@@ -1,6 +1,3 @@
-var moment = require('moment');
-require("jquery");
-import 'bootstrap';
 import {API_METHOD}       from '../api.caller';
 
 function formatNumber(nro,mil,decimal){
@@ -109,6 +106,8 @@ export var Components= (function () {
             _this.config.query.limit=param;
         }
         this.order=function(param){             // OK
+            if(!param.order)
+            {return}
             param.order.desc=!param.order.desc;
             _this.config.query.field=param.field;
             _this.config.query.order=param.order.desc==1?1:-1;

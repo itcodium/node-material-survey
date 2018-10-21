@@ -1,22 +1,27 @@
-<section class="card p-3 mb-1">
-        <p class="mb-0 pb-0">{{orden}}. {{date.question}}</p>
-        <div class="row p-2 pt-0 pb-0">
-            <div class="col-md-6">
-              
-                    <datepicker  class="md-form m-0 p-0" date-format="yyyy/MM/dd">
+<div>
+        <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{date.question}}</h2>
+        <div class="d-flex justify-content-start pt-2 pb-2">
+                <div class="col-lg-6">
+                                <datepicker  class="md-form m-0 p-0" date-format="yyyy/MM/dd">
                         
-                        <input 
-                        ng-disabled="disabled"
-                            id="XDate" 
-                            name="XDate" 
-                            class="form-control form-control-sm"
-                            ng-model="date.input"
-                            formatted-input format-type="fecha"
-                            autocomplete="off"
-                            type="text"/>
-                        
-                    </datepicker>
-            </div>
-        </div>
+                                        <input 
+                                        ng-disabled="disabled"
+                                            id="XDate" 
+                                            name="XDate" 
+                                            class="form-control form-control-sm"
+                                            ng-model="date.input"
+                                            formatted-input format-type="fecha"
+                                            autocomplete="off"
+                                            type="text"/>
+                                        
+                                    </datepicker>
+                </div>
+        </div>    
+        <div ng-if="buttonOn"  class="d-flex justify-content-end"  >
+                <a class="btn btn-primary" role="button">Next 2</a>
+        </div> 
+</div>
+        
 
-</section>
+        
+ 

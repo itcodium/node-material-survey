@@ -1,14 +1,5 @@
-
-import './assets/css/style.css';
- 
-
-
-window.initDatePicker  =function (id){
- 
-}
-
-
 import {app} from './app/app.init';
+
 
 import {appController}            from './app/app';
 import {controllerHoteles}        from './app/hoteles/controller.hoteles';
@@ -27,6 +18,7 @@ import {hotelSearchNameCtrl} from './app/hoteles/controllers/searchName';
 
 require ('./app/directives')(app);
 require ('./app/components')(app);
+
 
 
 // Use fron javascript (html page ) window.test=function(){}
@@ -65,4 +57,4 @@ require ('./app/components')(app);
   module.hot.accept();
   module.hot.dispose(function() {});
 }
-
+ 

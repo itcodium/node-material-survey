@@ -1,5 +1,7 @@
+ 
 var  angular = require('angular');
 var  ngRoute = require('angular-route');
+
 import '../assets/css/angular-datepicker.css';
 var  ngDatepicker = require('angularjs-datepicker');
 
@@ -10,6 +12,14 @@ moment.locale('en')
 
 
 
+var _=require('underscore') 
+window['_'] = _;
+require('angular-moment-picker') 
+window.$ = require('jquery');
+window.jQuery  = require('jquery');
+ 
+import "popper.js"; 
+import "bootstrap";
 import {AppServiceCaller,AplicationText} from './services';
 
 

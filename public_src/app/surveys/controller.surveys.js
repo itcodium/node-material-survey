@@ -10,8 +10,11 @@
         
         var SURVEY_COLUMNS=[
             {show:false,name:'id',             field:'_id',            tip: '',               order:{desc:false}},
-            {show:true ,name:'Name',           field:'name',           tip: '',               order:{desc:false},
+            {show:true ,name:'Name',field:'name',tip: '',order:{desc:false},
              link:{page:"surveyDetail",param:"_id"}},
+            {show:true ,name:'AddQuestion',field:null,tip: '', align:"center",
+             link:{page:"surveyAddQuestion",param:"_id",icon:{class:'fa fa-plus',color:"#000"}
+            }},
             {show:true ,name:'Vigencia desde', field:'vigenciaDesde',  tip: '',filter:'date', order:{desc:false}},
             {show:true ,name:'Vigencia hasta', field:'vigenciaHasta',  tip: '',filter:'date', order:{desc:false}},
             {show:true ,name:'Enabled',        field:'isEnabled',      tip: '',               order:{desc:false}},

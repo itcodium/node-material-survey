@@ -1,6 +1,6 @@
-<section class="card p-3 pb-0 mb-1">
-    <p class="mb-4">{{orden}}. {{quality.question}}</p>
-    <table class="table">
+<div>
+    <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{quality.question}}</h2>
+    <table class="table pt-2 pb-2">
            <tr>
                <td></td>
                <td class="ml-0 pl-0"  ng-repeat="item in quality.list">
@@ -24,7 +24,10 @@
                 <td>{{quality.labelRight}}</td>
            </tr>
     </table>
-</section>
+    <div ng-if="buttonOn"  class="d-flex justify-content-end"  >
+            <a class="btn btn-primary" role="button">Next</a>
+    </div>   
+</div>
 
 
 
