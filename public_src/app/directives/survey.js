@@ -20,7 +20,7 @@ module.exports=function(app){
             restrict: 'EA',
             template: require('./views/survey/custom.html'),
             replace: true,
-            scope: { custom: '=',orden:'=',disabled:'=', buttonOn:'='}
+            scope: { question: '=',orden:'=',disabled:'=', buttonOn:'=', target:'=', surveysize:'='}
         }
     }
 )
@@ -29,7 +29,7 @@ module.exports=function(app){
                 restrict: 'EA',
                 template: require('./views/survey/quality.html'),
                 replace: true,
-                scope: { quality: '=',orden:'=',disabled:'=' , buttonOn:'='}
+                scope: { question: '=',orden:'=',disabled:'=' , buttonOn:'=', target:'=', surveysize:'='}
             }
         }
     )
@@ -50,11 +50,13 @@ module.exports=function(app){
     app.component('surveySelect',   {
         template: require('./views/survey/select.html'),
         bindings: {
-            select: '=',
+            question: '=',
             orden:'=',
             selected:'=',
             disabled:'=' , 
             buttonOn:'=', 
+            target:'=',
+            surveysize:'='
         },
         controllerAs: 'vm',
         controller:surveySelectController 
@@ -67,7 +69,7 @@ module.exports=function(app){
                 restrict: 'EA',
                 template: require('./views/survey/checklist.html'),
                 replace: true,
-                scope: { check: '=',orden:'=',disabled:'=', buttonOn:'='}
+                scope: { question: '=',orden:'=',disabled:'=', buttonOn:'=', target:'=', surveysize:'='}
             }
         }
     )
@@ -76,7 +78,7 @@ module.exports=function(app){
                 restrict: 'EA',
                 template: require('./views/survey/radiolist.html'),
                 replace: true,
-                scope: { radio: '=',orden:'=',disabled:'=', buttonOn:'='}
+                scope: { question: '=',orden:'=',disabled:'=', buttonOn:'=', target:'=', surveysize:'='}
             }
         }
     )
@@ -86,7 +88,7 @@ module.exports=function(app){
                 restrict: 'EA',
                 template: require('./views/survey/matrix.html'),
                 replace: true,
-                scope: { matrix: '=',orden:'=',disabled:'=', buttonOn:'='}
+                scope: { question: '=',orden:'=',disabled:'=', buttonOn:'=', target:'=', surveysize:'='}
             }
         }
     )
@@ -95,7 +97,7 @@ module.exports=function(app){
                 restrict: 'EA',
                 template: require('./views/survey/datetime.html'),
                 replace: true,
-                scope: { date:'=', orden:'=',disabled:'=', buttonOn:'='}
+                scope: { question:'=', orden:'=',disabled:'=', buttonOn:'=', target:'=', surveysize:'='}
             }
         }
     )
@@ -104,7 +106,7 @@ module.exports=function(app){
             restrict: 'EA',
             template: require('./views/survey/timepicker.html'),
             replace: true,
-            scope: { time: '=',orden:'=',disabled:'=', buttonOn:'='},
+            scope: { question: '=',orden:'=',disabled:'=', buttonOn:'=', target:'=', surveysize:'='},
             controller:function($scope){
                 moment.locale('en')
                 $scope.myDate = moment()

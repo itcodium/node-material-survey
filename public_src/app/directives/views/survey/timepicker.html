@@ -1,10 +1,10 @@
 <div>
        
-        <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{time.question}}</h2>
+        <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{question.question}}</h2>
         <div class="d-flex justify-content-start pt-2 pb-2">
                 <div class="col-lg-6">
                         <div class="input-group"
-                        moment-picker="time.input"
+                        moment-picker="question.input"
                         show-header="false"
                         format="LT">
                     <div class="input-group-prepend">
@@ -13,13 +13,24 @@
                     <input  ng-disabled="disabled" class="form-control form-control-sm"
                     
                             placeholder="Select a time"
-                            ng-model="time.input"
+                            ng-model="question.input"
                             ng-model-options="{ updateOn: 'blur' }">
                     </div> 
                 </div>
         </div>    
         <div ng-if="buttonOn"  class="d-flex justify-content-end"  >
-                <a class="btn btn-primary" role="button">Next 2</a>
+               <a ng-hide="orden==1" class="btn btn-primary" 
+                        role="button" 
+                        data-target="{{target}}" 
+                        role="button" 
+                        data-slide="prev">Prev</a>
+        
+                <a class="btn btn-primary" 
+                        role="button" 
+                        data-target="{{target}}" 
+                        role="button" 
+                        ng-hide="orden==surveysize+1"
+                        data-slide="next">Next</a>
         </div> 
  
 </div>

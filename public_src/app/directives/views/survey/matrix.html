@@ -1,18 +1,18 @@
 <div>
-    <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{matrix.question}}</h2>
+    <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{question.question}}</h2>
     <table class="table pt-2 pb-2">
         <tr>
             <td></td>
-            <td  ng-repeat="item in matrix.columns">
+            <td  ng-repeat="item in question.columns">
                 {{item.text}}
             </td>
         </tr>
-        <tr ng-repeat="item in matrix.list">
+        <tr ng-repeat="item in question.list">
             <td>{{item.text}}</td>
-            <td scope="col"  ng-repeat="item2 in matrix.columns">
+            <td scope="col"  ng-repeat="item2 in question.columns">
                 <input
                     ng-disabled="disabled"
-                    ng-model="matrix.input[$parent.$index]" value='{{item.text}};{{item2.text}}' type="radio" 
+                    ng-model="question.input[$parent.$index]" value='{{item.text}};{{item2.text}}' type="radio" 
                     id="mat{{$parent.$index}}{{$index}}"
                     name="mat{{$parent.$index}}{{$index}}"
                     class="form-check-input "/>
@@ -21,6 +21,17 @@
         </tr>
     </table>
     <div ng-if="buttonOn"  class="d-flex justify-content-end"  >
-            <a class="btn btn-primary" role="button">Next</a>
+            <a ng-hide="orden==1" class="btn btn-primary" 
+            role="button" 
+            data-target="{{target}}" 
+            role="button" 
+            data-slide="prev">Prev</a>
+            
+            <a class="btn btn-primary" 
+            role="button" 
+            data-target="{{target}}" 
+            role="button" 
+            ng-hide="orden==surveysize+1"
+            data-slide="next">Next</a>
     </div>   
 </div>

@@ -1,14 +1,27 @@
-<div>
-    <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{custom.question}}</h2>
+<div class="h-100">
+    <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{question.question}}</h2>
     <div class="d-flex justify-content-start pt-2 pb-2">
             <div class="col-lg-6 md-form">
-                <textarea ng-disabled="disabled" ng-model="custom.input" 
+                <textarea ng-disabled="disabled" ng-model="question.input" 
                     class="md-textarea form-control" id=comment></textarea>
             </div>
-    </div>    
-    <div ng-if="buttonOn"  class="d-flex justify-content-end"  >
-            <a class="btn btn-primary" role="button">Next</a>
     </div>   
+    <div ng-if="buttonOn"  class="d-flex justify-content-end"  >
+            <a ng-hide="orden==1" class="btn btn-primary" 
+            role="button" 
+            data-target="{{target}}" 
+            role="button" 
+            data-slide="prev">Prev</a>
+
+            <a class="btn btn-primary" 
+                role="button" 
+                data-target="{{target}}" 
+                role="button" 
+                ng-hide="orden==surveysize+1"
+                data-slide="next">Next</a>
+    </div>   
+    
+    
 </div>
 
  

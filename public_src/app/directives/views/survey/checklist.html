@@ -1,8 +1,8 @@
 <div class="">
-        <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{check.question}}</h2>
+        <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{question.question}}</h2>
         <div class="d-flex justify-content-start pt-2 pb-2">
                 <div class="col-lg-6">
-                        <div ng-repeat="checkItem in check.list" class="form-check mb-2">
+                        <div ng-repeat="checkItem in question.list" class="form-check mb-2">
                                 <input  type="checkbox" class="form-check-input" 
                                         ng-disabled="disabled" ng-model="checkItem.selected" 
                                         id="sy_{{$index}}">
@@ -11,7 +11,18 @@
                 </div>
         </div>    
         <div ng-if="buttonOn"  class="d-flex justify-content-end"  >
-                <a class="btn btn-primary" role="button">Next</a>
+                <a ng-hide="orden==1" class="btn btn-primary" 
+                role="button" 
+                data-target="{{target}}" 
+                role="button" 
+                data-slide="prev">Prev</a>
+                
+                <a class="btn btn-primary" 
+                role="button" 
+                data-target="{{target}}" 
+                role="button" 
+                ng-hide="orden==surveysize+1"
+                data-slide="next">Next</a>
         </div> 
 </div>
 

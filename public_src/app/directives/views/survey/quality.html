@@ -1,18 +1,18 @@
 <div>
-    <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{quality.question}}</h2>
+    <h2 class="h2-responsive mb-3 text-left">{{orden}}. {{question.question}}</h2>
     <table class="table pt-2 pb-2">
            <tr>
                <td></td>
-               <td class="ml-0 pl-0"  ng-repeat="item in quality.list">
+               <td class="ml-0 pl-0"  ng-repeat="item in question.list">
                     {{item.text}}
                </td>
                <td></td>
            </tr>
            <tr>
-                <td>{{quality.labelLeft}}</td>
-                <td scope="col" class="ml-0 pl-0"  ng-repeat="item in quality.list">
+                <td>{{question.labelLeft}}</td>
+                <td scope="col" class="ml-0 pl-0"  ng-repeat="item in question.list">
                             <input  ng-disabled="disabled" 
-                                    ng-model="quality.input" 
+                                    ng-model="question.input" 
                                     value="{{item.text}}"
                                     type="radio" 
                                     name="q{{orden}}"
@@ -21,11 +21,22 @@
                                     
                             <label class="form-check-label  ml-0 pl-0" for="qty{{$index}}"></label>
                 </td>
-                <td>{{quality.labelRight}}</td>
+                <td>{{question.labelRight}}</td>
            </tr>
     </table>
     <div ng-if="buttonOn"  class="d-flex justify-content-end"  >
-            <a class="btn btn-primary" role="button">Next</a>
+            <a ng-hide="orden==1" class="btn btn-primary" 
+            role="button" 
+            data-target="{{target}}" 
+            role="button" 
+            data-slide="prev">Prev</a>
+            
+            <a class="btn btn-primary" 
+            role="button" 
+            data-target="{{target}}" 
+            role="button" 
+            ng-hide="orden==surveysize+1"
+            data-slide="next">Next</a>
     </div>   
 </div>
 

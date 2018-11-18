@@ -99,6 +99,7 @@ export var controllerSurveyDetail = function ($scope,$http, $routeParams,$compil
     $scope.detail.setApiCaller("survey");
     $scope.detail.getSurveyById($routeParams.id);
     $scope.detail.setRenderObjectId("#DinamicDiv");
+    $scope.carouselId="#carousel-example-1z";
 
     $scope.addQuestion=function(){
         window.location.href = "/#!/surveyAddQuestion/"+$routeParams.id;

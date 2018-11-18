@@ -1,16 +1,29 @@
  <div class="">
-        <h2 class="h2-responsive mb-3 text-left">{{vm.orden}}. {{vm.select.question}}</h2>
+        <h2 class="h2-responsive mb-3 text-left">{{vm.orden}}. {{vm.question.question}}</h2>
         <div class="d-flex justify-content-start pt-2 pb-2">
                 <div class="col-lg-6">
-                        <select style="z-index:200" id="{{vm.id}}"    ng-disabled="vm.disabled" ng-model="vm.select.input" class="mdb-select md-form">
-                                <option ng-repeat="sl in vm.select.list"   ng-value="sl.text">{{sl.text}}</option>
+                        <select style="z-index:200" id="{{vm.id}}"    ng-disabled="vm.disabled" ng-model="vm.question.input" class="mdb-select md-form">
+                                <option ng-repeat="sl in vm.question.list"   ng-value="sl.text">{{sl.text}}</option>
                                 <option value="" >(Seleccionar)</option>
                         </select>
                 </div>
         </div>    
-        <div ng-if="vm.buttonOn"  class="d-flex justify-content-end"  >
-                <a class="btn btn-primary" role="button">Next 2</a>
-        </div> 
+                                         
+        <div ng-if="vm.buttonOn"  class="d-flex justify-content-center align-items-end"  >
+                <a class="btn btn-primary" 
+                        role="button" 
+                        data-target="{{vm.target}}" 
+                        role="button" 
+                        data-slide="prev">Prev</a>
+     
+                        <a class="btn btn-primary" 
+                        role="button" 
+                        data-target="{{vm.target}}" 
+                        role="button" 
+                        ng-hide="vm.orden==vm.surveysize+1"
+                        data-slide="next">Next</a>
+
+        </div>  
 </div>
 
-
+ 
