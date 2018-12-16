@@ -2,28 +2,20 @@
    <div class="row">
     
       <div class="col-lg-3">
-        
           <hotel-filter filter=hotelFilter ></hotel-filter> 
-          
       </div>
-    
       <div class="col-lg-9">
-        
         <div class="card ">
             <table class="table">
               <tbody>
                     <tr ng-repeat="item in hotelesList | filter:query">
                       <td>
-         
                         <hotel-item data=item></hotel-item>
-         
                       </td>
                     </tr>
               </tbody>
             </table>
-            
         </div>
-      
         <section class="card text-center" ng-if="hotelesList.length==0">
             <h2 class="h4-responsive font-weight-bold text-center my-0">No se encontraron registros</h2>
         </section>

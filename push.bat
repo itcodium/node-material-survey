@@ -1,3 +1,3 @@
 git add .
-git commit -m "2018-11-18 Survey, se completa la funcionalidad next y prev de slide."
+git commit -m "2018-12-16 Demo ReactJs."
 git push

@@ -7,11 +7,11 @@ export var ApiRoutes=function() {
         this.USUARIOS= "usuario";
         this.HOTELES="hoteles";
         this.SURVEY="survey";
-        
+       
+      
         if (process.env.NODE_ENV == 'production') {
             API_URL_PROTOCOLO = "http:";
             API_URL = API_URL_PROTOCOLO + "//atodojs-pmatch.193b.starter-ca-central-1.openshiftapps.com/api/";
-            
             //API_URL = API_URL_PROTOCOLO + "//localhost:8080/api/";
         }
                 
@@ -19,7 +19,9 @@ export var ApiRoutes=function() {
             API_URL_PROTOCOLO = "http:";
             API_URL = API_URL_PROTOCOLO + "//localhost:7777/api/";
         }
+       
 
+       
         //if(!id){
         
         if(route){
