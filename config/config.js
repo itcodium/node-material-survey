@@ -4,7 +4,7 @@ var path = require('path')
   
 module.exports = {
   development: {
-      db: 'mongodb://admin:mlab123!@ds133597.mlab.com:33597/survey0001',
+      db: 'mongodb+srv://testuser:SurPass123!@survey0001.dwoc5.mongodb.net/survey0001?retryWrites=true&w=majority',
       root: rootPath,
       app: {
         name: 'Clover - Development Environment',
@@ -21,7 +21,7 @@ module.exports = {
       }
   },
   production: {
-      db: 'mongodb://admin:mlab123!@ds133597.mlab.com:33597/survey0001',
+      db: 'mongodb+srv://testuser:SurPass123!@survey0001.dwoc5.mongodb.net/survey0001?retryWrites=true&w=majority',
       root: rootPath,
       app:{
         name: 'Clover',

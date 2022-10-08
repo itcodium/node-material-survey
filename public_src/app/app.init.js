@@ -34,7 +34,7 @@ var routerProvider=function($routeProvider) {
    .when('/surveyDetail/:id',{	template: require ('../app/surveys/detail.html'),
            controller:'controllerSurveyDetail'     	// 'surveyCtrl'     	
          })
-   .when('/surveyAddQuestion/:id',{	template: require ('../app/surveys/AddQuestion.html'),
+   .when('/surveyAddQuestion/:id',{	template: require ('../app/surveys/addQuestion.html'),
          controller:'controllerAddQuestion'     	// 'surveyCtrl'     	
        })
    .otherwise({redirectTo: '/'});
